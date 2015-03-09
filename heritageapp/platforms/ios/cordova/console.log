@@ -14,3 +14,86 @@ To disable web storage backup to iCloud, set the BackupWebStorage preference to 
 2015-03-09 09:41:52.319 HeritageMalta[1723:25468] [CDVTimer][TotalPluginStartup] 7.046998ms
 2015-03-09 09:41:52.941 HeritageMalta[1723:25468] Resetting plugins due to page load.
 2015-03-09 09:41:53.192 HeritageMalta[1723:25468] Finished load of: file:///Users/nicholasgalea/Library/Developer/CoreSimulator/Devices/D69D2777-CA93-4BB6-BC42-4558051AE7BF/data/Containers/Bundle/Application/4BC614CE-9B66-4F06-9DD0-DD98E1DE212D/HeritageMalta.app/www/index.html
+2015-03-09 10:05:45.802 HeritageMalta[2485:34007] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/nicholasgalea/Library/Developer/CoreSimulator/Devices/D69D2777-CA93-4BB6-BC42-4558051AE7BF/data/Containers/Data/Application/177E1445-E976-475C-AB28-7ED34F019C92/Library/Cookies/Cookies.binarycookies
+2015-03-09 10:05:45.904 HeritageMalta[2485:34007] Apache Cordova native platform version 3.7.0 is starting.
+2015-03-09 10:05:45.904 HeritageMalta[2485:34007] Multi-tasking -> Device: YES, App: YES
+2015-03-09 10:05:45.906 HeritageMalta[2485:34007] Unlimited access to network resources
+2015-03-09 10:05:45.908 HeritageMalta[2485:34007] 
+
+Started backup to iCloud! Please be careful.
+Your application might be rejected by Apple if you store too much data.
+For more information please read "iOS Data Storage Guidelines" at:
+https://developer.apple.com/icloud/documentation/data-storage/
+To disable web storage backup to iCloud, set the BackupWebStorage preference to "local" in the Cordova config.xml file
+
+2015-03-09 10:05:46.096 HeritageMalta[2485:34007] [CDVTimer][file] 3.249943ms
+2015-03-09 10:05:46.097 HeritageMalta[2485:34007] [CDVTimer][TotalPluginStartup] 3.413022ms
+2015-03-09 10:05:46.152 HeritageMalta[2485:34007] Resetting plugins due to page load.
+2015-03-09 10:05:46.310 HeritageMalta[2485:34007] Finished load of: file:///Users/nicholasgalea/Library/Developer/CoreSimulator/Devices/D69D2777-CA93-4BB6-BC42-4558051AE7BF/data/Containers/Bundle/Application/8FEEAAB2-A23A-4B5A-8CDB-DFD80F245582/HeritageMalta.app/www/index.html
+2015-03-09 10:06:19.785 HeritageMalta[2693:34669] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/nicholasgalea/Library/Developer/CoreSimulator/Devices/D69D2777-CA93-4BB6-BC42-4558051AE7BF/data/Containers/Data/Application/FB206AA4-9EE4-4F46-AA20-7154631F1A05/Library/Cookies/Cookies.binarycookies
+2015-03-09 10:06:19.893 HeritageMalta[2693:34669] Apache Cordova native platform version 3.7.0 is starting.
+2015-03-09 10:06:19.893 HeritageMalta[2693:34669] Multi-tasking -> Device: YES, App: YES
+2015-03-09 10:06:19.896 HeritageMalta[2693:34669] Unlimited access to network resources
+2015-03-09 10:06:19.899 HeritageMalta[2693:34669] 
+
+Started backup to iCloud! Please be careful.
+Your application might be rejected by Apple if you store too much data.
+For more information please read "iOS Data Storage Guidelines" at:
+https://developer.apple.com/icloud/documentation/data-storage/
+To disable web storage backup to iCloud, set the BackupWebStorage preference to "local" in the Cordova config.xml file
+
+2015-03-09 10:06:20.078 HeritageMalta[2693:34669] [CDVTimer][file] 1.904011ms
+2015-03-09 10:06:20.079 HeritageMalta[2693:34669] [CDVTimer][TotalPluginStartup] 2.041042ms
+2015-03-09 10:06:20.141 HeritageMalta[2693:34669] Resetting plugins due to page load.
+2015-03-09 10:06:20.306 HeritageMalta[2693:34669] Finished load of: file:///Users/nicholasgalea/Library/Developer/CoreSimulator/Devices/D69D2777-CA93-4BB6-BC42-4558051AE7BF/data/Containers/Bundle/Application/2046E299-401E-492E-93E7-38748149868E/HeritageMalta.app/www/index.html
+2015-03-09 10:07:33.272 HeritageMalta[2912:35539] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/nicholasgalea/Library/Developer/CoreSimulator/Devices/D69D2777-CA93-4BB6-BC42-4558051AE7BF/data/Containers/Data/Application/094745D7-FE86-4497-9ED2-6DB10D5EBBB2/Library/Cookies/Cookies.binarycookies
+2015-03-09 10:07:33.427 HeritageMalta[2912:35539] Apache Cordova native platform version 3.7.0 is starting.
+2015-03-09 10:07:33.427 HeritageMalta[2912:35539] Multi-tasking -> Device: YES, App: YES
+2015-03-09 10:07:33.429 HeritageMalta[2912:35539] Unlimited access to network resources
+2015-03-09 10:07:33.432 HeritageMalta[2912:35539] 
+
+Started backup to iCloud! Please be careful.
+Your application might be rejected by Apple if you store too much data.
+For more information please read "iOS Data Storage Guidelines" at:
+https://developer.apple.com/icloud/documentation/data-storage/
+To disable web storage backup to iCloud, set the BackupWebStorage preference to "local" in the Cordova config.xml file
+
+2015-03-09 10:07:33.621 HeritageMalta[2912:35539] [CDVTimer][file] 2.224028ms
+2015-03-09 10:07:33.621 HeritageMalta[2912:35539] [CDVTimer][TotalPluginStartup] 2.462983ms
+2015-03-09 10:07:33.705 HeritageMalta[2912:35539] Resetting plugins due to page load.
+2015-03-09 10:07:33.835 HeritageMalta[2912:35539] Finished load of: file:///Users/nicholasgalea/Library/Developer/CoreSimulator/Devices/D69D2777-CA93-4BB6-BC42-4558051AE7BF/data/Containers/Bundle/Application/A8661783-790E-4854-8CA1-A4CCBA3FC7F8/HeritageMalta.app/www/index.html
+2015-03-09 10:08:10.304 HeritageMalta[3156:36356] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/nicholasgalea/Library/Developer/CoreSimulator/Devices/D69D2777-CA93-4BB6-BC42-4558051AE7BF/data/Containers/Data/Application/8B2AB81E-C397-43B3-B9C1-076C16D5A3B8/Library/Cookies/Cookies.binarycookies
+2015-03-09 10:08:10.399 HeritageMalta[3156:36356] Apache Cordova native platform version 3.7.0 is starting.
+2015-03-09 10:08:10.400 HeritageMalta[3156:36356] Multi-tasking -> Device: YES, App: YES
+2015-03-09 10:08:10.401 HeritageMalta[3156:36356] Unlimited access to network resources
+2015-03-09 10:08:10.403 HeritageMalta[3156:36356] 
+
+Started backup to iCloud! Please be careful.
+Your application might be rejected by Apple if you store too much data.
+For more information please read "iOS Data Storage Guidelines" at:
+https://developer.apple.com/icloud/documentation/data-storage/
+To disable web storage backup to iCloud, set the BackupWebStorage preference to "local" in the Cordova config.xml file
+
+2015-03-09 10:08:10.602 HeritageMalta[3156:36356] [CDVTimer][file] 2.183020ms
+2015-03-09 10:08:10.603 HeritageMalta[3156:36356] [CDVTimer][TotalPluginStartup] 2.394974ms
+2015-03-09 10:08:10.662 HeritageMalta[3156:36356] Resetting plugins due to page load.
+2015-03-09 10:08:10.830 HeritageMalta[3156:36356] Finished load of: file:///Users/nicholasgalea/Library/Developer/CoreSimulator/Devices/D69D2777-CA93-4BB6-BC42-4558051AE7BF/data/Containers/Bundle/Application/3DDE5488-2E4F-4586-BA0E-1B3213F4747F/HeritageMalta.app/www/index.html
+2015-03-09 10:16:06.300 HeritageMalta[3382:39213] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/nicholasgalea/Library/Developer/CoreSimulator/Devices/D69D2777-CA93-4BB6-BC42-4558051AE7BF/data/Containers/Data/Application/CEED4F2C-A3E4-4170-80E4-FD4AA36745AF/Library/Cookies/Cookies.binarycookies
+2015-03-09 10:16:06.401 HeritageMalta[3382:39213] Apache Cordova native platform version 3.7.0 is starting.
+2015-03-09 10:16:06.401 HeritageMalta[3382:39213] Multi-tasking -> Device: YES, App: YES
+2015-03-09 10:16:06.403 HeritageMalta[3382:39213] Unlimited access to network resources
+2015-03-09 10:16:06.405 HeritageMalta[3382:39213] 
+
+Started backup to iCloud! Please be careful.
+Your application might be rejected by Apple if you store too much data.
+For more information please read "iOS Data Storage Guidelines" at:
+https://developer.apple.com/icloud/documentation/data-storage/
+To disable web storage backup to iCloud, set the BackupWebStorage preference to "local" in the Cordova config.xml file
+
+2015-03-09 10:16:06.604 HeritageMalta[3382:39213] [CDVTimer][file] 2.237022ms
+2015-03-09 10:16:06.604 HeritageMalta[3382:39213] [CDVTimer][TotalPluginStartup] 2.397001ms
+2015-03-09 10:16:06.658 HeritageMalta[3382:39213] Resetting plugins due to page load.
+2015-03-09 10:16:06.868 HeritageMalta[3382:39213] Finished load of: file:///Users/nicholasgalea/Library/Developer/CoreSimulator/Devices/D69D2777-CA93-4BB6-BC42-4558051AE7BF/data/Containers/Bundle/Application/B726073D-3E6B-4197-A42D-4FFA3FBD84CF/HeritageMalta.app/www/index.html
+2015-03-09 10:16:16.854 HeritageMalta[3382:39213] Resetting plugins due to page load.
+2015-03-09 10:16:16.871 HeritageMalta[3382:39213] Finished load of: file:///Users/nicholasgalea/Library/Developer/CoreSimulator/Devices/D69D2777-CA93-4BB6-BC42-4558051AE7BF/data/Containers/Bundle/Application/B726073D-3E6B-4197-A42D-4FFA3FBD84CF/HeritageMalta.app/www/cameratest.html
+2015-03-09 10:16:18.951 HeritageMalta[3382:39274] Camera.getPicture: source type 1 not available.

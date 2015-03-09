@@ -22,12 +22,14 @@
 /Users/nicholasgalea/heritageapp/platforms/android/assets/_where-is-www.txt \
 /Users/nicholasgalea/heritageapp/platforms/android/assets/www \
 /Users/nicholasgalea/heritageapp/platforms/android/assets/www/booking.html \
+/Users/nicholasgalea/heritageapp/platforms/android/assets/www/cameratest.html \
 /Users/nicholasgalea/heritageapp/platforms/android/assets/www/cordova.js \
 /Users/nicholasgalea/heritageapp/platforms/android/assets/www/cordova_plugins.js \
 /Users/nicholasgalea/heritageapp/platforms/android/assets/www/css \
 /Users/nicholasgalea/heritageapp/platforms/android/assets/www/events.html \
 /Users/nicholasgalea/heritageapp/platforms/android/assets/www/fonts \
 /Users/nicholasgalea/heritageapp/platforms/android/assets/www/game.html \
+/Users/nicholasgalea/heritageapp/platforms/android/assets/www/gpstest.html \
 /Users/nicholasgalea/heritageapp/platforms/android/assets/www/history.html \
 /Users/nicholasgalea/heritageapp/platforms/android/assets/www/home.html \
 /Users/nicholasgalea/heritageapp/platforms/android/assets/www/img \
