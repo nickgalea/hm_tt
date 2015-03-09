@@ -319,6 +319,10 @@ body.toggled #sidebar{
     font-size: 1.25em;
 }
 
+#profile-image-landscape{
+	text-align: center;
+}
+
 #profile-options{
     margin: 1em auto;
     text-align: center;
@@ -493,7 +497,7 @@ body.toggled #sidebar{
 
 #share-button{
     margin-top: 2em;
-    padding: 0.8em 0;
+    padding: 0.9em 0;
     text-align: center;
 }
 
@@ -952,7 +956,6 @@ h1.found{
     font-size: 1.2em;
     margin: 0 1em;
 }
-
 /* Landscape layout (with min-width) */
 @media screen and (min-aspect-ratio: 1/1) and (min-width:300px){
     #top{
@@ -1061,3 +1064,4 @@ h1.found{
         margin-top: 5em;
     }
 }
+

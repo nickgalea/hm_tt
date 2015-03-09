@@ -39,12 +39,13 @@ $("#tour-single-artifact-details p.main-link").click(function(){
 
 window.onload = function(){
 
-    var imageSrc = document
-                    .getElementById('profile-image-landscape')
+	var imageSrc = $("#profile-image-landscape img");
+    /*var imageSrc = document
+                    .getElementById('profile-image-landscape');
                      .style
                       .backgroundImage
                        .replace(/url\((['"])?(.*?)\1\)/gi, '$2')
-                        .split(',')[0];    
+                        .split(',')[0];  */  
 
     var image = new Image();
     image.src = imageSrc;

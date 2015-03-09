@@ -7,6 +7,8 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="stylesheet" type="text/css" href="css/main.css" />
         <title>Half Statue</title>
+        
+        
     </head>
     <body>
         <div id="action-bar">
@@ -14,10 +16,19 @@
             <div class="audio"></div>
         </div>
         <div id="profile-title">
-            <h1>Half Statue</h1>
+            <h1 id = "artefact_name" >Half Statue</h1>
             <p>Tarxien Temples</p>
         </div>
-        <div id="profile-image-landscape" style="background-image: url('img/artifact_4.png')"></div>
+        <!--<div class="banner" style="background-color:red; overflow: auto !important">
+		    <ul>
+		        <li>This is a slide.</li>
+		        <li>This is another slide.</li>
+		        <li>This is a final slide.</li>
+		    </ul>
+		</div>-->
+        <div id="profile-image-landscape">
+        	<img src="img/artifact_4.png" alt="img">
+        </div>
         <div id="profile-options">
             <div class="tile active">
                 <div class="photos"><span>Photos</span></div>
@@ -31,13 +42,13 @@
         </div>
         <div id="profile-description">
             <hr />
-            <h2>Era</h2>
+            <h2 vistxt_era>Era</h2>
             <div id="timeline">
                 <ul class="intervals-header">
-                    <li></li>
-                    <li></li>
-                    <li><div class="arrow"></div></li>
-                    <li></li>
+                    <li id = "era-3300"></li>
+                    <li id = "era-2800"></li>
+                    <li id = "era-2300"></li>
+                    <li id = "era-1800"></li>
                 </ul>
                 <ul class="intervals">
                     <li>3300 BC</li>
@@ -47,21 +58,71 @@
                 </ul>
             </div>
             <div class="two-col">
-                <div class="col">
-                    <h2>Type</h2>
-                    <p class="focus">Statue</p>
+                <div id = "type_col" class="col">
+                    <h2 id = "vistxt_type_col">Type</h2>
+                    <p id = "artefact_type"  class="focus">Statue</p>
                 </div>
-                <div class="col">
-                    <h2>Material</h2>
-                    <p class="focus">Stone</p>
+                <div id = "material_col" class="col">
+                    <h2 id = "vistxt_material_col">Material</h2>
+                    <p id = "artefact_material" class="focus">Stone</p>
+                </div>
+                <div id = "use_col" class="col">
+                    <h2 id = "vistxt_use_col">Use</h2>
+                    <p id = "artefact_use" class="focus">Use</p>
                 </div>
             </div>
-            <p class="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras laoreet fermentum augue, nec fermentum lacus. Morbi risus ex, mollis a lorem a, pellentesque imperdiet lorem. Proin gravida massa at nisl egestas, pulvinar iaculis neque ultrices. Etiam vel neque ut tortor accumsan pulvinar.</p>
+            <p id = "artefact_info" class="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras laoreet fermentum augue, nec fermentum lacus. Morbi risus ex, mollis a lorem a, pellentesque imperdiet lorem. Proin gravida massa at nisl egestas, pulvinar iaculis neque ultrices. Etiam vel neque ut tortor accumsan pulvinar.</p>
         </div>
         <div id="share-button"><span>Share</span></div>
         <div id="bottom-red-message">View Replica in Giftstore</div>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/scripts.js"></script>
+        <script type="text/javascript" src="js/artefactdb/artefactMain.js"></script>
+        <script type="text/javascript" src="js/artefactdb/unslider.min.js"></script>
+        <script>
+        window.onload = function()
+        {
+        	var artefact_position = 0;
+        	var eras = ["3300","2800","2300","1800"];
+        	var artefact_list = createArtList();
+        	console.log("ok");
+        	
+        	$("#artefact_name").text(artefact_list[artefact_position].name);
+        	$("<div class='arrow'></div>").appendTo("#era-" + artefact_list[artefact_position].era);
+        	if(artefact_list[artefact_position].type == "")
+        	{
+        		$("#type_col").hide();
+        	}
+        	if(artefact_list[artefact_position].material == "")
+        	{
+        		$("#material_col").hide();
+        	}
+        	if(artefact_list[artefact_position].use == "")
+        	{
+        		$("#use_col").hide();
+        	}
+        	
+        	$("#artefact_type").text(artefact_list[artefact_position].type);
+        	$("#artefact_material").text(artefact_list[artefact_position].material);
+        	$("#artefact_use").text(artefact_list[artefact_position].use);
+        	
+        	$("#artefact_info").text(artefact_list[artefact_position].info);
+        	
+        }
+        
+        $(document).ready (function(){
+        	/*$(".banner").unslider({
+			speed: 500,               //  The speed to animate each slide (in milliseconds)
+			delay: 3000,              //  The delay between slide animations (in milliseconds)
+			complete: function() {},  //  A function that gets called after every slide animation
+			keys: true,               //  Enable keyboard (left, right) arrow shortcuts
+			dots: true,               //  Display dot navigation
+			fluid: false              //  Support responsive design. May break non-responsive designs
+		});*/
+		
+        });
+        
+        </script>
     </body>
 </html>
