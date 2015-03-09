@@ -1,0 +1,16 @@
+2015-03-09 09:41:51.950 HeritageMalta[1723:25468] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/nicholasgalea/Library/Developer/CoreSimulator/Devices/D69D2777-CA93-4BB6-BC42-4558051AE7BF/data/Containers/Data/Application/E1C776D7-A140-432F-852E-FDDEDDE0FC55/Library/Cookies/Cookies.binarycookies
+2015-03-09 09:41:52.063 HeritageMalta[1723:25468] Apache Cordova native platform version 3.7.0 is starting.
+2015-03-09 09:41:52.064 HeritageMalta[1723:25468] Multi-tasking -> Device: YES, App: YES
+2015-03-09 09:41:52.068 HeritageMalta[1723:25468] Unlimited access to network resources
+2015-03-09 09:41:52.071 HeritageMalta[1723:25468] 
+
+Started backup to iCloud! Please be careful.
+Your application might be rejected by Apple if you store too much data.
+For more information please read "iOS Data Storage Guidelines" at:
+https://developer.apple.com/icloud/documentation/data-storage/
+To disable web storage backup to iCloud, set the BackupWebStorage preference to "local" in the Cordova config.xml file
+
+2015-03-09 09:41:52.319 HeritageMalta[1723:25468] [CDVTimer][file] 6.815970ms
+2015-03-09 09:41:52.319 HeritageMalta[1723:25468] [CDVTimer][TotalPluginStartup] 7.046998ms
+2015-03-09 09:41:52.941 HeritageMalta[1723:25468] Resetting plugins due to page load.
+2015-03-09 09:41:53.192 HeritageMalta[1723:25468] Finished load of: file:///Users/nicholasgalea/Library/Developer/CoreSimulator/Devices/D69D2777-CA93-4BB6-BC42-4558051AE7BF/data/Containers/Bundle/Application/4BC614CE-9B66-4F06-9DD0-DD98E1DE212D/HeritageMalta.app/www/index.html

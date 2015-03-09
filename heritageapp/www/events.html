@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/main.css" />
+        <title>Events</title>
+    </head>
+    <body>
+        <div id="sidebar">
+            <div class="filler">
+                <div class="logo"></div>
+                <div class="title">Heritage Malta</div>
+                <div class="main-header">
+                    <span onclick="location.href='index.html'">Tarxien Temples</span>
+                </div>
+                <ul>
+                    <li onclick="location.href='events.html'"><span class="events">Events and News</span></li>
+                    <li onclick="location.href='booking.html'"><span class="tickets">Book and Buy Tickets</span></li>
+                    <li><span class="itinerary">Itinerary</span></li>
+                    <li><span class="contact">Contact Us</span></li>
+                </ul>
+                <div class="bottom-link">Language &ndash; English</div>
+            </div>
+        </div>
+        <div id="red">
+            <div class="wrapper">
+                <a id="nav-toggle" href="#"><span></span></a>
+                <h1 class="top-spacer">Events, Exhibitions and News</h1>
+                <h2>Find out what's on at Heritage Malta</h2>
+                <hr class="white" />
+                <div id="today-events-list" class="spacer">
+                    <div class="two-col">
+                        <div class="col small-left"><span>Today's Events and Exhibitions</span></div>
+                        <div class="col">
+                            <ul>
+                                <li onclick="location.href='profile-event.html'">
+                                    <h3>The Roman Inquisition in Malta</h3>
+                                    <p class="location">Inquisitor's Palace, Birgu</p>
+                                    <p class="dates">18 September &ndash; 1 May</p>
+                                </li>
+                                <li>
+                                    <h3>Valentine's Day Exhibition</h3>
+                                    <p class="location">National Museum of Archaeology, Valletta</p>
+                                    <p class="dates">9 &ndash; 22 February</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div id="list-tiles">
+                <div class="box" style="background: url(img/inquisitors_palace.png) no-repeat;background-size:cover;" onclick="location.href='profile-event.html'">
+                    <div class="black-transparency">
+                        <div class="text">
+                            <h1>The Roman Inquisition in Malta</h1>
+                            <p>Inquisitor's Palace, Birgu<br /><i>18 September &ndash; 1 May</i></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="box" style="background: url(img/valentines_day.png) no-repeat;background-size:cover;">
+                    <div class="black-transparency">
+                        <div class="text">
+                            <h1>Valentine's Day Exhibition</h1>
+                            <p>National Museum of Archaeology, Valletta<br /><i>9 February &ndash; 22 February</i></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="bottom-red-message">
+            <h1>Past Events</h1>
+            <h2>Pull up to view past events</h2>
+        </div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/scripts.js"></script>
+    </body>
+</html>

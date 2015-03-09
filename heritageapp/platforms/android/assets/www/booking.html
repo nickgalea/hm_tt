@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/main.css" />
+        <title>Book Tickets</title>
+    </head>
+    <body>
+        <div id="sidebar">
+            <div class="filler">
+                <div class="logo"></div>
+                <div class="title">Heritage Malta</div>
+                <div class="main-header">
+                    <span onclick="location.href='index.html'">Tarxien Temples</span>
+                </div>
+                <ul>
+                    <li onclick="location.href='events.html'"><span class="events">Events and News</span></li>
+                    <li onclick="location.href='booking.html'"><span class="tickets">Book and Buy Tickets</span></li>
+                    <li><span class="itinerary">Itinerary</span></li>
+                    <li><span class="contact">Contact Us</span></li>
+                </ul>
+                <div class="bottom-link">Language &ndash; English</div>
+            </div>
+        </div>
+        <div id="red">
+            <div class="wrapper">
+                <a id="nav-toggle" href="#"><span></span></a>
+                <h1 class="top-spacer">Book and Buy Tickets<h1>
+                <h2>Book a tour and buy tickets for any Heritage Malta location in the Maltese Islands</h2>
+                <hr class="white" />
+                <div class="spacer">
+                    <h2 style="font-weight:bold">Benefit from this great offer!</h2>
+                    <h1 style="font-weight:normal">The Heritage Malta Multisite Pass</h1>
+                    <p>Enables admission to ALL 21 Heritage Malta sites and museums (expect Hypogeum) plus the Malta National Aquarium.</p>
+                </div>
+            </div>
+        </div>
+        <div class="wrapper">
+            <ul id="tickets-main-options">
+                <li id="book-tour-option" rel="bt1">Book a Tour</li>
+                <div class="detailed-option" id="bt1">
+                    <h2>Museum or Site</h2>
+                    <ul>
+                        <li id="opt1">The Palace Armoury</li>
+                        <li>The Palace State Rooms</li>
+                        <li>Hagar Qim Temples</li>
+                        <li>Mnajdra Temples</li>
+                        <li>Tarxien Temples</li>
+                        <li>Ta' Hagrat</li>
+                    </ul>
+                    <div class="circle active"></div>
+                    <div class="circle"></div>
+                    <div class="circle"></div>
+                </div>
+                <li id="buy-ticket-option">Buy a Ticket</li>
+            </ul>
+        </div>
+        <div id="bottom-red-message">
+            <h1>MUSEUMS AND SITES<br />TICKET PRICES</h1>
+            <h2>Pull up to view Heritage Malta Sites and Ticket Prices</h2>
+        </div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/scripts.js"></script>
+    </body>
+</html>
