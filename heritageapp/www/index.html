@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html >
     <head>
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
@@ -7,9 +7,13 @@
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="stylesheet" type="text/css" href="css/main.css" />
+        <link rel="stylesheet" href="css/angular-snap.css" type="text/css" />
+        <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" type="text/css" />
+        
         <title>Heritage Malta</title>
     </head>
-    <body>
+    <body  ng-app="single-page-app">
+    <snap-drawer>
         <div id="sidebar">
             <div class="filler">
                 <div class="logo"></div>
@@ -23,87 +27,31 @@
                     <li><span id="vistxt_itinerary" class="itinerary">Itinerary</span></li>
                     <li id="contact-opt" rel="contact-us"><span id="vistxt_contact" class="contact">Contact Us</span></li>
                 </ul>
-                <div id="language-opt" rel="language" class="bottom-link">Language &ndash; English</div>
+                <div id="language-opt" snap-toggle="" onclick="showlangmenu();" rel="language" class="bottom-link">Language &ndash; English</div>
             </div>
         </div>
-        <div id="contact-us" class="full-container">
-            <div class="full-content">
-                <div class="close"></div>
-                <img class="top-image" src="img/heritage_logo.png" alt="" width="175" />
-                <div class="wrapper">
-                    <p class="liners">(+356) 22954000<br />(+356) 21222900</p>
-                    <p class="liners small">Head Office<br />Ex Royal Naval Hospital<br />Triq Marina<br />Kalkara KKR1524<br />Malta</p>
-                    <p class="liners small">info@heritagemalta.com</p>
-                </div>
-            </div>            
-        </div>
-        <div id="language" class="full-container">
-            <div class="full-content">
-                <div class="close"></div>
-                <img class="top-image" src="img/icons/world.png" alt="" width="175" />
-                <p>Which language do you prefer?</p>
-                <div class="wrapper">
-                    <p onclick="setLanguage(0)" class="liners small">English</p>
-                    <p onclick="setLanguage(1)" class="liners small">Malti</p>
-                    <p onclick="setLanguage(2)" class="liners small">Italiano</p>
-                    <p onclick="setLanguage(3)" class="liners small">French</p>
-                    <p onclick="setLanguage(4)" class="liners small">German</p>
-                </div>
-            </div>            
-        </div>
-        <div id="top">
-            <a id="nav-toggle" href="#"><span></span></a>
-            <h1>Tarxien<div>Temples</div></h1>
-        </div>
-        <div id="menu-slider">
-            <div class="box history" onclick="location.href='history.html'">
-                <div class="black-transparency">
-                    <div class="text">
-                        <h1><b>History</b><br />and <b>Artifacts</b></h1>
-                        <p>Discover the history of the Temples</p>
-                    </div>
-                </div>
-            </div>
-            <div class="box timeline" onclick="location.href='timeline.html'">
-                <div class="black-transparency">
-                    <div class="text">
-                        <h1><b>Timeline</b></h1>
-                        <p>See when the temples were built</p>
-                    </div>
-                </div>
-            </div>
-            <div class="box games" onclick="location.href='game.html'">
-                <div class="black-transparency">
-                    <div class="text">
-                        <h1><b>Games</b></h1>
-                        <p>Excavate and explore Tarxien Temples</p>
-                    </div>
-                </div>
-            </div>
-            <div class="box tour" onclick="location.href='tour.html'">
-                <div class="black-transparency">
-                    <div class="text">
-                        <h1><b>Tour</b></h1>
-                        <p>Enjoy a guided tour of the Temples</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <script type="text/javascript" src="cordova.js"></script>
+    </snap-drawer>
+        <div ng-controller="cfgController">
+        <div ng-view></div>
+
         <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="jquery.mobile-1.4.5.js"></script>
+        <script type="text/javascript" src="js/angular.min.js"></script>
+        <script type="text/javascript" src="js/angular-route.min.js"></script>
+        <script src="js/angular-snap.js" type="text/javascript"></script>
+        <script type="text/javascript" src="js/snap.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/scripts.js"></script>
-
         <script type="text/javascript" src="js/index.js"></script>
-
-        <script type="text/javascript">
+        
+        <script>
+        
         document.addEventListener("deviceready", onDeviceReady, false);
-
         function onDeviceReady() {
             checkLanguage();
-            //translate();
         }
-
         </script>
-
+        
+        <div>
     </body>
 </html>

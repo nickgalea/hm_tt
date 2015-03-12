@@ -1,4 +1,4 @@
-C:\Users\Jurgen\heritageapp\hmtt\heritageapp\platforms\android\ant-build\CordovaApp-debug-unaligned.apk : \
-C:\Users\Jurgen\heritageapp\hmtt\heritageapp\platforms\android\ant-build\CordovaApp.ap_ \
-C:\Users\Jurgen\heritageapp\hmtt\heritageapp\platforms\android\ant-build\classes.dex \
-C:\Users\Jurgen\heritageapp\hmtt\heritageapp\platforms\android\CordovaLib\ant-build\classes.jar \
+/Users/nicholasgalea/heritageapp/platforms/android/ant-build/CordovaApp-debug-unaligned.apk : \
+/Users/nicholasgalea/heritageapp/platforms/android/ant-build/CordovaApp.ap_ \
+/Users/nicholasgalea/heritageapp/platforms/android/ant-build/classes.dex \
+/Users/nicholasgalea/heritageapp/platforms/android/CordovaLib/ant-build/classes.jar \

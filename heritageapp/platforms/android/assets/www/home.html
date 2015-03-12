@@ -1,20 +1,71 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Heritage Malta App Prototype</title>
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-        <style type="text/css">
-            body { font-family: 'Open Sans', sans-serif; }
-            div{ text-align: center; }
-            a{ font-weight:bold; font-size: 1.6em; color: #3b5998; }
-        </style>
-    </head>
-    <body>
-        <div>
-            <a href="index.html"
-               onclick="window.open(this.href,'targetWindow', 'toolbar=no, location=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=328, height=639'); return false;">Open app</a><br />
-             <small>Will open in new popup window to simulate its view in a mobile environment</small>
-         </div>
-         
-    </body>
-</html>
+<snap-content>
+
+    <div id="language" class="full-container" style="display:none;">
+            <div class="full-content">
+                <div onclick="closefullcontainer()" class="close"></div>
+                <img class="top-image" src="img/icons/world.png" alt="" width="175" />
+                <p>Which language do you prefer?</p>
+                <div class="wrapper">
+                    <p onclick="setLanguage(0)" class="liners small">English</p>
+                    <p onclick="setLanguage(1)" class="liners small">Malti</p>
+                    <p onclick="setLanguage(2)" class="liners small">Italiano</p>
+                    <p onclick="setLanguage(3)" class="liners small">French</p>
+                    <p onclick="setLanguage(4)" class="liners small">German</p>
+                </div>
+            </div>            
+    </div>
+
+    <!-- <div id="contact-us" class="full-container">
+            <div class="full-content">
+                <div class="close"></div>
+                <img class="top-image" src="img/heritage_logo.png" alt="" width="175" />
+                <div class="wrapper">
+                    <p class="liners">(+356) 22954000<br />(+356) 21222900</p>
+                    <p class="liners small">Head Office<br />Ex Royal Naval Hospital<br />Triq Marina<br />Kalkara KKR1524<br />Malta</p>
+                    <p class="liners small">info@heritagemalta.com</p>
+                </div>
+            </div>            
+        </div>
+     -->    
+
+    <div id="main_content" style="background:white;height:100%;width:100%;z-index:5000;">
+        <div id="top">
+            <h1>Tarxien <br>Temples</h1>
+            <img id="menutoggle" snap-toggle="" src="img/icons/hamburger.png"></img>
+        </div>
+        <div id="menu-slider" style="z-index:4;">
+            <div class="box history" onclick="location.href='#/history_home'">
+                <div class="black-transparency">
+                    <div class="text">
+                        <h1><b>History</b><br />and <b>Artifacts</b></h1>
+                        <p>Discover the history of the Temples</p>
+                    </div>
+                </div>
+            </div>
+            <div class="box timeline" onclick="location.href='3dmodel.html'">
+                <div class="black-transparency">
+                    <div class="text">
+                        <h1><b>Timeline</b></h1>
+                        <p>See when the temples were built</p>
+                    </div>
+                </div>
+            </div>
+            <div class="box games" onclick="location.href='game.html'">
+                <div class="black-transparency">
+                    <div class="text">
+                        <h1><b>Games</b></h1>
+                        <p>Excavate and explore Tarxien Temples</p>
+                    </div>
+                </div>
+            </div>
+            <div class="box tour" onclick="location.href='tour.html'">
+                <div class="black-transparency">
+                    <div class="text">
+                        <h1><b>Tour</b></h1>
+                        <p>Enjoy a guided tour of the Temples</p>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+</snap-content>

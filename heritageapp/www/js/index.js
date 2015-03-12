@@ -1,5 +1,15 @@
 var lang_index;
 
+function showlangmenu()
+{
+    document.getElementById("language").style.display="block"; 
+}
+
+function closefullcontainer()
+{
+    $(".full-container").hide();
+}
+
 function setLanguage(langNo) {
 
     switch(langNo) {
@@ -43,8 +53,7 @@ function checkLanguage() {
         	if(lang_index!=0)
         	{
         		translate();
-        	}	
-    		},
+        	}},
         function () {alert('Error getting language\n');}	
       );
 }
@@ -67,6 +76,14 @@ function getLangDict() {
 	return LangDict;
 }
 
+function getScreenWidth()
+{
+    window.screen.availWidth;
+    console.log(window.screen.availWidth);
+
+    return getScreenWidth();
+}
+
 function translate(){
 	var LangDict = getLangDict();
 
@@ -82,3 +99,31 @@ function translate(){
     
     }
 }
+
+var app=angular.module('single-page-app',['ngRoute','snap']);
+
+
+app.config(function($routeProvider){
+
+      $routeProvider
+          .when('/',{
+                templateUrl: 'home.html'
+          })
+          .when('/history_home',{
+                templateUrl: 'history_home.html'
+          })
+          .when('/3dmodel', {
+                templateUrl: '3dmodel.html'
+          });
+
+
+});
+
+
+app.controller('cfgController',function($scope){
+
+      $scope.message="Hello world";
+
+});
+
+
