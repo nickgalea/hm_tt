@@ -44,6 +44,8 @@
 /Users/nicholasgalea/heritageapp/platforms/android/assets/www/StoneHead.obj \
 /Users/nicholasgalea/heritageapp/platforms/android/assets/www/StoneHead.obj.mtl \
 /Users/nicholasgalea/heritageapp/platforms/android/assets/www/StoneHead_tex_0.jpg \
+/Users/nicholasgalea/heritageapp/platforms/android/assets/www/testresize.obj \
+/Users/nicholasgalea/heritageapp/platforms/android/assets/www/testresize.obj.mtl \
 /Users/nicholasgalea/heritageapp/platforms/android/assets/www/timeline.html \
 /Users/nicholasgalea/heritageapp/platforms/android/assets/www/tour.html \
 /Users/nicholasgalea/heritageapp/platforms/android/assets/www/css/angular-snap.css \

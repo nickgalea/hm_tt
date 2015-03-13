@@ -1,47 +1,18 @@
-
-        <canvas id="cv" width="" height="">
-        </canvas>
-        <script type="text/javascript" src="js/jsc3d.min.js"></script>
-        <script type="text/javascript" src="js/jsc3d.touch.js"></script>
-        <script type="text/javascript" src="js/jsc3d.webgl.js"></script>
-        <script type="text/javascript" src="js/jquery.js"></script>
-        <script> 
-        {
-            $('#cv').attr("width", screen.width);
-            $('#cv').attr("height", screen.height);
-        }
-        </script>
-        <script type="text/javascript">
+<canvas id="cv" width="" height=""></canvas>
+<script> 
+{
+    $('#cv').attr("width", screen.width);
+    $('#cv').attr("height", screen.height);
+}
+</script>
+<script type="text/javascript">
             var viewer = new JSC3D.Viewer(document.getElementById('cv'));
-            viewer.setParameter('SceneUrl', 'StoneHead.obj');
-            //viewer.setParameter('ModelColor', '#808080')
+            viewer.setParameter('SceneUrl', 'testresize.obj');
             viewer.setParameter('BackgroundColor1', '#FFFFFF');
             viewer.setParameter('BackgroundColor2', '#FFFFFF');
             viewer.setParameter('RenderMode',       'texture');
             viewer.setParameter('ProgressBar', 'on');
-            // viewer.setParameter('Renderer', 'webgl');
+            viewer.setParameter('Renderer', 'webgl');
             viewer.init();
             viewer.update();
-            var theTex = new JSC3D.Texture;
-            theTex.onready = function() {
-                console.info('texture has been loaded successfully.');
-                // wait until the model is also ready and apply our texture then
-                var applyTexture = function() {
-                var scene = viewer.getScene();
-                // check if the model is done
-                if (scene && scene.getChildren().length > 0) {
-                    var mesh = scene.getChildren()[0];
-                    mesh.setTexture(theTex);
-                    console.info('texture has been applied.');
-                    // tell the viewer to render a new frame
-                    viewer.update();
-                } 
-                else {
-                    // if the model is not ready yet, wait a short interval and check it again
-                    setTimeout(applyTexture, 500);
-                }
-            };
-  };
-  theTex.createFromUrl('StoneHead_tex_0.jpg');
-  console.info('begin to load texture ...');
-        </script>
+</script>
