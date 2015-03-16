@@ -18,21 +18,17 @@
             <h1 id = "artefact_name" ></h1>
             <p>Tarxien Temples</p>
         </div>
-        <!--<div class="banner" style="background-color:red; overflow: auto !important">
-		    <ul>
-		        <li>This is a slide.</li>
-		        <li>This is another slide.</li>
-		        <li>This is a final slide.</li>
-		    </ul>
-		</div>-->
-        <div id="profile-image-landscape">
+
+
+		<div id="profile-image-landscape">
         	<div id='slider' class='swipe'>
 			  <div class='swipe-wrap'>
-				<div><img src="img/artifact_4.png" alt="img"></div>
-				<div><img src="img/artifact_4.png" alt="img"></div>
-				<div><p>text</p></div>
+				<!--div><img src="img/artifact_4.png" alt="img"></div-->
 			  </div>
 			</div>
+        </div>
+		<div id="geolocation"  style="visibility:hidden;">
+        	
         </div>
 		
         <div id="profile-options">
@@ -42,7 +38,7 @@
             <div class="tile secondary-tile">
                 <div class="threeD"><span>3D</span></div>
             </div>
-            <div class="tile secondary-tile">
+            <div id = "view_map" class="tile secondary-tile">
                 <div class="map"><span>View on map</span></div>
             </div>
         </div>
@@ -88,17 +84,11 @@
         <script>
         	//createArtList();
 			populatePage();
-			window.mySwipe = Swipe(document.getElementById('slider'), {
-			  startSlide: 0,
-			  speed: 800,
-			  auto: 3000,
-			  continuous: true,
-			  disableScroll: false,
-			  stopPropagation: false,
-			  callback: function(index, elem) {},
-			  transitionEnd: function(index, elem) {}
-			});
-        
+			getImages();
+			$("#view_map").on("touchstart", function() {
+			
+		});
+			
         </script>
 </snap-content>
 <!--</html>-->
