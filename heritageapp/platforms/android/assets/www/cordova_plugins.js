@@ -199,6 +199,11 @@ module.exports = [
         ]
     },
     {
+        "file": "plugins/com.microsoft.azure-mobile-services/www/MobileServices.Web.min.js",
+        "id": "com.microsoft.azure-mobile-services.AzureMobileServices",
+        "runs": true
+    },
+    {
         "file": "plugins/org.apache.cordova.file/www/DirectoryEntry.js",
         "id": "org.apache.cordova.file.DirectoryEntry",
         "clobbers": [
@@ -343,6 +348,13 @@ module.exports = [
             "cordova"
         ],
         "runs": true
+    },
+    {
+        "file": "plugins/org.apache.cordova.inappbrowser/www/inappbrowser.js",
+        "id": "org.apache.cordova.inappbrowser.inappbrowser",
+        "clobbers": [
+            "window.open"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -361,7 +373,9 @@ module.exports.metadata =
     "org.apache.cordova.vibration": "0.3.13",
     "org.apache.cordova.globalization": "0.3.4",
     "org.apache.cordova.console": "0.2.13",
-    "org.apache.cordova.file": "1.3.3"
+    "com.microsoft.azure-mobile-services": "1.2.7",
+    "org.apache.cordova.file": "1.3.3",
+    "org.apache.cordova.inappbrowser": "0.6.0"
 }
 // BOTTOM OF METADATA
 });

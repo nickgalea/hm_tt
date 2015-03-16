@@ -114,6 +114,9 @@ app.config(function($routeProvider){
           })
           .when('/3dmodel', {
                 templateUrl: '3dmodel.html'
+          })
+		  .when('/profile', {
+                templateUrl: 'profile.html'
           });
 
 

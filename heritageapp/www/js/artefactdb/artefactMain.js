@@ -1,3 +1,6 @@
+var artefact_list = null;
+var artefact_position = 1;
+var eras = ["3300","2800","2300","1800"];
 function Artefact()
 {
 	//constructor
@@ -12,30 +15,85 @@ function Artefact()
 	this.lon;
 }
 
+function populatePage()
+{
+	$("#artefact_name").text(artefact_list[artefact_position].name);
+	$("<div class='arrow'></div>").appendTo("#era-" + artefact_list[artefact_position].era);
+	if(artefact_list[artefact_position].type == "")
+	{
+		$("#type_col").hide();
+	}
+	if(artefact_list[artefact_position].mat == "")
+	{
+		$("#material_col").hide();
+	}
+	if(artefact_list[artefact_position].use == "")
+	{
+		$("#use_col").hide();
+	}
+	
+	$("#artefact_type").text(artefact_list[artefact_position].type);
+	$("#artefact_material").text(artefact_list[artefact_position].mat);
+	$("#artefact_use").text(artefact_list[artefact_position].use);
+	
+	$("#artefact_info").text(artefact_list[artefact_position].info);
+}
+
 function createArtList()
 {
-	var art = new Artefact();
-
-	art.id = 1;
-	art.name = "Half Statue1";
-	art.era = "1800";
-	art.type = "Statue";
-	art.material = "Ston";
-	art.info = "This is a statue of a God";
-	art.use = "";
-	art.lat = "0.5";
-	art.lon = "0.5";
-	var artefact_list = new Array(art);
-	art = new Artefact();
-	art.id = 2;
-	art.name = "Bull Design";
-	art.era = "2800";
-	art.type = "Engraving";
-	art.material = "Stone";
-	art.info = "Engraving of a bull animal";
-	art.use = "Decoration";
-	art.lat = "0.5";
-	art.lon = "0.5";
-	artefact_list[artefact_list.length] = art;
-	return artefact_list;
+	console.log("ARTEFACT LIST" + artefact_list);
+	if(artefact_list == null)
+	{
+		console.log("LIST is empty");
+		var client = new WindowsAzure.MobileServiceClient(
+		"https://heritagemalta.azure-mobile.net/",
+		"aoCAcmyiogRmCISDWtfEDYzuHsQjGx40"
+		);
+		
+		var artefactTable = client.getTable('artefact_table');
+		var query = artefactTable.where({
+		}).read().done(function (results) {
+			
+			console.log(JSON.stringify(results));
+			artefact_list = results;
+			//populatePage();
+			fillGallery();
+		}, function (err) {
+			alert("Error: " + err);
+		}); 
+	}
+	else
+	{
+		console.log("NOT LIST is empty");
+		//populatePage();
+		fillGallery();
+	}
+		
 }
+
+function fillGallery()
+{
+	var onclickLink = "location.href='#/profile'";
+	var id = 0;
+	var imgSource = "img/artifact_1.png";
+	for(var i = 0 ; i < artefact_list.length;i++)
+	{
+		$(" <img id = "+i+" class = 'xxx' src="+imgSource+" width='150' />").appendTo(".gallery");
+	}
+	attachGalleryHandler();
+}
+
+function editArtefactPost(position)
+{
+	artefact_position = position;
+}
+
+function attachGalleryHandler()
+{
+	$(".xxx").on("click",function(){
+		artefact_position = $(this).attr("id");
+		$(this).location.href = "#/profile";
+		console.log("LOCATION HREF " + $(this).location.href);
+	});
+}
+

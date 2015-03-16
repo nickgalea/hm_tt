@@ -55,6 +55,10 @@
                         {
                             "xml": "<feature name=\"Globalization\"><param name=\"android-package\" value=\"org.apache.cordova.globalization.Globalization\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"InAppBrowser\"><param name=\"android-package\" value=\"org.apache.cordova.inappbrowser.InAppBrowser\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -144,10 +148,16 @@
         },
         "org.apache.cordova.console": {
             "PACKAGE_NAME": "com.otus.hm"
+        },
+        "com.microsoft.azure-mobile-services": {
+            "PACKAGE_NAME": "com.otus.hm"
         }
     },
     "dependent_plugins": {
         "org.apache.cordova.file": {
+            "PACKAGE_NAME": "com.otus.hm"
+        },
+        "org.apache.cordova.inappbrowser": {
             "PACKAGE_NAME": "com.otus.hm"
         }
     }
