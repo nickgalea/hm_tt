@@ -968,6 +968,10 @@ h1.found{
   width:100%;
   position: relative;
 }
+.swipe-wrap img{
+  max-width: 100%;
+  max-height: 100%;
+}
 /* Landscape layout (with min-width) */
 @media screen and (min-aspect-ratio: 1/1) and (min-width:300px){
     #top{
