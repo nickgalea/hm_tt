@@ -1,6 +1,7 @@
 var artefact_list = null;
 var artefact_position = -1;
 var periods = ["3300","2800","2300","1800"];
+var modelUrl;
 function Artefact()
 {
 	//constructor
@@ -130,6 +131,12 @@ function setArtefactImages(image_list)
 		//add objects separately to dom
 			$("<div class='artefact_image'><img src="+image_list[i].url+" alt='img'></div>").appendTo(".swipe-wrap");
 		}
+		else if(image_list[i].resource_type === "3d")
+		{
+			modelUrl = image_list[i].url;
+			//createModel();
+		}
+		
 	}
 	window.mySwipe = Swipe(document.getElementById('slider'), {
 			  startSlide: 0,
@@ -164,6 +171,22 @@ function fullScreenImage(img_source)
 
 }
 */
+function createModel()
+{
+    $('#cv').attr("width", screen.width);
+    $('#cv').attr("height", screen.height);
+	
+	var viewer = new JSC3D.Viewer(document.getElementById('cv'));
+	viewer.setParameter('SceneUrl', modelUrl);
+	viewer.setParameter('BackgroundColor1', '#FFFFFF');
+	viewer.setParameter('BackgroundColor2', '#FFFFFF');
+	viewer.setParameter('RenderMode',       'texture');
+	viewer.setParameter('ProgressBar', 'on');
+	viewer.setParameter('Renderer', 'webgl');
+	viewer.init();
+	viewer.update();
+
+}
 
 
 

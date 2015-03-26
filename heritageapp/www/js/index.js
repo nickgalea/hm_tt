@@ -117,6 +117,9 @@ app.config(function($routeProvider){
           })
 		  .when('/profile', {
                 templateUrl: 'profile.html'
+          })
+		  .when('/map', {
+                templateUrl: 'artefact_map.html'
           });
 
 

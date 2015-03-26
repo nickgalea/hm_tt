@@ -1,0 +1,41 @@
+<div id="map-canvas" style="width:300px; height:300px;"></div>
+
+<script> 
+{
+    $('#map-canvas').css("width", $(window).width());
+    $('#map-canvas').css("height", $(window).height());
+}
+
+function resize()
+{
+	$('#map-canvas').css("width", $(window).width());
+    $('#map-canvas').css("height", $(window).height());
+
+    google.maps.event.trigger(map, "resize");
+}
+
+
+</script>
+
+<script type="text/javascript">
+        function initialize() {
+
+            var mapOptions = {
+                center: new google.maps.LatLng(35.869168, 14.511946),
+                zoom: 20,
+                mapTypeId: google.maps.MapTypeId.SATELLITE
+            };
+
+            var map = new google.maps.Map(document.getElementById("map-canvas"),mapOptions);
+            
+            var marker = new google.maps.Marker({
+      			position: new google.maps.LatLng(artefact_list[artefact_position].lat, artefact_list[artefact_position].lon),
+      			map: map,
+      			title: 'artefact'
+  			});
+        }
+
+        window.addEventListener('orientationchange', resize);
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=initialize"></script>
