@@ -120,6 +120,9 @@ app.config(function($routeProvider){
           })
 		  .when('/map', {
                 templateUrl: 'artefact_map.html'
+          })
+		  .when('/tour', {
+                templateUrl: 'tourtest.html'
           });
 
 

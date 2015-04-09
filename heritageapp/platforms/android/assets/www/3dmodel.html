@@ -3,16 +3,19 @@
 {
     $('#cv').attr("width", screen.width);
     $('#cv').attr("height", screen.height);
+	console.log("FROM MODEL FILE " + modelUrl);
 }
+
 </script>
 <script type="text/javascript">
             var viewer = new JSC3D.Viewer(document.getElementById('cv'));
-            viewer.setParameter('SceneUrl', 'testresize.obj');
-            viewer.setParameter('BackgroundColor1', '#FFFFFF');
+            viewer.setParameter('SceneUrl', modelUrl);
+			viewer.setParameter('BackgroundColor1', '#FFFFFF');
             viewer.setParameter('BackgroundColor2', '#FFFFFF');
             viewer.setParameter('RenderMode',       'texture');
             viewer.setParameter('ProgressBar', 'on');
             viewer.setParameter('Renderer', 'webgl');
             viewer.init();
             viewer.update();
+
 </script>

@@ -29,6 +29,7 @@ function createArtList()
 		var artefactTable = client.getTable('artefact_table');
 		var query = artefactTable.where({
 		}).read().done(function (results) {
+			console.log("get results");
 			artefact_list = results;
 			fillGallery();
 		}, function (err) {
@@ -78,6 +79,7 @@ function fillGallery()
 		}
 		div_gallery.appendTo(".white-container");
 	}
+		console.log("fill results");
 }
 //methods for profile page
 function populatePage()

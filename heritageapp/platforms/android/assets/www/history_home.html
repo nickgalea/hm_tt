@@ -82,16 +82,24 @@
             <div class="white-container" style="z-index:50000; background:white; position:relative;">
                 <h1>Artifacts</h1>
                 <p>Objects that were discovered at <b>Tarxien Temples</b></p>
-                <div class="gallery">
+                <!--div class="gallery">
                     <img id = "1" class ="gallery_item xxx" src="img/artifact_1.png" width="150" onclick="location.href='#/profile'" />
                     <img id = "1" class ="gallery_item xxx" src="img/artifact_2.png" width="118" style="margin-left: 3px" />
                     <img id = "1" class ="gallery_item" src="img/artifact_3.png" width="126" />
                     <img id = "1" class ="gallery_item" src="img/artifact_4.png" width="140" style="margin-left: 5px" />
-                </div>
+                </div-->
             </div>
         </div>
         <script>
 		createArtList();
+		//handler for first time
+		$( ".white-container" ).delegate( ".artefact_item", "touchstart", function() {
+			editArtefactPost($(this).attr("id"));
+		});
+		//handler for other times except first
+		$(".artefact_item").on("touchstart", function() {
+			editArtefactPost($(this).attr("id"));
+		});
 		</script>
     </div>
 </snap-content>
