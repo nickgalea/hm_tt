@@ -138,6 +138,18 @@ h1{
     width: 2.5em;
 }
 
+.audio_white{
+    background: url(../img/icons/audio.png) no-repeat;
+    background-size: 25px;
+    width: 25px;
+    height: 25px;
+    margin-top: 2em;
+    margin-right: 0.2em;
+    float: right;
+
+    
+}
+
 #sidebar{
     background: #222;
     height:100%;
@@ -536,6 +548,11 @@ h1{
     margin-top: 2.4em;
 }
 
+.red-wrapper h2.top-spacer{
+    margin-top: 3.6em;
+	margin-bottom: -0.1em;
+}
+
 .red-wrapper .spacer{
     margin-top: 3em;
     color: #fff;
@@ -751,14 +768,15 @@ ul#tickets-main-options .chosen-option-calendar{
     font-size: 1.4em;
 }
 
-.tour-header .character{
-    position: absolute;
-    bottom: -16px;
+.character{
+    position: relative;
+    /*margin-top: 1.5em;
+    margin-left: 14em;*/
     right: 0;
-    margin-left: 2em;
+    bottom: 0;
 }
 
-.tour-header .character img{
+.character img{
     height: 152px;
 }
 
@@ -953,6 +971,11 @@ h1.found{
     font-size: 1.2em;
     margin: 0 1em;
 }
+
+#tour_addpaneldes{
+    width: 75%;
+}
+
 /*Carousel slider for artefact_db*/
 .swipe {
   overflow: hidden;
@@ -1043,14 +1066,7 @@ h1.found{
         font-size: 1.6em;
     }
     
-    .tour-header .character{
-        margin-left: 4em;
-    }
-
-    .tour-header .character img{
-        height: 250px;
-    }
-    
+ 
     #profile-options .tile.secondary-tile {
         margin-left: -5px;
     }

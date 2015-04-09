@@ -1,0 +1,57 @@
+
+    <div id="language" class="full-container" style="display:none;">
+            <div class="full-content">
+                <div onclick="closefullcontainer()" class="close"></div>
+                <img class="top-image" src="img/icons/world.png" alt="" width="175" />
+                <p>Which language do you prefer?</p>
+                <div class="wrapper">
+                    <p onclick="setLanguage(0)" class="liners small">English</p>
+                    <p onclick="setLanguage(1)" class="liners small">Malti</p>
+                    <p onclick="setLanguage(2)" class="liners small">Italiano</p>
+                    <p onclick="setLanguage(3)" class="liners small">French</p>
+                    <p onclick="setLanguage(4)" class="liners small">German</p>
+                </div>
+            </div>            
+    </div>
+
+    <!-- <div id="contact-us" class="full-container">
+            <div class="full-content">
+                <div class="close"></div>
+                <img class="top-image" src="img/heritage_logo.png" alt="" width="175" />
+                <div class="wrapper">
+                    <p class="liners">(+356) 22954000<br />(+356) 21222900</p>
+                    <p class="liners small">Head Office<br />Ex Royal Naval Hospital<br />Triq Marina<br />Kalkara KKR1524<br />Malta</p>
+                    <p class="liners small">info@heritagemalta.com</p>
+                </div>
+            </div>            
+        </div>
+     -->    
+
+    <div id="main_content" style="position:absolute;background:white;height:100%;width:100%;z-index:5000">
+        <div id="red">
+            <div class="red-wrapper" style="">
+                <img id="menutoggle" snap-toggle="" src="img/icons/back.png" onclick="location.href='#/'"></img>
+                <div id="audio_button" class="audio_white" onclick="click_audiobutton()"></div>
+                <h2 id="tour_title" class="top-spacer">1. Panel Title</h2>
+                <hr class="white" />
+                <div class="options_intro">
+                    <h1 style="font-weight:normal;" id="tour_addpaneldes">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at placerat urna. Quisque scelerisque fermentum nulla. </h1>
+                </div>
+                <div class="character">
+                        <img src="img/character.png">
+                </div>
+                
+            </div>
+        </div>
+        <div class="wrapper">
+            <ul id="tour-questions">
+                <li onclick="location.href='#/'">What was the stone vessel used for?</li>
+                <li onclick="location.href='#/'">What is the Holy of Holies?</li>
+                <li onclick="location.href='#/'">How were the carvings made?</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        checkplayer();
+    </script>

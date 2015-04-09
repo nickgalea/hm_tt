@@ -118,11 +118,14 @@ app.config(function($routeProvider){
 		  .when('/profile', {
                 templateUrl: 'profile.html'
           })
+          .when('/tour', {
+                templateUrl: 'tour_panel_options.html'
+          })
+          .when('/tour_jurgen', {
+                templateUrl: 'tourtest.html'
+          })
 		  .when('/map', {
                 templateUrl: 'artefact_map.html'
-          })
-		  .when('/tour', {
-                templateUrl: 'tourtest.html'
           });
 
 
