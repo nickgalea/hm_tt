@@ -32,7 +32,7 @@ function getTourList()
 			}
 			console.log("DICTIONARY " + tourDict["1"]);
 			console.log("DICTIONARY2 " + tourDict["2"]);
-			fillData();
+			fillData_Tour();
 			
 		}, function (err) {
 			alert("Error: " + err + " Check your internet connection.");
@@ -40,17 +40,17 @@ function getTourList()
 	}
 	else
 	{
-		fillData();
+		fillData_Tour();
 	}		
 }
 
-function fillData()
+function fillData_Tour()
 {	
 	var object = tourDict[current_tour_point][0];
 	$("#testdiv").html("<p>" + object.title + "</p>");
-	getImages();
+	getImages_Tour();
 }
-function getImages()
+function getImages_Tour()
 {
 	var client = new WindowsAzure.MobileServiceClient(
 		"https://heritagemalta.azure-mobile.net/",
@@ -63,12 +63,12 @@ function getImages()
 		tour_id:tourDict[current_tour_point][0].id
 	}).read().done(function (results) {
 		console.log(JSON.stringify(results));
-		setArtefactImages(results);
+		setTourImages(results);
 	}, function (err) {
 		alert("Error: " + err);
 	}); 
 }
-function setArtefactImages(image_list)
+function setTourImages(image_list)
 {
 	for(var i = 0 ; i < image_list.length;i++)
 	{
@@ -87,7 +87,7 @@ function createHandlers()
 		{
 			current_tour_point = 1;
 		}
-		fillData();
+		fillData_Tour();
 	});
 	$("#next").click(function(){
 		current_tour_point = current_tour_point+1;
@@ -95,7 +95,7 @@ function createHandlers()
 		{
 			current_tour_point = current_tour_point-1;
 		}
-		fillData();
+		fillData_Tour();
 	});
 }
 
