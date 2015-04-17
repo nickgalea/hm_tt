@@ -1,7 +1,9 @@
 var tour_list;
+var image_list;
 var tourDict = [{}];
 var current_tour_point = 1;
 var current_child_num;
+
 function getTourList()
 {
 	if(tour_list == null)
@@ -56,9 +58,9 @@ function getTourList()
 						
 				}
 			}
-			console.log("DICTIONARY " + tourDict["1"][1].panel_type);
-			console.log("DICTIONARY2 " + tourDict["2"][1].panel_type);
-			console.log("DICTIONARY3 " + tourDict["3"][1].panel_type);
+			//console.log("DICTIONARY " + tourDict["1"][1].panel_type);
+			//console.log("DICTIONARY2 " + tourDict["2"][1].panel_type);
+			//console.log("DICTIONARY3 " + tourDict["3"][1].panel_type);
 			fillData_Tour();
 			
 		}, function (err) {
@@ -75,10 +77,13 @@ function fillData_Tour()
 {	
 	var object = tourDict[current_tour_point][0];
 	$("#panel_name").html(object.title);
-	$("#panel_binfo").html(object.text_eng);
-	getImages_Tour();
+	getImages_Tour(object);
+	
+	
+	//$("#tour_image").html("");
+	
 }
-function getImages_Tour()
+function getImages_Tour(object)
 {
 	var client = new WindowsAzure.MobileServiceClient(
 		"https://heritagemalta.azure-mobile.net/",
@@ -86,18 +91,23 @@ function getImages_Tour()
 		);
 		
 	var resTable = client.getTable('resources');
-	console.log("TOUR ID "  + tourDict[current_tour_point][0].id);
+	//console.log("TOUR ID "  + tourDict[current_tour_point][0].id);
 	var query = resTable.where({
 		tour_id:tourDict[current_tour_point][0].id
 	}).read().done(function (results) {
-		console.log(JSON.stringify(results));
-		setTourImages(results);
+		image_list = results;
+		console.log(image_list.length);
+		replace_imagetags();
+		$("#panel_binfo").html(object.text_eng);
+		//console.log(JSON.stringify(results));
+		//setTourImages(results);
 	}, function (err) {
 		alert("Error: " + err);
 	}); 
 }
 function setTourImages(image_list)
 {
+
 	for(var i = 0 ; i < image_list.length;i++)
 	{
 		if(image_list[i].resource_type === "image")
@@ -144,27 +154,96 @@ function fill_list_data()
 	{
 		if(current_tour[i+2].quest_type === "artefact")
 		{
-			$("#tour-questions").append('<li id = "'+i+'" class = "child_title" onclick = "location.href=\'#/profile\'">'+child_titles[i]+'</li>');
+			$("#tour-questions").append('<li id = "'+i+'" class = "child_title_artefact">'+child_titles[i]+'</li>');
 		}
 		else
 		{
-			$("#tour-questions").append('<li id = "'+i+'" class = "child_title" onclick = "location.href=\'#/tour_pinfo\'">'+child_titles[i]+'</li>');
+			$("#tour-questions").append('<li id = "'+i+'" class = "child_title">'+child_titles[i]+'</li>');
 		}
 	}
+
+	list_handler();
 }
 function list_handler()
 {
 	$(".child_title").click(function(){
 		var id = $(this).attr('id');
-		var position = id + 2; 
+		//console.log("id" + id);
+		current_child_num = parseInt(id) + 2; 
+		location.href='#/tour_pinfo';
 	});
+
+	$(".child_title_artefact").click(function(){
+		var id = $(this).attr('id');
+		//console.log("id" + id);
+		current_child_num = parseInt(id) + 2; 
+		set_artefactPos(current_child_num);
+		location.href='#/profile';
+	});
+}
+
+function getIndicesOf(searchStr, str) {
+    var startIndex = 0, searchStrLen = searchStr.length;
+    var index, indices = [];
+    while ((index = str.indexOf(searchStr, startIndex)) > -1) {
+        indices.push(index);
+        startIndex = index + searchStrLen;
+    }
+    return indices.length;
+}
+
+function replace_imagetags()
+{
+	console.log("hello");
+	var obj = tourDict[current_tour_point][0];
+	var description = obj.text_eng;
+	//console.log(description);
+	var total_images = getIndicesOf("<<", description);
+	console.log(total_images);
+
+	for(var i = 0; i<total_images; i++)
+	{
+		var next_occ = description.indexOf("<<")
+		var key = description.substring(next_occ+2, next_occ+38);
+		for(var j = 0; j<image_list.length; j++)
+		{
+			if(image_list[j].id === key)
+			{
+				var imgurl = image_list[j].url;
+			}
+
+		}
+		description = description.replace("<<"+key+">>", "<div class=\"media\"><img width='100%' height='200' src="+imgurl+" alt='img'></div>");
+		console.log(key);
+	}
+
+	obj.text_eng = description;
+}
+
+function set_artefactPos(current_child_num)
+{
+	var obj = tourDict[current_tour_point][current_child_num];
+	var title = obj.title;
+	for(var i = 0; i<artefact_list.length; i++)
+	{
+		if(artefact_list[i].name === title)
+		{
+			artefact_position = i;
+			break;
+		}
+	}
 }
 
 function fillData_Child()
 {	
-	var object = tourDict[current_tour_point][0];
+	console.log("current_child_num " + current_child_num);
+	console.log("current_tour_point " + current_tour_point);
+	var object = tourDict[current_tour_point][current_child_num];
 	$("#panel_name").html(object.title);
+	
 	$("#panel_binfo").html(object.text_eng);
-	getImages_Tour();
+	//getImages_Tour();
 }
+
+
 

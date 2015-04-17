@@ -785,10 +785,21 @@ ul#tickets-main-options .chosen-option-calendar{
     font-size: 1.4em;
 }
 
+#quest_container
+{
+    width:100%;
+    max-height:75%;
+    overflow:auto;
+}
 .character{
-    position: absolute;
-    margin-top: 1.5em;
-    margin-left: 14em;
+    text-align: right;
+    float:right;
+    clear: right;
+}
+.spacer {
+
+  width: 0px;
+  float: right;
 }
 
 .character img{
@@ -997,37 +1008,73 @@ h1.found{
     line-height: 1.8;
     margin-top: 0;
     text-align: justify;
-    height:25em;
+    height:30em;
     overflow:scroll;
+}
+
+#panel-description-premium{
+    padding:1.5em;
+    font-size: 1.2em;
+    line-height: 1.8;
+    margin-top: 0;
+    text-align: justify;
+    overflow:scroll;
+    height:32em;
+}
+
+#panel_name{
+    margin-top: -25px;
 }
 
 #tour-navigation{
     width: 100%;
     height: 4.5em;
-    padding-left: 2em;
     padding-top:.5em;
     background-color: #ae1215;
     border-bottom: 1px solid #EEE;
     position: fixed;
     bottom: 0;
     text-align: center;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 #tour-navigation.back{
-    width: 25px;
-    height: 25px;
-    margin-top: 3em;
-    float: left;
-    display:inline-block;
+   
 }
 
 #tour-navigation.next{
-    width: 25px;
-    height: 25px;
-    margin-top: 3em;
-    float: right;
+   
+}
+
+#tour-points{
+    
+    margin:1em;
+    text-align: center;
+}
+
+.line{
+    height: 0.5em;
+    width: 16%;
+    display:inline-block;
+    border-top:1px solid #222222;
+    margin:0px;
+    margin-top: 0.5em;
+}
+
+.bocca{
+    width:25px;
+    height: 24px;
     display: inline-block;
-    right: 0;
+    border-radius: 50%;
+    margin:0px;
+    background-color: #ae1215;
+}
+
+.bocca p{
+    text-align: center;
+    color: white;
+    line-height: 0.15;
 }
 
 .add{
@@ -1056,38 +1103,6 @@ h1.found{
   max-width: 100%;
   max-height: 100%;
 }
-
-/*CSS for tour points*/
-#tour-points{
-    height:2.5em;
-    margin:1em;
-}
-
-.line{
-    height: 1.25em;
-    width: 15%;
-    display:inline-block;
-    border-top:1px solid #222222;
-    margin:0px;
-	/*background-color:green;
-	float:left;*/
-}
-
-.bocca{
-	width:50px;
-    height: 50px;
-    display: inline-block;
-    border-radius: 50%;
-    margin:0px;
-    background-color: #ae1215;
-	display: inline-block;
-}
-
-.bocca p{
-    text-align: center;
-
-}
-
 /* Landscape layout (with min-width) */
 @media screen and (min-aspect-ratio: 1/1) and (min-width:300px){
     #top{
@@ -1169,8 +1184,9 @@ h1.found{
         height: 10px;
     }
     
-    ul#tour-questions li{
+    #tour-questions{
         font-size: 1.5em;
+        margin-top: 8em;
     }
     
     #profile-title h1{
