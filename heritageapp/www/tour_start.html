@@ -3,7 +3,7 @@
     <div id="main_content" style="position:absolute;background:white;height:100%;width:100%;z-index:5000">
         <div id="red">
             <div class="red-wrapper" style="height: 30em;">
-                <img id="menutoggle" src="img/icons/back.png" onclick="location.href=stack.pop();"></img>
+                <img id="menutoggle" snap-toggle="" src="img/icons/back.png" onclick="location.href='#/'"></img>
                 <!--<div class="audio_white"></div>-->
                 <div id="ts_title">
                 <h2 id="tour_title" class="top-spacer">Welcome to</h2>
@@ -31,7 +31,7 @@
                         <div class="mini_icons"><img src="img/icons/hoxna.png"/></div>
                         <div class="mini_icons" style="border-right:none;"><img src="img/icons/footsteps.png"/></div>
                     </div>
-                    <div id="ts_basic" onclick="attachGpsHandler(); stack.push('#/tour'); location.href='#/tour_binfo';">
+                    <div id="ts_basic" onclick="location.href='#/tour_binfo'">
                         <div id="icon"><img src="img/icons/play_tour.png"/></div>
                         <h6><span style="font-size:1em;">BASIC</span><br>TOUR</h6>
                     </div>

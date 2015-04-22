@@ -834,7 +834,7 @@ ul#tour-questions{
 
 ul#tour-questions li{
     text-align: center;
-    font-size: 1.2em;
+    font-size: 1.5em;
     font-weight: bold;
     padding-bottom: 0.5em;
     margin-bottom: 1.2em;
@@ -1009,7 +1009,16 @@ h1.found{
     margin-top: 0;
     text-align: justify;
     height:33em;
-    overflow:scroll;
+    overflow-y:scroll;
+}
+#panel-description-paid{
+    padding:1.5em;
+    font-size: 1.2em;
+    line-height: 1.8;
+    margin-top: 0;
+    text-align: justify;
+    height:37em;
+    overflow-y:scroll;
 }
 
 #panel-description-premium{
@@ -1031,7 +1040,7 @@ h1.found{
     height: 4.5em;
     padding-top:.5em;
     background-color: #ae1215;
-    border-bottom: 1px solid #EEE;
+    /*border-bottom: 1px solid #EEE;*/
     position: fixed;
     bottom: 0;
     text-align: center;
@@ -1184,7 +1193,7 @@ h1.found{
     display: inline-block;
     border: 1px solid #222222;
     width: 49.5%;
-    height:9em;
+    /*height:9em;*/
     float: left;
     color: #222;
     font-weight: 400;
@@ -1195,7 +1204,7 @@ h1.found{
     background-color: #222222;
     width: 49.5%;
     height:9.2em;
-    float:right;
+	float:right;
     color: white;
 }
 

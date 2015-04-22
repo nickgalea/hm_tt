@@ -1,13 +1,4 @@
 var lang_index;
-var from_page;
-
-var stack = new Array();
-
-function setbackbutton(from)
-{
-    from_page = from;
-    console.log(from_page);
-}
 
 function showlangmenu()
 {
@@ -124,7 +115,7 @@ app.config(function($routeProvider){
           .when('/3dmodel', {
                 templateUrl: '3dmodel.html'
           })
-		      .when('/profile', {
+		  .when('/profile', {
                 templateUrl: 'profile.html'
           })
           .when('/tour', {
@@ -133,13 +124,13 @@ app.config(function($routeProvider){
           .when('/tour_binfo', {
                 templateUrl: 'tour_panel_binfo.html'
           })
-		      .when('/tour_options', {
+		  .when('/tour_options', {
                 templateUrl: 'tour_panel_options.html'
           })
-		      .when('/tour_pinfo', {
+		  .when('/tour_pinfo', {
                 templateUrl: 'tour_panel_pinfo.html'
           })
-		      .when('/map', {
+		  .when('/map', {
                 templateUrl: 'artefact_map.html'
           });
 

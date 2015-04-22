@@ -43,7 +43,7 @@ function createArtList()
 }
 function fillGallery()
 {
-	var onclickLink = "setbackbutton('#/history_home');location.href='#/profile';";
+	var onclickLink = "location.href='#/profile'";
 	var id = 0;
 	var imgSource = "img/artifact_1.png";
 	var div_gallery = $(document.createElement('div'),{
@@ -65,7 +65,7 @@ function fillGallery()
 				artefact_list[i].thumbnail = "https://hmresources.blob.core.windows.net/thumb/"+artefact_list[i].thumbnail;
 				console.log(artefact_list[i].thumbnail );
 			}
-			$(" <img id = "+i+" class = 'artefact_item' src="+artefact_list[i].thumbnail+" width='150' onclick=\"stack.push('#/history_home');location.href='#/profile';\" />").appendTo(div_gallery);
+			$(" <img id = "+i+" class = 'artefact_item' src="+artefact_list[i].thumbnail+" width='150' onclick="+onclickLink+" />").appendTo(div_gallery);
 		}
 		div_gallery.appendTo(".white-container");
 	}
