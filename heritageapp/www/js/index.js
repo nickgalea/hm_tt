@@ -119,9 +119,9 @@ app.config(function($routeProvider){
                 templateUrl: 'profile.html'
           })
           .when('/tour', {
-                templateUrl: 'tour_panel_options.html'
+                templateUrl: 'tour_start.html'
           })
-          .when('/tour_jurgen', {
+          .when('/tour_binfo', {
                 templateUrl: 'tour_panel_binfo.html'
           })
 		  .when('/tour_options', {

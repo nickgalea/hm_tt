@@ -785,21 +785,10 @@ ul#tickets-main-options .chosen-option-calendar{
     font-size: 1.4em;
 }
 
-#quest_container
-{
-    width:100%;
-    max-height:75%;
-    overflow:auto;
-}
 .character{
-    text-align: right;
-    float:right;
-    clear: right;
-}
-.spacer {
-
-  width: 0px;
-  float: right;
+    position: absolute;
+    margin-top: 1.5em;
+    margin-left: 14em;
 }
 
 .character img{
@@ -1008,7 +997,7 @@ h1.found{
     line-height: 1.8;
     margin-top: 0;
     text-align: justify;
-    height:33em;
+    height:24em;
     overflow:scroll;
 }
 
@@ -1048,7 +1037,7 @@ h1.found{
 }
 
 #tour-points{
-    
+    height:2.5em;
     margin:1em;
     text-align: center;
 }
@@ -1083,27 +1072,6 @@ h1.found{
     padding:1em;
     display: inline-block;
 }
-
-/*Carousel slider for artefact_db*/
-.swipe {
-  overflow: hidden;
-  visibility: hidden;
-  position: relative;
-}
-.swipe-wrap {
-  overflow: hidden;
-  position: relative;
-}
-.swipe-wrap > div {
-  float:left;
-  width:100%;
-  position: relative;
-}
-.swipe-wrap img{
-  max-width: 100%;
-  max-height: 100%;
-}
-
 
 #ts_title{
     text-align: center;
@@ -1241,6 +1209,25 @@ h1.found{
     margin-top: .3em;
 }
 
+/*Carousel slider for artefact_db*/
+.swipe {
+  overflow: hidden;
+  visibility: hidden;
+  position: relative;
+}
+.swipe-wrap {
+  overflow: hidden;
+  position: relative;
+}
+.swipe-wrap > div {
+  float:left;
+  width:100%;
+  position: relative;
+}
+.swipe-wrap img{
+  max-width: 100%;
+  max-height: 100%;
+}
 /* Landscape layout (with min-width) */
 @media screen and (min-aspect-ratio: 1/1) and (min-width:300px){
     #top{
@@ -1342,142 +1329,5 @@ h1.found{
     #big-center-header .circle{
         margin-top: 5em;
     }
-
-    
-#ts_title{
-    text-align: center;
-}
-#ts_place{
-    font-size: 3.5em;
-    margin-top: .5em;
-    margin-bottom: .5em;
-    line-height: 0.8em; 
-}
-
-.ts_character{
-    position: absolute;
-    margin-top: .75em;
-    margin-left: -2.5em;
-}
-
-.ts_character img{
-    height: 152px;
-}
-
-#ts_enjoy{
-    float:right;
-    color: white;
-    text-align: right;
-}
-
-#ts_enjoy h4{
-    font-size: 1.5em;
-}
-
-#ts_enjoy p{
-    font-size: 0.8em;
-    margin-top: -0.9em;
-    margin-bottom: 2.2em;
-}
-
-#ts_enjoy a{
-    font-size: 1.3em;
-    margin-top: 1em;
-    color: #222;
-    background-color: #fff;
-    padding: 0.5em;
-    padding-left: .8em;
-    padding-right: .8em;
-    font-weight: 700;
-}
-
-#ts_tours{
-    text-align: center;
-    color: #222;
-}
-
-#ts_tours h1{
-    color: #222;
-    margin-top: 0.3em;
-    font-weight: 400;
-    margin-bottom: 0.5em;
-}
-#ts_tours p{
-    color: #222;
-    margin-top: 0.3em;
-    font-weight: 400;
-    font-size: .8em;
-    position: absolute;
-    bottom:0;
-}
-
-#ts_boxes{
-    padding: 0;
-    color: white;
-    width:85%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#ts_premium{
-    display: inline-block;
-    border: 1px solid #222222;
-    width: 49.5%;
-    height:9em;
-    float: left;
-    color: #222;
-    font-weight: 400;
-}
-
-#ts_basic{
-    display: inline-block;
-    background-color: #222222;
-    width: 49.5%;
-    height:9.2em;
-    float:right;
-    color: white;
-}
-
-#ts_basic h6{
-    font-size: 1.8em;
-    font-weight: 400;
-    line-height: 1em;
-    margin-top: 1em;
-}
-
-#ts_basic span{
-    font-size: 1em;
-    font-weight: 700;
-}
-
-#icon{
-    width:30px;
-    height: 30px;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 1em;
-    margin-bottom: -0.8em;
-}
-
-#icon img{
-    width:100%;
-    height: 100%;
-}
-
-.mini_icons{
-    width:32.78%;
-    display: inline-block;
-    height:2.1em;
-    float:left;
-    margin-top: -0.8em;
-    border: 1px solid #222222;
-    border-left:none;
-    border-bottom: none;
-}
-
-.mini_icons img{
-    height:75%;
-    margin-top: .3em;
-}
 }
 
