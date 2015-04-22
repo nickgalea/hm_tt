@@ -64,7 +64,7 @@ function getTourList()
 			fillData_Tour();
 			
 		}, function (err) {
-			alert("Error: " + err + " Check your internet connection.");
+			alert("Error: Check your internet connection.");
 		}); 
 	}
 	else
@@ -128,7 +128,7 @@ function getImages_Tour_Child(object)
 		console.log("!!!!!!!!!!!!!!!!" + image_list.length);
 		replace_imagetags_child();
 		$("#panel_binfo").html(object.text_eng);
-		
+
 	}, function (err) {
 		alert("Error: " + err);
 	}); 
@@ -141,22 +141,7 @@ function setTourImages(image_list)
 		if(image_list[i].resource_type === "image")
 		{
 			//add objects separately to dom
-			$("#tour_image").html("<div class='artefact_image'><img  src="+image_list[i].url+" alt='img'></div>");
-		}
-	}//width='150' height='150'
-}
-function setTourVid(image_list)
-{
-	for(var i = 0 ; i < image_list.length;i++)
-	{
-		console.log("RESOURCE FOUND " + i );
-		if(image_list[i].resource_type === "video")
-		{
-			console.log("FOUND VIDEO " + image_list[i].url);
-			//add objects separately to dom
-			//$("#tour_image").html("<video id=\"video\" width='300' height='300' src="+image_list[i].url+" />");
-			$("#tour_image").html("<div class=\"media\"><video class=\"tour_vid\" width='100%' controls><source src="+image_list[i].url+" type=\"video/mp4\" /> </video></div>");
-
+			$("#tour_image").html("<div class='artefact_image'><img width='150' height='150' src="+image_list[i].url+" alt='img'></div>");
 		}
 	}
 }
@@ -212,6 +197,7 @@ function fill_list_data()
 function list_handler()
 {
 	$(".child_title").click(function(){
+		stack.push("#/tour_options")
 		var id = $(this).attr('id');
 		//console.log("id" + id);
 		current_child_num = parseInt(id) + 2; 
@@ -219,6 +205,7 @@ function list_handler()
 	});
 
 	$(".child_title_artefact").click(function(){
+		stack.push("#/tour_options")
 		var id = $(this).attr('id');
 		//console.log("id" + id);
 		current_child_num = parseInt(id) + 2; 
@@ -305,6 +292,54 @@ function set_artefactPos(current_child_num)
 	}
 }
 
+function getDistanceFromLatLon(lat1,lon1,lat2,lon2) {
+    var R = 6371; // Radius of the earth in km
+    var dLat = deg2rad(lat2-lat1);  // deg2rad below
+    var dLon = deg2rad(lon2-lon1); 
+    var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+    Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
+    Math.sin(dLon/2) * Math.sin(dLon/2)
+    ; 
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+  var d = R * c; // Distance in km
+  return d*1000 //return distance in m;
+}
+
+function deg2rad(deg) {
+  return deg * (Math.PI/180)
+}
+
+
+    var watchID = null;
+
+    // device APIs are available
+    //
+    function attachGpsHandler() {
+        // Throw an error if no update is received every 30 seconds
+        var options = { timeout: 30000, enableHighAccuracy: true};
+        watchID = navigator.geolocation.watchPosition(onGpsSuccess, onGpsError, options);
+    }
+
+    // onSuccess Geolocation
+    //
+    function onGpsSuccess(position) {
+    	//alert(position.coords.latitude);
+        var distance = getDistanceFromLatLon(position.coords.latitude, position.coords.longitude, tourDict[current_tour_point+1][0].lat, tourDict[current_tour_point+1][0].lon);
+        console.log('Latitude: '  + position.coords.latitude      +
+                 	'Longitude: ' + position.coords.longitude    +
+                    'Distance: ' + distance );
+        if(distance <=5)
+        {
+            alert("You are less than 5 metres from " + tourDict[current_tour_point+1][0].title);
+        }
+    }
+
+        // onError Callback receives a PositionError object
+        //
+        function onGpsError(error) {
+            console.log("No GPS found after 30 seconds");
+        }
+
 function navigationArrows()
 {
 	console.log("Dictionary length " + Object.keys(tourDict).length );
@@ -322,6 +357,22 @@ function navigationArrows()
 		$(".back").css('opacity', ''); 
 	}
 	
+}
+
+function setTourVid(image_list)
+{
+	for(var i = 0 ; i < image_list.length;i++)
+	{
+		console.log("RESOURCE FOUND " + i );
+		if(image_list[i].resource_type === "video")
+		{
+			console.log("FOUND VIDEO " + image_list[i].url);
+			//add objects separately to dom
+			//$("#tour_image").html("<video id=\"video\" width='300' height='300' src="+image_list[i].url+" />");
+			$("#tour_image").html("<div class=\"media\"><video class=\"tour_vid\" width='100%' controls><source src="+image_list[i].url+" type=\"video/mp4\" /> </video></div>");
+
+		}
+	}
 }
 
 
