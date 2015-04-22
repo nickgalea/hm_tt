@@ -72,7 +72,14 @@ function getTourList()
 		fillData_Tour();
 	}		
 }
-
+function fillData_Child()
+{	
+	var object = tourDict[current_tour_point][current_child_num];
+	$("#panel_name").html(object.title);
+	getImages_Tour_Child(object);
+	//$("#panel_binfo").html(object.text_eng);
+	//getImages_Tour();
+}
 function fillData_Tour()
 {	
 	var object = tourDict[current_tour_point][0];
@@ -101,6 +108,26 @@ function getImages_Tour(object)
 		$("#panel_binfo").html(object.text_eng);
 		//console.log(JSON.stringify(results));
 		//setTourImages(results);
+	}, function (err) {
+		alert("Error: " + err);
+	}); 
+}
+function getImages_Tour_Child(object)
+{
+	var client = new WindowsAzure.MobileServiceClient(
+		"https://heritagemalta.azure-mobile.net/",
+		"aoCAcmyiogRmCISDWtfEDYzuHsQjGx40"
+		);
+		
+	var resTable = client.getTable('resources');
+	var query = resTable.where({
+		tour_id:tourDict[current_tour_point][current_child_num].id
+	}).read().done(function (results) {
+		image_list = results;
+		console.log("!!!!!!!!!!!!!!!!" + image_list.length);
+		replace_imagetags_child();
+		$("#panel_binfo").html(object.text_eng);
+
 	}, function (err) {
 		alert("Error: " + err);
 	}); 
@@ -148,8 +175,8 @@ function fill_list_data()
 			child_titles.push(current_tour[i].title);
 		}
 	}
-	$("#tour_title").text(point_list.title);
-	$("#tour_addpaneldes").text(point_list.text_eng);
+	$("#tour_title").text(current_tour[point_list].title);
+	$("#tour_addpaneldes").text(current_tour[point_list].text_eng);
 	for(var i = 0 ; i < child_titles.length;i++)
 	{
 		if(current_tour[i+2].quest_type === "artefact")
@@ -219,7 +246,33 @@ function replace_imagetags()
 
 	obj.text_eng = description;
 }
+function replace_imagetags_child()
+{
+	console.log("hello");
+	var obj = tourDict[current_tour_point][current_child_num];
+	var description = obj.text_eng;
+	//console.log(description);
+	var total_images = getIndicesOf("<<", description);
+	console.log(total_images);
 
+	for(var i = 0; i<total_images; i++)
+	{
+		var next_occ = description.indexOf("<<")
+		var key = description.substring(next_occ+2, next_occ+38);
+		for(var j = 0; j<image_list.length; j++)
+		{
+			if(image_list[j].id === key)
+			{
+				var imgurl = image_list[j].url;
+			}
+
+		}
+		description = description.replace("<<"+key+">>", "<div class=\"media\"><img width='100%' height='200' src="+imgurl+" alt='img'></div>");
+		console.log(key);
+	}
+
+	obj.text_eng = description;
+}
 function set_artefactPos(current_child_num)
 {
 	var obj = tourDict[current_tour_point][current_child_num];
@@ -234,7 +287,7 @@ function set_artefactPos(current_child_num)
 	}
 }
 
-function fillData_Child()
+/*function fillData_Child()
 {	
 	console.log("current_child_num " + current_child_num);
 	console.log("current_tour_point " + current_tour_point);
@@ -244,6 +297,6 @@ function fillData_Child()
 	$("#panel_binfo").html(object.text_eng);
 	//getImages_Tour();
 }
-
+*/
 
 
