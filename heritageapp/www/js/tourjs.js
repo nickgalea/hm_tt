@@ -106,6 +106,7 @@ function getImages_Tour(object)
 		console.log(image_list.length);
 		replace_imagetags();
 		$("#panel_binfo").html(object.text_eng);
+		setTourVid(image_list);
 		//console.log(JSON.stringify(results));
 		//setTourImages(results);
 	}, function (err) {
@@ -127,7 +128,7 @@ function getImages_Tour_Child(object)
 		console.log("!!!!!!!!!!!!!!!!" + image_list.length);
 		replace_imagetags_child();
 		$("#panel_binfo").html(object.text_eng);
-
+		
 	}, function (err) {
 		alert("Error: " + err);
 	}); 
@@ -140,7 +141,22 @@ function setTourImages(image_list)
 		if(image_list[i].resource_type === "image")
 		{
 			//add objects separately to dom
-			$("#tour_image").html("<div class='artefact_image'><img width='150' height='150' src="+image_list[i].url+" alt='img'></div>");
+			$("#tour_image").html("<div class='artefact_image'><img  src="+image_list[i].url+" alt='img'></div>");
+		}
+	}//width='150' height='150'
+}
+function setTourVid(image_list)
+{
+	for(var i = 0 ; i < image_list.length;i++)
+	{
+		console.log("RESOURCE FOUND " + i );
+		if(image_list[i].resource_type === "video")
+		{
+			console.log("FOUND VIDEO " + image_list[i].url);
+			//add objects separately to dom
+			//$("#tour_image").html("<video id=\"video\" width='300' height='300' src="+image_list[i].url+" />");
+			$("#tour_image").html("<div class=\"media\"><video class=\"tour_vid\" width='100%' controls><source src="+image_list[i].url+" type=\"video/mp4\" /> </video></div>");
+
 		}
 	}
 }
@@ -153,6 +169,7 @@ function createHandlers()
 			current_tour_point = 1;
 		}
 		fillData_Tour();
+		navigationArrows();
 	});
 	$(".next").click(function(){
 		current_tour_point = current_tour_point+1;
@@ -161,6 +178,7 @@ function createHandlers()
 			current_tour_point = current_tour_point-1;
 		}
 		fillData_Tour();
+		navigationArrows();
 	});
 }
 function fill_list_data()
@@ -287,16 +305,23 @@ function set_artefactPos(current_child_num)
 	}
 }
 
-/*function fillData_Child()
-{	
-	console.log("current_child_num " + current_child_num);
-	console.log("current_tour_point " + current_tour_point);
-	var object = tourDict[current_tour_point][current_child_num];
-	$("#panel_name").html(object.title);
+function navigationArrows()
+{
+	console.log("Dictionary length " + Object.keys(tourDict).length );
+	if(current_tour_point == 1)
+	{
+		$(".back").css('opacity', '0.3'); 
+	}
+	else if(current_tour_point == Object.keys(tourDict).length-1)
+	{
+		$(".next").css('opacity', '0.3'); 
+	}
+	else
+	{
+		$(".next").css('opacity', ''); 
+		$(".back").css('opacity', ''); 
+	}
 	
-	$("#panel_binfo").html(object.text_eng);
-	//getImages_Tour();
 }
-*/
 
 
