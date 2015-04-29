@@ -1,7 +1,7 @@
 <snap-content>	
         <div id="action-bar">
             <div class="cross" onclick="location.href=stack.pop();"></div>
-            <div class="audio"></div>
+            <div id="audio_button" class="audio_red" onclick="click_audiobutton()"></div>
         </div>
 
         <div id="text_panel">
@@ -44,6 +44,7 @@
 			getTourList();
 			createHandlers();
 			navigationArrows();
+			checkplayer();
 		</script>
         
 </snap-content>

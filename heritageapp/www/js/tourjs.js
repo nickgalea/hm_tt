@@ -106,9 +106,10 @@ function getImages_Tour(object)
 		console.log(image_list.length);
 		replace_imagetags();
 		$("#panel_binfo").html(object.text_eng);
+		//place videos if any
 		setTourVid(image_list);
-		//console.log(JSON.stringify(results));
-		//setTourImages(results);
+		//set audio if exists
+		setTourAudio(image_list);
 	}, function (err) {
 		alert("Error: " + err);
 	}); 
@@ -361,6 +362,7 @@ function navigationArrows()
 
 function setTourVid(image_list)
 {
+	$("#tour_image").html("");
 	for(var i = 0 ; i < image_list.length;i++)
 	{
 		console.log("RESOURCE FOUND " + i );
@@ -369,10 +371,19 @@ function setTourVid(image_list)
 			console.log("FOUND VIDEO " + image_list[i].url);
 			//add objects separately to dom
 			//$("#tour_image").html("<video id=\"video\" width='300' height='300' src="+image_list[i].url+" />");
-			$("#tour_image").html("<div class=\"media\"><video class=\"tour_vid\" width='100%' controls><source src="+image_list[i].url+" type=\"video/mp4\" /> </video></div>");
+			$("#tour_image").html("<div class=\"media\"><video class=\"tour_vid\" width='100%' poster=\"img/heritage_logo.png\" controls><source src="+image_list[i].url+" type=\"video/mp4\" /> </video></div>");
 
 		}
 	}
 }
-
+function setTourAudio(image_list)
+{
+	for(var i = 0 ; i < image_list.length;i++)
+	{
+		if(image_list[i].resource_type === "audio")
+		{
+			changeAudio(image_list[i].url);
+		}
+	}
+}
 

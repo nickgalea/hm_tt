@@ -143,7 +143,6 @@ app.config(function($routeProvider){
                 templateUrl: 'artefact_map.html'
           });
 
-
 });
 
 
