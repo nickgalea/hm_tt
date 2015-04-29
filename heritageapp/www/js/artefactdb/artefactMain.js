@@ -43,7 +43,6 @@ function createArtList()
 }
 function fillGallery()
 {
-	var onclickLink = "setbackbutton('#/history_home');location.href='#/profile';";
 	var id = 0;
 	var imgSource = "img/artifact_1.png";
 	var div_gallery = $(document.createElement('div'),{
@@ -74,7 +73,7 @@ function fillGallery()
 		//perform only for all the other times
 		for(var i = 0 ; i < artefact_list.length;i++)
 		{
-			$(" <img id = "+i+" class = 'artefact_item' src="+artefact_list[i].thumbnail+" width='150' onclick="+onclickLink+" />").appendTo(div_gallery);
+			$(" <img id = "+i+" class = 'artefact_item' src="+artefact_list[i].thumbnail+" width='150' onclick=\"stack.push('#/history_home');location.href='#/profile';\" />").appendTo(div_gallery);
 		}
 		div_gallery.appendTo(".white-container");
 	}

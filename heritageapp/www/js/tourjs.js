@@ -3,6 +3,7 @@ var image_list;
 var tourDict = [{}];
 var current_tour_point = 1;
 var current_child_num;
+var startTime = 0;
 
 function getTourList()
 {
@@ -106,10 +107,10 @@ function getImages_Tour(object)
 		console.log(image_list.length);
 		replace_imagetags();
 		$("#panel_binfo").html(object.text_eng);
-		//place videos if any
 		setTourVid(image_list);
-		//set audio if exists
 		setTourAudio(image_list);
+		//console.log(JSON.stringify(results));
+		//setTourImages(results);
 	}, function (err) {
 		alert("Error: " + err);
 	}); 
@@ -156,6 +157,7 @@ function createHandlers()
 		}
 		fillData_Tour();
 		navigationArrows();
+		startTime = 0;
 	});
 	$(".next").click(function(){
 		current_tour_point = current_tour_point+1;
@@ -165,6 +167,7 @@ function createHandlers()
 		}
 		fillData_Tour();
 		navigationArrows();
+		startTime = 0;
 	});
 }
 function fill_list_data()
@@ -331,15 +334,59 @@ function deg2rad(deg) {
                     'Distance: ' + distance );
         if(distance <=5)
         {
-            alert("You are less than 5 metres from " + tourDict[current_tour_point+1][0].title);
-        }
-    }
+            //alert("You are less than 5 metres from " + tourDict[current_tour_point+1][0].title);
+            if(stack[stack.length-1] === '#/tour')
+            {
+            	$( ".next" ).trigger( "click" );
+
+			}
+			else
+			{
+				var endTime = new Date();
+				var timeDiff = endTime - startTime;
+				if(timeDiff > 30000 || startTime == 0)
+				{
+					console.log(timeDiff);
+					startTime = endTime;
+            		showConfirm();
+            	}
+        	}
+    	}
+	}
 
         // onError Callback receives a PositionError object
         //
         function onGpsError(error) {
             console.log("No GPS found after 30 seconds");
         }
+
+    function onConfirm(buttonIndex) {
+    	if(buttonIndex == 2)
+    		{
+    			if(stack[stack.length-1] === '#/tour_binfo')
+            	{
+            		stack.pop();
+            	}
+            	else if(stack[stack.length-1] === '#/tour_options')
+            	{
+            		stack.pop();
+            		stack.pop();
+            	}
+            	location.href='#/tour_binfo';
+    		}
+	}
+
+// Show a custom confirmation dialog
+//
+function showConfirm() {
+    navigator.notification.confirm(
+        'Move to the next panel?', // message
+         onConfirm,            // callback to invoke with index of button pressed
+        'Tarxien Temples Tour',           // title
+        ['No','Yes']         // buttonLabels
+    );
+}
+
 
 function navigationArrows()
 {
@@ -362,7 +409,6 @@ function navigationArrows()
 
 function setTourVid(image_list)
 {
-	$("#tour_image").html("");
 	for(var i = 0 ; i < image_list.length;i++)
 	{
 		console.log("RESOURCE FOUND " + i );
@@ -372,10 +418,10 @@ function setTourVid(image_list)
 			//add objects separately to dom
 			//$("#tour_image").html("<video id=\"video\" width='300' height='300' src="+image_list[i].url+" />");
 			$("#tour_image").html("<div class=\"media\"><video class=\"tour_vid\" width='100%' poster=\"img/heritage_logo.png\" controls><source src="+image_list[i].url+" type=\"video/mp4\" /> </video></div>");
-
 		}
 	}
 }
+
 function setTourAudio(image_list)
 {
 	for(var i = 0 ; i < image_list.length;i++)
@@ -386,4 +432,5 @@ function setTourAudio(image_list)
 		}
 	}
 }
+
 

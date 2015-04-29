@@ -3,10 +3,15 @@ var from_page;
 
 var stack = new Array();
 
-function setbackbutton(from)
-{
-    from_page = from;
-    console.log(from_page);
+document.addEventListener("backbutton", onBackKeyDown, false);
+
+function onBackKeyDown() {
+    console.log("backback");
+    if(stack.length==0)
+      navigator.app.exitApp();
+    else
+    location.href=stack.pop();
+    
 }
 
 function showlangmenu()
@@ -142,6 +147,7 @@ app.config(function($routeProvider){
 		      .when('/map', {
                 templateUrl: 'artefact_map.html'
           });
+
 
 });
 
