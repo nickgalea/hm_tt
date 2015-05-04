@@ -107,10 +107,8 @@ function getImages_Tour(object)
 		console.log(image_list.length);
 		replace_imagetags();
 		$("#panel_binfo").html(object.text_eng);
-		setTourVid(image_list);
+		//setTourVid(image_list);
 		setTourAudio(image_list);
-		//console.log(JSON.stringify(results));
-		//setTourImages(results);
 	}, function (err) {
 		alert("Error: " + err);
 	}); 
@@ -230,13 +228,10 @@ function getIndicesOf(searchStr, str) {
 
 function replace_imagetags()
 {
-	console.log("hello");
 	var obj = tourDict[current_tour_point][0];
 	var description = obj.text_eng;
 	//console.log(description);
 	var total_images = getIndicesOf("<<", description);
-	console.log(total_images);
-
 	for(var i = 0; i<total_images; i++)
 	{
 		var next_occ = description.indexOf("<<")
@@ -246,10 +241,18 @@ function replace_imagetags()
 			if(image_list[j].id === key)
 			{
 				var imgurl = image_list[j].url;
+				var img_type = image_list[j].resource_type;
 			}
 
 		}
-		description = description.replace("<<"+key+">>", "<div class=\"media\"><img width='100%' height='200' src="+imgurl+" alt='img'></div>");
+		if(img_type === "image")
+		{
+			description = description.replace("<<"+key+">>", "<div class=\"media\"><img width='100%' height='200' src="+imgurl+" alt='img'></div>");
+		}
+		else if(img_type === "video")
+		{
+			description = description.replace("<<"+key+">>", "<div class=\"media\"><video class=\"tour_vid\" width='100%' poster=\"img/heritage_logo.png\" controls><source src="+imgurl+" type=\"video/mp4\" /> </video></div>");
+		}
 		console.log(key);
 	}
 
@@ -266,17 +269,25 @@ function replace_imagetags_child()
 
 	for(var i = 0; i<total_images; i++)
 	{
-		var next_occ = description.indexOf("<<")
+		var next_occ = description.indexOf("<<");
 		var key = description.substring(next_occ+2, next_occ+38);
 		for(var j = 0; j<image_list.length; j++)
 		{
 			if(image_list[j].id === key)
 			{
 				var imgurl = image_list[j].url;
+				var img_type = image_list[j].type;
 			}
 
 		}
-		description = description.replace("<<"+key+">>", "<div class=\"media\"><img width='100%' height='200' src="+imgurl+" alt='img'></div>");
+		if(img_type === "image")
+		{
+			description = description.replace("<<"+key+">>", "<div class=\"media\"><img width='100%' height='200' src="+imgurl+" alt='img'></div>");
+		}
+		else if(img_type === "video")
+		{
+			description = description.replace("<<"+key+">>", "<div class=\"media\"><video class=\"tour_vid\" width='100%' poster=\"img/heritage_logo.png\" controls><source src="+imgurl+" type=\"video/mp4\" /> </video></div>");
+		}
 		console.log(key);
 	}
 

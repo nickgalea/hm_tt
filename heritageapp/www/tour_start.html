@@ -1,45 +1,46 @@
 <snap-content>
 
-    <div id="main_content" style="position:absolute;background:white;height:100%;width:100%;z-index:5000">
-        <div id="red">
-            <div class="red-wrapper" style="height: 30em;">
-                <img id="menutoggle" src="img/icons/back.png" onclick="location.href=stack.pop();"></img>
-                <!--<div class="audio_white"></div>-->
-                <div id="ts_title">
-                <h2 id="tour_title" class="top-spacer">Welcome to</h2>
-                <h1 id="ts_place"><span style="font-size:1.15em;">TARXIEN</span><br>TEMPLES<h1>
-                </div>
-                <hr class="ts_white" />
-                <div class="ts_character">
-                        <img src="img/character.png">
-                </div>
-                <div id="ts_enjoy">
-                    <h4>We hope that you<br>enjoy the tour!</h4>
-                    <p>Please read the following guidelines</p>
-                    <a onclick="location.href='#/guidelines'">GUIDELINES</a>
-                </div>
-            </div>
-        </div>
-        <div class="wrapper">
-            <div id="ts_tours">
-                <h1>START <span style="font-weight:700;">TOUR</span></h1>
-                <div id="ts_boxes">
-                    <div id="ts_premium" onclick="location.href='#/store'">
-                        <div id="icon"><img src="img/icons/padlock.png"/></div>
-                        <h5>unlock<br><span style="color:#ae1215"><span style="font-weight:700;">PREMIUM</span> TOURS</span></h5>
-                        <div class="mini_icons"><img src="img/icons/temple_tour.png"/></div>
-                        <div class="mini_icons"><img src="img/icons/hoxna.png"/></div>
-                        <div class="mini_icons" style="border-right:none;"><img src="img/icons/footsteps.png"/></div>
-                    </div>
-                    <div id="ts_basic" onclick="attachGpsHandler(); stack.push('#/tour'); location.href='#/tour_binfo';">
-                        <div id="icon"><img src="img/icons/play_tour.png"/></div>
-                        <h6><span style="font-size:1em;">BASIC</span><br>TOUR</h6>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</snap-content>
+    <div class="content_ts">
 
-<script type="text/javascript">
-</script>
+        <div class="welcome">
+
+            <img id="menutoggle" snap-toggle="" src="img/icons/back.png" onclick="location.href=stack.pop()"></img>
+        
+            <div id="ts_title">
+                <h2 id="tour_title" >Welcome to</h2>
+                <h1 id="ts_place"><span style="font-size:1.15em;font-weight:400;">TARXIEN</span><br>TEMPLES<h1> 
+            </div>
+
+            <hr class="white" style="width:90%"/> 
+    
+            <div id="ts_enjoy">
+                <h4>We hope that you enjoy the tour!</h4>
+                <a onclick="location.href='#/guidelines'">GUIDELINES</a>
+            </div> 
+
+            <p>Please make sure that your<br/><b>Wifi</b> and <b>GPS</b> are enabled.</p>
+
+        </div>
+ 
+        <div class="options">
+  
+            <div class="op_container">
+                <img src="img/icons/padlock.png">
+                <p>UNLOCK</p>
+                <h3>PREMIUM</h3>
+                <h4>TOURS</h4>
+            </div>
+
+            <div class="op_container" onclick="attachGpsHandler(); stack.push('#/tour');  location.href='#/tour_binfo'">
+                <img src="img/icons/play_tour.png">
+                <p>START</p>
+                <h3>BASIC</h3>
+                <h4>TOUR</h4>
+            </div>
+
+        </div>
+
+    </div>
+        
+            
+</snap-content>

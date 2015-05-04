@@ -44,9 +44,8 @@ h1{
 }
 
 #top{
-    background: url(../img/home.png) no-repeat center top;
     background-size: cover;
-    height: 35em;
+    height: 30em;
     position: relative;
 }
 
@@ -57,24 +56,24 @@ h1{
     padding-left: 0.4em;
     position: absolute;
     left: 0;
-    bottom: 0.5em;
+    bottom: 0em;
     vertical-align: bottom;
     font-size: 3.8em;
 }
 
 #menu-slider{
     margin: 1.5em;
+    margin-right: 0em;
+    margin-left: 0em;
     overflow-x: auto;
     overflow-y: auto;
     white-space: nowrap;
-    background: white;
     z-index: 3;
 }
 
 .box{
-    margin-right: 2em;
-    /*margin-bottom: 1em;
-    */color: #fff;
+    margin-right: 1em;
+    color: #fff;
     display: inline-block;
     width: 14em;
     height: 14em;
@@ -86,7 +85,8 @@ h1{
     height: 100%;
     /*background: rgba(0,0,0,0.3);*/
     position: relative;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.65098) 0%, rgba(0, 0, 0, 0) 100%);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.68) 0%, rgba(0, 0, 0, 0) 100%);
+    border-radius: 8px;
 }
 
 .box .text{
@@ -114,21 +114,38 @@ h1{
 #menu-slider .box.history{
     background: url(../img/history_artifacts.png) no-repeat;
     background-size: cover;
+    border-radius: 8px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(255, 255, 255);
+    margin-left: 1.5em;
 }
 
 #menu-slider .box.timeline{
     background: url(../img/timeline.png) no-repeat;
     background-size: cover;
+    border-radius: 8px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(255, 255, 255);
 }
 
 #menu-slider .box.games{
     background: url(../img/games.png) no-repeat;
     background-size: cover;
+    border-radius: 8px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(255, 255, 255);
 }
 
 #menu-slider .box.tour{
     background: url(../img/history_temples.png) no-repeat;
     background-size: cover;
+    border-radius: 8px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(255, 255, 255);
 }
 
 #list-tiles .box{
@@ -329,7 +346,8 @@ h1{
 
 #profile-options .tile{
     background-color: #ae1215;
-    border: 1px solid #fff;
+    border-top: 2px solid #ae1215;
+    margin-right: 2px;
     height: 45px;
     font-size: 1.2em;
     display: inline-block;
@@ -347,6 +365,7 @@ h1{
 #profile-options .tile.active{
     background-color: #fff;
     border: 1px solid #ae1215;
+    margin-right: 0px;
 }
 
 #profile-options .tile.secondary-tile{
@@ -507,8 +526,8 @@ h1{
     font-weight: bold;
     font-size: 1.3em;
     background: url(../img/icons/share.png) no-repeat;
-    background-size: 22px;
-    padding-left: 30px;
+    background-size: 21px;
+    padding-left: 35px;
 }
 
 #bottom-red-message{
@@ -792,21 +811,10 @@ ul#tickets-main-options .chosen-option-calendar{
     font-size: 1.4em;
 }
 
-#quest_container
-{
-    width:100%;
-    max-height:75%;
-    overflow:auto;
-}
 .character{
-    text-align: right;
-    float:right;
-    clear: right;
-}
-.spacer {
-
-  width: 0px;
-  float: right;
+    position: absolute;
+    margin-top: 1.5em;
+    margin-left: 14em;
 }
 
 .character img{
@@ -841,7 +849,7 @@ ul#tour-questions{
 
 ul#tour-questions li{
     text-align: center;
-    font-size: 1.5em;
+    font-size: 1.2em;
     font-weight: bold;
     padding-bottom: 0.5em;
     margin-bottom: 1.2em;
@@ -1015,17 +1023,8 @@ h1.found{
     line-height: 1.8;
     margin-top: 0;
     text-align: justify;
-    height:33em;
-    overflow-y:scroll;
-}
-#panel-description-paid{
-    padding:1.5em;
-    font-size: 1.2em;
-    line-height: 1.8;
-    margin-top: 0;
-    text-align: justify;
-    height:37em;
-    overflow-y:scroll;
+    height:24em;
+    overflow:scroll;
 }
 
 #panel-description-premium{
@@ -1047,7 +1046,7 @@ h1.found{
     height: 4.5em;
     padding-top:.5em;
     background-color: #ae1215;
-    /*border-bottom: 1px solid #EEE;*/
+    border-bottom: 1px solid #EEE;
     position: fixed;
     bottom: 0;
     text-align: center;
@@ -1064,7 +1063,7 @@ h1.found{
 }
 
 #tour-points{
-    
+    height:2.5em;
     margin:1em;
     text-align: center;
 }
@@ -1100,6 +1099,16 @@ h1.found{
     display: inline-block;
 }
 
+.content_ts{
+    width:100%;
+    height: 100%;
+    background: url(../img/tour.png) no-repeat center top;
+    background-size: cover;
+    position:absolute;
+}
+
+
+
 /*Carousel slider for artefact_db*/
 .swipe {
   overflow: hidden;
@@ -1119,144 +1128,6 @@ h1.found{
   max-width: 100%;
   max-height: 100%;
 }
-
-
-#ts_title{
-    text-align: center;
-}
-#ts_place{
-    font-size: 3.5em;
-    margin-top: .5em;
-    margin-bottom: .5em;
-    line-height: 0.8em; 
-}
-
-.ts_character{
-    position: absolute;
-    margin-top: .75em;
-    margin-left: -2.5em;
-}
-
-.ts_character img{
-    height: 152px;
-}
-
-#ts_enjoy{
-    float:right;
-    color: white;
-    text-align: right;
-}
-
-#ts_enjoy h4{
-    font-size: 1.5em;
-}
-
-#ts_enjoy p{
-    font-size: 0.8em;
-    margin-top: -0.9em;
-    margin-bottom: 2.2em;
-}
-
-#ts_enjoy a{
-    font-size: 1.3em;
-    margin-top: 1em;
-    color: #222;
-    background-color: #fff;
-    padding: 0.5em;
-    padding-left: .8em;
-    padding-right: .8em;
-    font-weight: 700;
-}
-
-#ts_tours{
-    text-align: center;
-    color: #222;
-}
-
-#ts_tours h1{
-    color: #222;
-    margin-top: 0.3em;
-    font-weight: 400;
-    margin-bottom: 0.5em;
-}
-#ts_tours p{
-    color: #222;
-    margin-top: 0.3em;
-    font-weight: 400;
-    font-size: .8em;
-    position: absolute;
-    bottom:0;
-}
-
-#ts_boxes{
-    padding: 0;
-    color: white;
-    width:85%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#ts_premium{
-    display: inline-block;
-    border: 1px solid #222222;
-    width: 49.5%;
-    /*height:9em;*/
-    float: left;
-    color: #222;
-    font-weight: 400;
-}
-
-#ts_basic{
-    display: inline-block;
-    background-color: #222222;
-    width: 49.5%;
-    height:9.2em;
-	float:right;
-    color: white;
-}
-
-#ts_basic h6{
-    font-size: 1.8em;
-    font-weight: 400;
-    line-height: 1em;
-    margin-top: 1em;
-}
-
-#ts_basic span{
-    font-size: 1em;
-    font-weight: 700;
-}
-
-#icon{
-    width:30px;
-    height: 30px;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 1em;
-    margin-bottom: -0.8em;
-}
-
-#icon img{
-    width:100%;
-    height: 100%;
-}
-
-.mini_icons{
-    width:32.78%;
-    display: inline-block;
-    height:2.1em;
-    float:left;
-    margin-top: -0.8em;
-    border: 1px solid #222222;
-    border-left:none;
-    border-bottom: none;
-}
-
-.mini_icons img{
-    height:75%;
-    margin-top: .3em;
-}
-
 /* Landscape layout (with min-width) */
 @media screen and (min-aspect-ratio: 1/1) and (min-width:300px){
     #top{
@@ -1358,149 +1229,5 @@ h1.found{
     #big-center-header .circle{
         margin-top: 5em;
     }
-
-    
-#ts_title{
-    text-align: center;
-}
-#ts_place{
-    font-size: 3.5em;
-    margin-top: .5em;
-    margin-bottom: .5em;
-    line-height: 0.8em; 
-}
-
-.ts_character{
-    position: absolute;
-    margin-top: .75em;
-    margin-left: -2.5em;
-}
-
-.ts_character img{
-    height: 152px;
-}
-
-#ts_enjoy{
-    float:right;
-    color: white;
-    text-align: right;
-}
-
-#ts_enjoy h4{
-    font-size: 1.5em;
-}
-
-#ts_enjoy p{
-    font-size: 0.8em;
-    margin-top: -0.9em;
-    margin-bottom: 2.2em;
-}
-
-#ts_enjoy a{
-    font-size: 1.3em;
-    margin-top: 1em;
-    color: #222;
-    background-color: #fff;
-    padding: 0.5em;
-    padding-left: .8em;
-    padding-right: .8em;
-    font-weight: 700;
-}
-
-#ts_tours{
-    text-align: center;
-    color: #222;
-}
-
-#ts_tours h1{
-    color: #222;
-    margin-top: 0.3em;
-    font-weight: 400;
-    margin-bottom: 0.5em;
-}
-#ts_tours p{
-    color: #222;
-    margin-top: 0.3em;
-    font-weight: 400;
-    font-size: .8em;
-    position: absolute;
-    bottom:0;
-}
-
-#ts_boxes{
-    padding: 0;
-    color: white;
-    width:85%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#ts_premium{
-    display: inline-block;
-    border: 1px solid #222222;
-    width: 49.5%;
-    height:9em;
-    float: left;
-    color: #222;
-    font-weight: 400;
-}
-
-#ts_basic{
-    display: inline-block;
-    background-color: #222222;
-    width: 49.5%;
-    height:9.2em;
-    float:right;
-    color: white;
-}
-
-#ts_basic h6{
-    font-size: 1.8em;
-    font-weight: 400;
-    line-height: 1em;
-    margin-top: 1em;
-}
-
-#ts_basic span{
-    font-size: 1em;
-    font-weight: 700;
-}
-
-#icon{
-    width:30px;
-    height: 30px;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 1em;
-    margin-bottom: -0.8em;
-}
-
-#icon img{
-    width:100%;
-    height: 100%;
-}
-
-.mini_icons{
-    width:32.78%;
-    display: inline-block;
-    height:2.1em;
-    float:left;
-    margin-top: -0.8em;
-    border: 1px solid #222222;
-    border-left:none;
-    border-bottom: none;
-}
-
-.mini_icons img{
-    height:75%;
-    margin-top: .3em;
-}
-
-/*css for game*/
-#canvas {
-    background:url("img/heritage_logo.png");
-    width: 531px;
-    height: 438px;
-}
 }
 

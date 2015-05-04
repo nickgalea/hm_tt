@@ -146,6 +146,9 @@ app.config(function($routeProvider){
           })
 		      .when('/map', {
                 templateUrl: 'artefact_map.html'
+          })
+			  .when('/game_start', {
+                templateUrl: 'game_start.html'
           });
 
 
