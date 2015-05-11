@@ -84,12 +84,9 @@ function fillData_Child()
 function fillData_Tour()
 {	
 	var object = tourDict[current_tour_point][0];
-	$("#panel_name").html(object.title);
+	var title_split = object.title.split(".");
+	$("#panel_name").html(title_split[0] + "<span class=\"title_pipe\"> | </span>" + title_split[1]);
 	getImages_Tour(object);
-	
-	
-	//$("#tour_image").html("");
-	
 }
 function getImages_Tour(object)
 {
@@ -141,7 +138,7 @@ function setTourImages(image_list)
 		if(image_list[i].resource_type === "image")
 		{
 			//add objects separately to dom
-			$("#tour_image").html("<div class='artefact_image tour-media'><img width='150' height='150' src="+image_list[i].url+" alt='img'></div>");
+			$("#tour_image").html("<div class='tour-media'><img width='150' height='150' src="+image_list[i].url+" alt='img'></div>");
 		}
 	}
 }
@@ -247,11 +244,11 @@ function replace_imagetags()
 		}
 		if(img_type === "image")
 		{
-			description = description.replace("<<"+key+">>", "<div class=\"media\"><img width='100%' height='200' src="+imgurl+" alt='img'></div>");
+			description = description.replace("<<"+key+">>", "<div class=\"media tour-media\"><img width='100%' height='200' src="+imgurl+" alt='img'></div>");
 		}
 		else if(img_type === "video")
 		{
-			description = description.replace("<<"+key+">>", "<div class=\"media\"><video class=\"tour_vid\" width='100%' poster=\"img/heritage_logo.png\" controls><source src="+imgurl+" type=\"video/mp4\" /> </video></div>");
+			description = description.replace("<<"+key+">>", "<div class=\"media tour-media\"><video class=\"tour_vid\" width='100%' poster=\"img/heritage_logo.png\" controls><source src="+imgurl+" type=\"video/mp4\" /> </video></div>");
 		}
 		console.log(key);
 	}

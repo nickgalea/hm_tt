@@ -57,7 +57,13 @@ function checkplayer_options()
 function checkplayer()
 {
 	var audioplayer = document.getElementsByTagName("audio")[0];
-	if(!audioplayer.paused)
+	var currentTime = document.getElementsByTagName("audio")[0].currentTime;
+	console.log("CURRENT TIME " + currentTime);
+	if(currentTime == 0)
+	{
+		//do nothing
+	}
+	else if(!audioplayer.paused)
 	{
 		document.getElementById("audio_button").style.background = "url(img/icons/pause_red.png) no-repeat";
 		document.getElementById("audio_button").style.backgroundSize="25px";
