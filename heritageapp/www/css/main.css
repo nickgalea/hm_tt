@@ -173,11 +173,11 @@ h1{
 }
 .audio_red{
     background: url(../img/icons/audio_red.png) no-repeat;
-    background-size: 25px;
-    width: 25px;
-    height: 25px;
+    background-size: 30px;
+    width: 30px;
+    height: 30px;
     margin-top: 1em;
-    margin-right: 0.3em;
+    margin-right: 1em;
     float: right;
 }
 
@@ -275,9 +275,15 @@ h1{
 
 
 /* PROFILE */
+#time-bar{
+    background-color: #ae1215;
+    height: 23px;
+    width:100%;
+}
+
 #action-bar{
     width: 100%;
-    height: 4.5em;
+    height: 4em;
     padding-top:.5em;
     border-bottom: 1px solid #EEE;
 }
@@ -321,6 +327,16 @@ h1{
 #profile-title h1{
     font-weight: bold;
     font-size: 2.2em;
+	line-height: 1.2em;
+}
+#profile-title h4{
+    font-weight: 400;
+    font-size: 1em;
+    color: #727272;
+    margin-top: 0em;
+}
+#par_text{
+    font-size: 1em;
 }
 
 #profile-title p{
@@ -1022,9 +1038,9 @@ h1.found{
     font-size: 1.2em;
     line-height: 1.8;
     margin-top: 0;
-    text-align: justify;
-    height:24em;
-    overflow:scroll;
+    text-align: left;
+    height:33em;
+    overflow-y:scroll;
 }
 
 #panel-description-premium{
@@ -1044,10 +1060,9 @@ h1.found{
 #tour-navigation{
     width: 100%;
     height: 4.5em;
-    padding-top:.5em;
     background-color: #ae1215;
-    border-bottom: 1px solid #EEE;
     position: fixed;
+    border-top: .1em solid #EEE;
     bottom: 0;
     text-align: center;
     margin-right: auto;
@@ -1128,6 +1143,28 @@ h1.found{
   max-width: 100%;
   max-height: 100%;
 }
+
+/*added for history home*/
+#red h3{
+    color: #fff;
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+#red p{
+    color: #fff;
+    font-size: 1.5em;
+}
+
+.black-transparency-2{
+    width: 100%;
+    height: 100%;
+    /*background: rgba(0,0,0,0.3);*/
+    position: relative;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.68) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+
 /* Landscape layout (with min-width) */
 @media screen and (min-aspect-ratio: 1/1) and (min-width:300px){
     #top{
@@ -1231,3 +1268,85 @@ h1.found{
     }
 }
 
+/*
+TOUR
+*/
+.tour-media img{
+    width:100%;
+    border: 1px solid #727272;
+    padding: 1px;
+    margin-bottom: 0em;
+    margin-top: 0.5em;
+}
+.caption p{
+    color: #727272;
+    font-style: italic;
+    margin-top: 0em;
+    font-size: 0.9em;
+}
+.back_t{
+   width:4.5em;
+   height: 100%;
+   display: inline-block;
+   float: left;
+   border-right: 2px solid #EEE;
+}
+.img-container{
+    width:65%;
+    height: 65%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 1em;
+}
+.back_t img{
+    height: 85%;
+}
+.next_t{
+   width:4.5em;
+   height: 100%;
+   display: inline-block;
+   float: right;
+   border-left: 2px solid #EEE;
+}
+
+.next_t img{
+    height: 85%;
+}
+#t_learn{
+    text-align: center;
+    color: white;
+    font-size: 1.8em;
+    width:65%;
+    font-weight: 400;
+    height: 100%;
+    display: inline-block;
+    margin: 0;
+    padding-top:0.6em;
+}
+/*
+.question_time{
+    background-color: #efefef;
+    padding:0.5em;
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+.question_time h2{
+    color: #ae1215;
+    font-size: 1.2em;
+}
+
+.question_time h1{
+    color: #222;
+    font-size: 1.5em;
+    font-weight: 500;
+    line-height: 1em;
+}
+
+.question_time p{
+    color: #ae1215;
+    font-size: 1.5em;
+    font-weight: 500;
+    margin-top: 1em;
+}
+*/

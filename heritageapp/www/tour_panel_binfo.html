@@ -1,4 +1,5 @@
 <snap-content>	
+        <div id="time-bar"></div>
         <div id="action-bar">
             <div class="cross" onclick="location.href=stack.pop();"></div>
             <div id="audio_button" class="audio_red" onclick="click_audiobutton()"></div>
@@ -10,31 +11,19 @@
         <div id="panel-description">
 
             <div id="profile-title">
-				<h1 id ="panel_name">Panel Name</h1>
+				<h1 id ="panel_name">1<span style="color:#ae1215; font-weight:400;, font-size: 20em;"> | </span>Panel Name</h1>
+				<h4>Subtitle</h4>
 			</div>
 
             <div id="par_text">
-				<p id = "panel_binfo" class="content">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+				<p id = "panel_binfo" class="content">Sed ut perspiciatis unde omnis iste natus error sit accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
 
 			</div>
-			<div id = "tour_image">
-			</div>
-        </div>	
-		<!--div id="tour-points">
-			<div class="line"></div>
-			<div class="bocca"><p>5</p></div>
-			<div class="line"></div>
-			<div class="bocca"><p>5</p></div>
-			<div class="line"></div>
-			<div class="bocca"><p>5</p></div>
-			<div class="line"></div>
-		</div-->
-
-        <div id="tour-navigation">
-            <div class="back" style="float:left;width:20%;margin-top:1em;"  ><img height="25" width="37" src="img/icons/back_tour.png"></div>
-            <h1 class="add" style="width:31%;height:100%;line-height:15%;" onclick="stack.push('#/tour_binfo'); location.href='#/tour_options'">MORE!</h1>
-            <div class="next" style="float:right;width:20%;margin-top:1em;" ><img height="25" width="37" src="img/icons/front_tour.png"></div>
         </div>
+        <div id="tour-navigation">
+        	<div class ="back_t"><div class="img-container"><img src="img/icons/tback.png"></div></div>
+        	<div id="t_learn" onclick="stack.push('#/tour_binfo'); location.href='#/tour_options'">LEARN MORE</div>
+        	<div class ="next_t"><div class="img-container"><img src="img/icons/tnext.png"></div></div>
         </div>
 
 		<script>

@@ -141,13 +141,13 @@ function setTourImages(image_list)
 		if(image_list[i].resource_type === "image")
 		{
 			//add objects separately to dom
-			$("#tour_image").html("<div class='artefact_image'><img width='150' height='150' src="+image_list[i].url+" alt='img'></div>");
+			$("#tour_image").html("<div class='artefact_image tour-media'><img width='150' height='150' src="+image_list[i].url+" alt='img'></div>");
 		}
 	}
 }
 function createHandlers()
 {
-	$(".back").click(function(){
+	$(".back_t").click(function(){
 		current_tour_point = current_tour_point-1;
 		if(current_tour_point == 0)
 		{
@@ -157,7 +157,7 @@ function createHandlers()
 		navigationArrows();
 		startTime = 0;
 	});
-	$(".next").click(function(){
+	$(".next_t").click(function(){
 		current_tour_point = current_tour_point+1;
 		if(current_tour_point == Object.keys(tourDict).length)
 		{
@@ -348,7 +348,7 @@ function deg2rad(deg) {
             //alert("You are less than 5 metres from " + tourDict[current_tour_point+1][0].title);
             if(stack[stack.length-1] === '#/tour')
             {
-            	$( ".next" ).trigger( "click" );
+            	$( ".next_t" ).trigger( "click" );
 
 			}
 			else
@@ -404,16 +404,16 @@ function navigationArrows()
 	console.log("Dictionary length " + Object.keys(tourDict).length );
 	if(current_tour_point == 1)
 	{
-		$(".back").css('opacity', '0.3'); 
+		$(".back_t").css('opacity', '0.3'); 
 	}
 	else if(current_tour_point == Object.keys(tourDict).length-1)
 	{
-		$(".next").css('opacity', '0.3'); 
+		$(".next_t").css('opacity', '0.3'); 
 	}
 	else
 	{
-		$(".next").css('opacity', ''); 
-		$(".back").css('opacity', ''); 
+		$(".next_t").css('opacity', ''); 
+		$(".back_t").css('opacity', ''); 
 	}
 	
 }
