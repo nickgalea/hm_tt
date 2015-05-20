@@ -401,11 +401,11 @@ function navigationArrows()
 	console.log("Dictionary length " + Object.keys(tourDict).length );
 	if(current_tour_point == 1)
 	{
-		$(".back_t").css('opacity', '0.3'); 
+		$(".back_t").css('opacity', '0.5'); 
 	}
 	else if(current_tour_point == Object.keys(tourDict).length-1)
 	{
-		$(".next_t").css('opacity', '0.3'); 
+		$(".next_t").css('opacity', '0.5'); 
 	}
 	else
 	{

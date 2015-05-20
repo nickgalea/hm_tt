@@ -20,7 +20,7 @@ function createArtList()
 	console.log("ARTEFACT LIST" + artefact_list);
 	if(artefact_list == null)
 	{
-		//console.log("LIST is empty");
+		console.log("LIST is empty");
 		var client = new WindowsAzure.MobileServiceClient(
 		"https://heritagemalta.azure-mobile.net/",
 		"aoCAcmyiogRmCISDWtfEDYzuHsQjGx40"
@@ -29,6 +29,7 @@ function createArtList()
 		var artefactTable = client.getTable('artefact_table');
 		var query = artefactTable.where({
 		}).read().done(function (results) {
+			console.log("RESULT OBTAINED");
 			artefact_list = results;
 			fillGallery();
 		}, function (err) {
@@ -65,7 +66,9 @@ function fillGallery()
 				artefact_list[i].thumbnail = "https://hmresources.blob.core.windows.net/thumb/"+artefact_list[i].thumbnail;
 				console.log("Thumbnail :" +artefact_list[i].thumbnail );
 			}
-			$(" <img id = "+i+" class = 'artefact_item' src="+artefact_list[i].thumbnail+" width='150' onclick=\"stack.push('#/history_home');location.href='#/profile';\" />").appendTo(div_gallery);
+			var div_row = createArtefactRow(i);
+			div_gallery.append(div_row);
+			//$(" <img id = "+i+" class = 'artefact_item' src="+artefact_list[i].thumbnail+" width='150' onclick=\"stack.push('#/history_home');location.href='#/profile';\" />").appendTo(div_gallery);
 		}
 		div_gallery.appendTo(".white-container");
 		artefact_position = 0;
@@ -75,16 +78,61 @@ function fillGallery()
 		//perform only for all the other times
 		for(var i = 0 ; i < artefact_list.length;i++)
 		{
-			$(" <img id = "+i+" class = 'artefact_item' src="+artefact_list[i].thumbnail+" width='150' onclick=\"stack.push('#/history_home');location.href='#/profile';\" />").appendTo(div_gallery);
+			var div_row = createArtefactRow(i);
+			div_gallery.append(div_row);
+			//$(" <img id = "+i+" class = 'artefact_item' src="+artefact_list[i].thumbnail+" width='150' onclick=\"stack.push('#/history_home');location.href='#/profile';\" />").appendTo(div_gallery);
 		}
 		div_gallery.appendTo(".white-container");
 	}
 }
+
+function createArtefactRow(position)
+{
+	var div_row; 
+	//alternate rows between class artifact_dg and artifact_lg
+	if(position % 2 == 0)
+	{
+		div_row = document.createElement('div');
+		div_row.className = "artifact_dg";	
+		div_row.id = position;
+	}
+	else
+	{
+		div_row = document.createElement('div');
+		div_row.className = "artifact_lg";
+		div_row.id = position;
+	}
+	//create image div
+	var div_img = document.createElement('div');
+	div_img.className = "artimg";
+	//create info div
+	var div_info = document.createElement('div');
+	div_info.className = "artinfo";
+	//add image to image div
+	$(" <img id = "+position+" src=\""+artefact_list[position].thumbnail+"\"/>").appendTo(div_img);
+	//add info to div
+	$(" <h1>"+ artefact_list[position].name +"</h1>").appendTo(div_info);
+	$(" <p><i>"+ artefact_list[position].period +"</i></p>").appendTo(div_info);
+	//attach divs to parent div
+	$(div_row).append(div_img);
+	$(div_row).append(div_info);
+	div_row.onclick = function () {
+		stack.push('#/history_home');
+		location.href='#/profile';
+	};
+	//return parent div
+	return div_row;
+}
 //methods for profile page
 function populatePage()
 {
+	console.log("ARTEFACT POSITION " + artefact_position);
 	$("#artefact_name").text(artefact_list[artefact_position].name);
-	$("<div class='arrow'></div>").appendTo("#period-" + artefact_list[artefact_position].period);
+	//var per = $("#period-"+artefact_list[artefact_position].period);
+	if(artefact_list[artefact_position].period.length < 5)
+	{
+		$("<div class='arrow'></div>").appendTo("#period-" + artefact_list[artefact_position].period);
+	}
 	//check if var is empty string or null
 	if(artefact_list[artefact_position].type == ""|| !artefact_list[artefact_position].type)
 	{
