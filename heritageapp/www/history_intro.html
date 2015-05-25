@@ -1,0 +1,116 @@
+<snap-content>	
+        <div id="action-bar">
+            <div class="cross" onclick="location.href=stack.pop()"></div>
+            <div class="audio"></div>
+        </div>
+        <div id="histintro">
+            <h1>Introduction</h1>
+            <p style="font-size: 1.5em;">to Tarxien Temples</p>
+        </div>
+        
+        <div id="profile-description">   
+            <p class="content" id="intro_text">The Tarxien Temples is a complex of four megalithic structures built between <b>3600 and 2500 BC </b>and re-used between 2400 and 1500 BC. Discovered in 1913 by local farmers, the site was the first of its kind to be fully excavated scientifically. The notebooks, drawings and photos left behind by <b>Sir Themistocles Zammit</b> are still our richest resource in understanding the unique cultures of the Neolithic and Bronze Age inhabitants of Malta.</p>
+
+            <div class="question_time">
+
+            <div class = "intro_question" style="margin-bottom:1.25em;">
+                <h2 style="color: #ae1215; font-weight:700;">Who were the Temple Builders? </h2>
+                <p id="expander"> + </p>
+            </div>
+            <br>
+
+            <p class="content artefact_info" >The people who built the Tarxien Temples between 3600 and 2500 BC were a rural society descended from the first inhabitants of Malta who arrived, most probably from Sicily, around 5000 BC. Although they did not have writing or metal, they were an advanced society of farmers, builders and craftsmen capable of producing fine pottery and stone tools. They cultivated the land, raised sheep, goats, pigs, cows and bulls and lived in small huts made of stone and mudbrick. It is not clear what made them start building megalithic buildings around 3600 BC but over a little more than 1000 years, they built <b>over 30 temples</b> around the Maltese islands.</p>
+            
+            </div>
+
+            <div class="question_time">
+
+            <div class = "intro_question" style="margin-bottom:1.25em;">
+                <h2 style="color: #ae1215; font-weight:700;">What are the Tarxien Temples?</h2>
+                <p id="expander"> + </p>
+            </div>
+            <br>
+
+            <p id = "artefact_info" class="content artefact_info" >The site consists of <b>four Temples</b> built over a span of about 1000 years. The buildings are typical of the megalithic buildings in Malta and Gozo which in time became known as Temples even though their use is still not clear. Each building has a number of D-shaped rooms/apses, divided by a central passageway. Some of the larger rooms are paved with stone blocks whilst others have a more fragile crushed limestone (torba) floor.</p>
+            
+            </div>
+
+            <div class="question_tour">
+            <h1 style="margin-top:0.5em;">Learn More!</h1>
+            <p>Follow a special tour which will explain the magnificient prehistoric architecture of the Tarxien Temples.</p>
+            <h1 style="margin-bottom:0.5em;" onclick="stack.push('#/'); location.href='#/tour'">START TOUR</h1>
+        </div>
+
+            <div class="question_time">
+
+            <div class = "intro_question" style="margin-bottom:1.25em;">
+                <h2 style="color: #ae1215; font-weight:700;">When were the Temples built?</h2>
+                <p id="expander"> + </p>
+            </div>
+            <br>
+
+            <p id = "artefact_info" class="content artefact_info">The oldest and smallest of the four was built in the period known as Ggantija phase between 3600 and 3200 BC. The remaining three were built between 3150 and 2500 BC and the period became known as the Tarxien phase. <b>This places them between 800 to 1000 years before the stone circle at Stonehenge and the first pyramid in Egypt were built.</b></p>
+            
+            </div>
+
+            <div class="question_time">
+
+            <div class = "intro_question" style="margin-bottom:1.25em;">
+                <h2 style="color: #ae1215; font-weight:700;">What happened after 2500 BC?</h2>
+                <p id="expander"> + </p>
+            </div>
+            <br>
+
+            <p id = "artefact_info" class="content artefact_info">The Neolithic people who had originally built the Temple abandoned the building around that time and, to this day, we are still trying to understand why although it seems that changes in the environment were an important factor. A few hundred years after that, a new people, probably from Sicily, arrived in Malta with their own pottery styles and metal tools and they decided to use the Temple as a Cremation Cemetery to bury the ashes of their dead. This was the beginning of Malta's Bronze Age.</p>
+            
+            </div>
+
+            <div class="question_time">
+
+            <div class = "intro_question" style="margin-bottom:1.25em;">
+                <h2 style="color: #ae1215; font-weight:700;">What were the Temples used for?</h2>
+                <p id="expander"> + </p>
+            </div>
+            <br>
+
+            <p id = "artefact_info" class="content artefact_info">The objects discovered in the excavations suggest that this site and others like it were public buildings, so certainly not houses. Since writing had not yet reached the islands, we have no accounts of their thoughts, beliefs or actions and, therefore, no way to verify if what we think is true. However, finding so many statuettes, large stone and clay bowls, fine pottery, animal bones, stone jewellery and tools hints at community rituals and activities in both large and small groups, which could be secular, religious or even both.</p>
+            
+            </div>
+
+            <div class="question_tour">
+            <h1 style="margin-top:0.5em;">Learn More!</h1>
+            <p>Follow a special tour which will explain the magnificient prehistoric architecture of the Tarxien Temples.</p>
+            <h1 style="margin-bottom:0.5em;" onclick="stack.push('#/'); location.href='#/tour'">START TOUR</h1>
+        </div>
+            
+            
+        </div>
+        
+        <script>
+        	//createArtList();
+			/*populatePage();
+			getImages();
+			setImageSize();	
+			$(window).on("orientationchange",function(){
+				var window_height = $(window).height();
+				var window_width = $(window).width();
+				var max_height = window_height*0.75;
+				var min_height = window_height*0.5;
+				$(".swipe-wrap").css({"max-height": max_height});
+			});*/
+			$('.intro_question').click(function() {
+				$(this).next().next().toggle();
+				var expander = $(this).find( "#expander" ).html();
+				if(expander == "—")
+				{
+					$(this).find( "#expander" ).html("+");
+				}
+				else
+				{
+					$(this).find( "#expander" ).html("—");
+				}
+			});
+
+        </script>
+</snap-content>
+<!--</html>-->

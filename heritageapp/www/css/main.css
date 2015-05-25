@@ -112,39 +112,47 @@ h1{
 }
 
 #menu-slider .box.history{
-    background: url(../img/history_artifacts.png) no-repeat;
+    background: url(../img/history_artifacts.jpg) no-repeat;
     background-size: cover;
     border-radius: 8px;
     border-style: solid;
-    border-width: 1px;
+    border-width: 2px;
     border-color: rgb(255, 255, 255);
     margin-left: 1.5em;
 }
 
 #menu-slider .box.timeline{
-    background: url(../img/timeline.png) no-repeat;
+    background: url(../img/timeline.jpg) no-repeat;
     background-size: cover;
     border-radius: 8px;
     border-style: solid;
-    border-width: 1px;
+    border-width: 2px;
     border-color: rgb(255, 255, 255);
 }
 
 #menu-slider .box.games{
-    background: url(../img/games.png) no-repeat;
+    background: url(../img/games.jpg) no-repeat;
     background-size: cover;
     border-radius: 8px;
     border-style: solid;
-    border-width: 1px;
+    border-width: 2px;
     border-color: rgb(255, 255, 255);
 }
 
 #menu-slider .box.tour{
-    background: url(../img/history_temples.png) no-repeat;
+    background: url(../img/history_temples.jpg) no-repeat;
     background-size: cover;
     border-radius: 8px;
     border-style: solid;
-    border-width: 1px;
+    border-width: 2px;
+    border-color: rgb(255, 255, 255);
+}
+#menu-slider .box.gallery{
+    background: url(../img/galleryicon.jpg) no-repeat;
+    background-size: cover;
+    border-radius: 8px;
+    border-style: solid;
+    border-width: 2px;
     border-color: rgb(255, 255, 255);
 }
 

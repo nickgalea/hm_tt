@@ -6,14 +6,22 @@ var stack = new Array();
 document.addEventListener("backbutton", onBackKeyDown, false);
 
 function onBackKeyDown() {
+   //window.cancelAnimationFrame(animate);
+   runanimation = false;
+
+   var de = document.getElementsByClassName("domelement")[0];
+   console.log(de);
+    if(de != null)
+      {
+        de.parentNode.removeChild(de);
+      }
+
     console.log("backback");
     if(stack.length==0)
       navigator.app.exitApp();
     else
     location.href=stack.pop();
-    
 }
-
 function showlangmenu()
 {
     document.getElementById("language").style.display="block"; 
@@ -149,7 +157,17 @@ app.config(function($routeProvider){
           })
 			  .when('/game_start', {
                 templateUrl: 'game_start.html'
-          });
+          })
+			  .when('/scratch', {
+                templateUrl: 'excavator.html'
+          })
+			  .when('/history_intro', {
+                templateUrl: 'history_intro.html'
+          })
+			  .when('/sphereimage', {
+                templateUrl: 'sphereimage.html'
+          })
+		  ;
 
 
 });

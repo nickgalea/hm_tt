@@ -3,66 +3,214 @@
             <div class="cross" onclick="location.href=stack.pop();"></div>
         </div>
 
-		<div id="canvas"></div>
+		<div id="tools">
+			<div id = "sh" class="tool selected" >shovel</div>
+			<div id = "br" class="tool">big tool</div>
+			<div id = "ab" class="tool">small tool</div>
+			<div id = "cd" class="tool">brush</div>
+		</div>
+		<div class="message">
+			<p id = "text"></p>
+		</div>
+		
+		<div id="parent">
+			<div id="canvas">
+			
+			</div>
+			<div id="canvas2">
+			
+			</div>
+		</div>
+ <script>
+ var scratchPad;
+ var scratchPad1;
+ var layers = ["img/exc/top_layer.JPG","img/exc/21_layer.jpg","img/exc/31_layer.jpg","img/exc/4_layer.jpg"];
+ var tools = ['sh','br','ab','cd'];
+ var position = 0;
+ var current_tool = "sh";
+ var scratchvar = false;
+ var canvas_num_0 = -1;
+function createCanvas(back,fore)
+{
+	scratchPad = $('#canvas2').wScratchPad({
+	  size        : 30,          // The size of the brush/scratch.
+	  bg          : back,  // Background (image path or hex color).
+	  fg          : fore,  // Foreground (image path or hex color).
+	  realtime    : true,       // Calculates percentage in realitime.
+	  scratchDown: null,//function(){ console.log("DOWN"); },
+	  scratchUp   : null,//function(){ console.log("UP"); },       // Set scratchUp callback.
+	  scratchMove : function (e, percent) {
+				/*if (percent > 20) {
+					if(current_tool !== tools[position])
+					{
+						displayMessage("Game over, used wrong tool");
+					}
+				}*/
+				if(position < 3)
+				{
+					if (percent > 50) {
+						console.log("!!!!!!!!!!!!!!");
+						this.scratch = false;
+						console.log("!!!!!!!!!!!!!!");
+						//$('#canvas2').remove();
+						//$('#parent').append("<div id=\"canvas2\"></div>");
+						//$('#canvas2').hide();
+						//displayMessage("Layer " + layers[position] + " removed!");	
+						position = position+1;
+						console.log("!!!!!!!!!!!!!!");
+						//createCanvas(layers[position+2],layers[position+1]);
+						scratchPad.wScratchPad('fg', layers[position+1]);
+						scratchPad.wScratchPad('bg', layers[position+2]);
+						//scratchPad1.scratch= true;
+						if(position != layers.length-1)
+						{
+							$('#canvas2').hide();
+							$('#canvas').show();
+						}
+						console.log("!!!!!!!!!!!!!!");
+					}
+				}
+				else
+				{
+					if (percent > 50) {					
+						displayMessage("All Layers Removed");
+					}
+				}
+				
+				
+			},       // Set scratcMove callback.
+	  cursor      : 'crosshair' // Set cursor.
+	});
+	
+}
+function createCanvas1(back,fore)
+{
+	//$('#canvas').hide();
+	scratchPad1 = $('#canvas').wScratchPad({
+	  size        : 30,          // The size of the brush/scratch.
+	  bg          : back,  // Background (image path or hex color).
+	  fg          : fore,  // Foreground (image path or hex color).
+	  realtime    : true,       // Calculates percentage in realitime.
+	  scratchDown: null,//function(){ console.log("DOWN"); },
+	  scratchUp   : null,//function(){ console.log("UP"); },       // Set scratchUp callback.
+	  scratchMove : function (e, percent) {
+				/*if (percent > 20) {
+					if(current_tool !== tools[position])
+					{
+						displayMessage("Game over, used wrong tool");
+					}
+				}*/
+				if(position < 3)
+				{
+					if (percent > 50) {
+						
+						this.scratch = false;
+						//$('#canvas2').remove();
+						//$('#parent').append("<div id=\"canvas2\"></div>");
+						//displayMessage("Layer " + layers[position] + " removed!");
+						//incrementPosition(2);	
+						position = position+1;
+						//createCanvas(layers[position+1],layers[position]);
+						scratchPad1.wScratchPad('fg', layers[position+1]);
+						scratchPad1.wScratchPad('bg', layers[position+2]);
+						//scratchPad.scratch= true;
+						$('#canvas').hide();
+						$('#canvas2').show();
+					}
+				}
+				else
+				{
+					if (percent > 50) {					
+						displayMessage("All Layers Removed");
+					}
+				}
+				
+				
+			},       // Set scratcMove callback.
+	  cursor      : 'crosshair' // Set cursor.
+	});
+	
+	$('#canvas').hide();
+}
 
-<script>
-(function() {
-    // Creates a new canvas element and appends it as a child
-    // to the parent element, and returns the reference to
-    // the newly created canvas element
+createCanvas(layers[position+1],layers[position]);
+createCanvas1(layers[position+2],layers[position+1]);
 
+$(".tool").click(function(){
+	if($(this).attr("id") === "sh")
+	{
+		scratchPad.wScratchPad('size', 10);
+		current_tool = "sh";
+		$(this).addClass( "selected" );
+		$( this ).siblings().removeClass( "selected" );
+	}
+	else if($(this).attr("id") === "br")
+	{
+		scratchPad.wScratchPad('size', 10);
+		current_tool = "br";
+		$(this).addClass( "selected" );
+		$( this ).siblings().removeClass( "selected" );
+	}
+	else if($(this).attr("id") === "ab")
+	{
+		current_tool = "ab";
+		scratchPad.wScratchPad('size', 10);
+		$(this).addClass( "selected" );
+		$( this ).siblings().removeClass( "selected" );
+	}
+	else if($(this).attr("id") === "cd")
+	{
+		current_tool = "cd";
+		scratchPad.wScratchPad('size', 10);
+		$(this).addClass( "selected" );
+		$( this ).siblings().removeClass( "selected" );
+	}
+});
 
-    function createCanvas(parent, width, height) {
-        var canvas = {};
-        canvas.node = document.createElement('canvas');
-        canvas.context = canvas.node.getContext('2d');
-        canvas.node.width = width || 100;
-        canvas.node.height = height || 100;
-        parent.appendChild(canvas.node);
-        return canvas;
-    }
-
-    function init(container, width, height, fillColor) {
-        var canvas = createCanvas(container, width, height);
-        var ctx = canvas.context;
-        // define a custom fillCircle method
-        ctx.fillCircle = function(x, y, radius, fillColor) {
-            this.fillStyle = fillColor;
-            this.beginPath();
-            this.moveTo(x, y);
-            this.arc(x, y, radius, 0, Math.PI * 2, false);
-            this.fill();
-        };
-        ctx.clearTo = function(fillColor) {
-            ctx.fillStyle = fillColor;
-            ctx.fillRect(0, 0, width, height);
-        };
-        ctx.clearTo(fillColor || "#ddd");
-
-        // bind mouse events
-        canvas.node.touchmove = function(e) {
-            if (!canvas.isDrawing) {
-               return;
-            }
-            var x = e.pageX - this.offsetLeft;
-            var y = e.pageY - this.offsetTop;
-            var radius = 10; // or whatever
-            var fillColor = '#ff0000';
-            ctx.globalCompositeOperation = 'destination-out';
-            ctx.fillCircle(x, y, radius, fillColor);
-        };
-        canvas.node.onswipe = function(e) {
-            canvas.isDrawing = true;
-        };
-        canvas.node.onmouseup = function(e) {
-            canvas.isDrawing = false;
-        };
-    }
-
-    var container = document.getElementById('canvas');
-    init(container, 531, 438, '#ddd');
-
-})();
-</script>
-        
+function displayMessage(text)
+{
+	$('#text').html(text);
+}
+ </script>
+ <style>
+ #parent{
+	height:60%;
+	width:90%;
+	/*height:300px;
+	width:300px;*/
+	margin-left:5%;
+ }
+ #canvas2
+ {
+	height:100%;
+	width:100%;
+	
+ }
+#canvas2 img
+ {
+	height:500px;
+	width:500px;
+ }
+ #canvas
+ {
+	height:100%;
+	width:100%;
+	
+ }
+#canvas img
+ {
+	height:500px;
+	width:500px;
+ }
+ .tool{
+ width:50px;
+ float:right;
+ }
+ .message{
+ font-size: 200%;
+ }
+ .selected{
+ color: red;
+ }
+ </style>
 </snap-content>
