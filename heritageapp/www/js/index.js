@@ -167,6 +167,9 @@ app.config(function($routeProvider){
 			  .when('/sphereimage', {
                 templateUrl: 'sphereimage.html'
           })
+			  .when('/gallery_start', {
+                templateUrl: 'gallery-start.html'
+          })
 		  ;
 
 

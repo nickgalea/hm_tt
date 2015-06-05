@@ -111,10 +111,23 @@ function createArtefactRow(position)
 	//add image to image div
 	$(" <img id = "+position+" src=\""+artefact_list[position].thumbnail+"\"/>").appendTo(div_img);
 	//add info to div
-	//if(artefact_list[position].name.length < 13)
-	$(" <h1>"+ artefact_list[position].name +"</h1>").appendTo(div_info);
-	//if(artefact_list[position].period.length < 6)
-	$(" <p><i>"+ artefact_list[position].period +"</i></p>").appendTo(div_info);
+	if(artefact_list[position].name.length > 12)
+	{
+		div_row.className += ' smallerfont'
+		console.log("HEREEE " + artefact_list[position].name.length);
+		$(" <h1>"+ artefact_list[position].name +"</h1>").appendTo(div_info);
+	}
+	else
+		$(" <h1>"+ artefact_list[position].name +"</h1>").appendTo(div_info);
+	//)
+	if(artefact_list[position].period.length > 6)
+	{
+		div_row.className += ' smallerfontper'
+		$(" <p><i>"+ artefact_list[position].period +"</i></p>").appendTo(div_info);
+	}
+	else
+		$(" <p><i>"+ artefact_list[position].period +"</i></p>").appendTo(div_info);
+	
 	//attach divs to parent div
 	$(div_row).append(div_img);
 	$(div_row).append(div_info);

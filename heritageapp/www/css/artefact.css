@@ -29,6 +29,7 @@
 
 .artifact_lg h1{
     color: #ae1215;
+
 }
 
 .artimg{
@@ -38,6 +39,8 @@
 	border-top-left-radius: 8px;
 	border-bottom-left-radius: 8px;
 	border-right: 1px solid #ffffff;
+	height:100%;
+	float:left;
 }
 
 .artimg img{
@@ -49,9 +52,12 @@
 
 .artinfo{
 	display: inline-block;
-    float:right;
+    float:left;
     margin-top: 2.2em;
-    margin-right: 4em;
+    /*margin-right: 4em;*/
+	margin-right:5%;
+	margin-left:5%;
+
 }
 
 .artinfo h1{
@@ -60,4 +66,13 @@
 
 .gallery p{
 	margin-top: -0.2em;
+}
+.smallerfont h1
+{	
+	font-size: 120%;
+}
+
+.smallerfontper p
+{	
+	font-size: 80%;
 }
