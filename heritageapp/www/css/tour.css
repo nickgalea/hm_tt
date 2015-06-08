@@ -131,3 +131,13 @@ p{
     background-size: cover;
     position:absolute;
 }
+
+/*gallery css*/
+.content_gals{
+    width:100%;
+    height: 100%;
+    background: url(../img/galleryb.jpg) no-repeat center top;
+    background-size: cover;
+    position:absolute;
+    text-align: center;
+}
