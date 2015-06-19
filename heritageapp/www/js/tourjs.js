@@ -84,8 +84,9 @@ function fillData_Child()
 function fillData_Tour()
 {	
 	var object = tourDict[current_tour_point][0];
-	var title_split = object.title.split(".");
-	$("#panel_name").html(title_split[0] + "<span class=\"title_pipe\"> | </span>" + title_split[1]);
+	//var title_split = object.title.split(".");
+	//$("#panel_name").html(title_split[0] + "<span class=\"title_pipe\"> | </span>" + title_split[1]);
+	$("#panel_name").html(current_tour_point + "<span class=\"title_pipe\"> | </span>" + object.title);
 	getImages_Tour(object);
 }
 function getImages_Tour(object)

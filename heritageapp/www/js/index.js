@@ -6,8 +6,7 @@ var stack = new Array();
 document.addEventListener("backbutton", onBackKeyDown, false);
 
 function onBackKeyDown() {
-
-  screen.unlockOrientation();
+   screen.unlockOrientation();
    //window.cancelAnimationFrame(animate);
    runanimation = false;
 
@@ -18,8 +17,7 @@ function onBackKeyDown() {
         de.parentNode.removeChild(de);
       }
 
-    image_index360 = 0;
-
+	image_index360 = 0;
     console.log("backback");
     if(stack.length==0)
       navigator.app.exitApp();
@@ -171,11 +169,14 @@ app.config(function($routeProvider){
 			  .when('/sphereimage', {
                 templateUrl: 'sphereimage.html'
           })
-        .when('/aerialgal', {
+			 .when('/aerialgal', {
                 templateUrl: 'aerialgal.html'
           })
 			  .when('/gallery_start', {
                 templateUrl: 'gallery-start.html'
+          })
+			  .when('/explorer_clues', {
+                templateUrl: 'explorer_clues.html'
           })
 		  ;
 

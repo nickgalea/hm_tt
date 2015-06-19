@@ -1,57 +1,79 @@
 <snap-content>	
-        <div id="action-bar">
-            <div class="cross" onclick="location.href=stack.pop();"></div>
-        </div>
-
-		<div id="tools">
-			<div id = "sh" class="tool selected" >shovel</div>
-			<div id = "br" class="tool">big tool</div>
-			<div id = "ab" class="tool">small tool</div>
-			<div id = "cd" class="tool">brush</div>
+	<script>
+		//screen.lockOrientation('landscape');
+	</script>
+		<div id = "game_page">
+		<!--div class="cross" onclick="location.href=stack.pop();"></div-->
+			<!--img id="menutoggle" snap-toggle="" src="img/icons/back.png" onclick="onBackKeyDown();"></img-->
+			<div id="parent">
+				<div id="canvas">
+				
+				</div>
+				<div id="canvas2">
+				
+				</div>
+			</div>
+			<div id = "right">
+				<div id="tools">
+					<div id = "ps" class="tool selected" >
+						<img src="img/exc/pick_and_shovel.png"></img>
+						pick and shovel
+					</div>
+					<div id = "tb" class="tool">
+						<img src="img/exc/brush_and_trowel.png"></img>
+						brush and trowel
+					</div>
+				</div>
+				<div class="message">
+					<p id = "text"></p>
+				</div>
+			</div>
 		</div>
-		<div class="message">
-			<p id = "text"></p>
+		<div id = "message_screen" class="full-container">
+			<div id = "message_top" style="height:70%;">
+				<img src="img/exc/documentation.png" style="width:30%;float:left;"></img>
+				<div style="width:50%;float:left; padding-right:2%;">You Have Discovered the Artefact</div>
+				<div>\nWould you like to Document it?</div>
+			</div>
+			<div id = "message_bottom">
+				<span id = "message_yes" class = ".message_button">Yes</span>
+				<span id = "message_no" class = ".message_button">No</span>
+			</div>
 		</div>
 		
-		<div id="parent">
-			<div id="canvas">
-			
-			</div>
-			<div id="canvas2">
-			
-			</div>
-		</div>
  <script>
+ //screen.lockOrientation('landscape');
+ var game_level = 1;
  var scratchPad;
  var scratchPad1;
- var layers = ["img/exc/top_layer.JPG","img/exc/21_layer.jpg","img/exc/31_layer.jpg","img/exc/4_layer.jpg"];
- var tools = ['sh','br','ab','cd'];
+ var layers = ["img/exc/Level1.jpg","img/exc/Level2.jpg","img/exc/Level3.jpg","img/exc/Level4.jpg"];
+ //var artef = ["img/exc/amulet.png","img/exc/duck.png","img/exc/pot.png","img/exc/statue.png"];
+ var layer_artef = ["img/exc/Level3amulet.jpg","img/exc/Level4pot.jpg","img/exc/Level3duck.jpg","img/exc/Level4statuette.jpg"];
+ var tools = ['ps','ps','tb','tb'];
  var position = 0;
- var current_tool = "sh";
+ var current_tool = "ps";
  var scratchvar = false;
  var canvas_num_0 = -1;
 function createCanvas(back,fore)
 {
 	scratchPad = $('#canvas2').wScratchPad({
-	  size        : 30,          // The size of the brush/scratch.
+	  size        : 40,          // The size of the brush/scratch.
 	  bg          : back,  // Background (image path or hex color).
 	  fg          : fore,  // Foreground (image path or hex color).
 	  realtime    : true,       // Calculates percentage in realitime.
-	  scratchDown: null,//function(){ console.log("DOWN"); },
-	  scratchUp   : null,//function(){ console.log("UP"); },       // Set scratchUp callback.
+	  scratchDown: null,
+	  scratchUp   : null,       // Set scratchUp callback.
 	  scratchMove : function (e, percent) {
-				/*if (percent > 20) {
+				if (percent > 20) {
 					if(current_tool !== tools[position])
 					{
 						displayMessage("Game over, used wrong tool");
 					}
-				}*/
+				}
 				if(position < 3)
 				{
 					if (percent > 50) {
-						console.log("!!!!!!!!!!!!!!");
 						this.scratch = false;
-						console.log("!!!!!!!!!!!!!!");
 						//$('#canvas2').remove();
 						//$('#parent').append("<div id=\"canvas2\"></div>");
 						//$('#canvas2').hide();
@@ -67,7 +89,6 @@ function createCanvas(back,fore)
 							$('#canvas2').hide();
 							$('#canvas').show();
 						}
-						console.log("!!!!!!!!!!!!!!");
 					}
 				}
 				else
@@ -87,19 +108,19 @@ function createCanvas1(back,fore)
 {
 	//$('#canvas').hide();
 	scratchPad1 = $('#canvas').wScratchPad({
-	  size        : 30,          // The size of the brush/scratch.
+	  size        : 40,          // The size of the brush/scratch.
 	  bg          : back,  // Background (image path or hex color).
 	  fg          : fore,  // Foreground (image path or hex color).
 	  realtime    : true,       // Calculates percentage in realitime.
 	  scratchDown: null,//function(){ console.log("DOWN"); },
 	  scratchUp   : null,//function(){ console.log("UP"); },       // Set scratchUp callback.
 	  scratchMove : function (e, percent) {
-				/*if (percent > 20) {
+				if (percent > 20) {
 					if(current_tool !== tools[position])
 					{
 						displayMessage("Game over, used wrong tool");
 					}
-				}*/
+				}
 				if(position < 3)
 				{
 					if (percent > 50) {
@@ -133,25 +154,26 @@ function createCanvas1(back,fore)
 	$('#canvas').hide();
 }
 
-createCanvas(layers[position+1],layers[position]);
-createCanvas1(layers[position+2],layers[position+1]);
+
 
 $(".tool").click(function(){
-	if($(this).attr("id") === "sh")
+	if($(this).attr("id") === "ps")
 	{
-		scratchPad.wScratchPad('size', 10);
-		current_tool = "sh";
+		//document.getElementById("message_screen").style.display="block"; 
+		scratchPad.wScratchPad('size', 40);
+		current_tool = "ps";
+		$(this).addClass( "selected" );
+		$( this ).siblings().removeClass( "selected" );
+		
+	}
+	else if($(this).attr("id") === "tb")
+	{
+		scratchPad.wScratchPad('size', 30);
+		current_tool = "tb";
 		$(this).addClass( "selected" );
 		$( this ).siblings().removeClass( "selected" );
 	}
-	else if($(this).attr("id") === "br")
-	{
-		scratchPad.wScratchPad('size', 10);
-		current_tool = "br";
-		$(this).addClass( "selected" );
-		$( this ).siblings().removeClass( "selected" );
-	}
-	else if($(this).attr("id") === "ab")
+	/*else if($(this).attr("id") === "ab")
 	{
 		current_tool = "ab";
 		scratchPad.wScratchPad('size', 10);
@@ -164,53 +186,119 @@ $(".tool").click(function(){
 		scratchPad.wScratchPad('size', 10);
 		$(this).addClass( "selected" );
 		$( this ).siblings().removeClass( "selected" );
-	}
+	}*/
 });
 
 function displayMessage(text)
 {
 	$('#text').html(text);
 }
+function start_game()
+{
+	layers[2] = layer_artef[(game_level*2)-1];
+	layers[3] = layer_artef[(game_level*2)];
+	createCanvas(layers[position+1],layers[position]);
+	createCanvas1(layers[position+2],layers[position+1]);
+}
+
+start_game();
  </script>
  <style>
+ #game_page
+ {
+	background-color:#ae1215;
+	color:white;
+	height:100%;
+	width:100%;
+	
+ }
  #parent{
-	height:60%;
-	width:90%;
-	/*height:300px;
-	width:300px;*/
-	margin-left:5%;
+	height:80%;
+	width:50%;
+	float:left;
+	margin: 5%;
+	/*background-color:green;*/
  }
  #canvas2
  {
 	height:100%;
 	width:100%;
-	
+	border-radius: 25px;
+	border-style: solid;
+    border-width: 2px;
+	border-color:white;
+	overflow:hidden;
  }
 #canvas2 img
  {
-	height:500px;
+	/*height:500px;
 	width:500px;
+	height:100%;
+	width:100%;*/
  }
  #canvas
  {
 	height:100%;
 	width:100%;
-	
+	border-radius: 25px;
+	border-style: solid;
+    border-width: 2px;
+	border-color:white;
+	overflow:hidden;
  }
 #canvas img
  {
-	height:500px;
+	/*height:500px;
 	width:500px;
+	height:100%;
+	width:100%;*/
+ }
+ #right
+ {
+	/*background-color:blue;*/
+	height:100%;
+	float:left;
+	width:40%;
+ }
+ #tools
+ {
+	height:60%;
+	/*background-color:green;*/
  }
  .tool{
- width:50px;
- float:right;
+ width:40%;
+ font-size:200%;
+ float:left;
+ /*background-color:red;*/
+ margin-top:15%;
+ margin-left:5%;
+ text-align: center;
+ }
+ .tool img{
+ width:100%;
+
  }
  .message{
  font-size: 200%;
  }
+
  .selected{
- color: red;
+ color: blue;
+ }
+ #message_screen{
+	height:70%;
+	width:70%;
+	background-color:white;
+	color:black;
+	font-size: 200%;
+	padding : 2%;
+	position:fixed;
+	top:0;
+	display:none;
+ }
+ .message_button{
+	font-size: 300%;
+	text-decoration: underline;
  }
  </style>
 </snap-content>

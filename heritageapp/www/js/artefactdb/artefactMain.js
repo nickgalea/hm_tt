@@ -28,6 +28,7 @@ function createArtList()
 		
 		var artefactTable = client.getTable('artefact_table');
 		var query = artefactTable.where({
+			language:lang_index
 		}).read().done(function (results) {
 			console.log("RESULT OBTAINED");
 			artefact_list = results;
@@ -113,21 +114,21 @@ function createArtefactRow(position)
 	//add info to div
 	if(artefact_list[position].name.length > 12)
 	{
-		div_row.className += ' smallerfont'
+		//div_row.className += ' smallerfont'
 		console.log("HEREEE " + artefact_list[position].name.length);
-		$(" <h1>"+ artefact_list[position].name +"</h1>").appendTo(div_info);
+		$(" <h1>"+ artefact_list[position].name.substring(0,10)+".." +"</h1>").appendTo(div_info);
 	}
 	else
 		$(" <h1>"+ artefact_list[position].name +"</h1>").appendTo(div_info);
 	//)
-	if(artefact_list[position].period.length > 6)
+	/*if(artefact_list[position].period.length > 6)
 	{
-		div_row.className += ' smallerfontper'
-		$(" <p><i>"+ artefact_list[position].period +"</i></p>").appendTo(div_info);
+		//div_row.className += ' smallerfontper'
+		$(" <p><i>"+ artefact_list[position].period.substring(0,5)+".." +"</i></p>").appendTo(div_info);
 	}
 	else
 		$(" <p><i>"+ artefact_list[position].period +"</i></p>").appendTo(div_info);
-	
+	*/
 	//attach divs to parent div
 	$(div_row).append(div_img);
 	$(div_row).append(div_info);
@@ -164,10 +165,9 @@ function populatePage()
 	$("#artefact_type").text(artefact_list[artefact_position].type);
 	$("#artefact_material").text(artefact_list[artefact_position].mat);
 	$("#artefact_use").text(artefact_list[artefact_position].use);
-	$("#artefact_info").text(artefact_list[artefact_position].text_eng);
+	$("#artefact_info").text(artefact_list[artefact_position].info);
 	
 }
-
 
 function getImages()
 {
@@ -178,7 +178,7 @@ function getImages()
 		
 	var resTable = client.getTable('resources');
 	var query = resTable.where({
-		artefact_id:artefact_list[artefact_position].id
+		artefact_id:artefact_list[artefact_position].reference
 	}).read().done(function (results) {
 		console.log(JSON.stringify(results));
 		setArtefactImages(results);
