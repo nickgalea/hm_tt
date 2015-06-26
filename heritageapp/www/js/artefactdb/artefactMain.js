@@ -85,6 +85,7 @@ function fillGallery()
 		}
 		div_gallery.appendTo(".white-container");
 	}
+	$("#loading").remove();
 }
 
 function createArtefactRow(position)

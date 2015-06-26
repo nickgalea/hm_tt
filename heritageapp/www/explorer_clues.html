@@ -1,24 +1,266 @@
 <snap-content>
+	<div class="game">
         <div id="action-bar">
             <div class="cross" onclick="location.href='index.html'"></div>
-            <div class="points"><span>100</span> points</div>
+            <div class="points"><span id="pts">100</span> </div>
         </div>
         <div id="profile-title">
-            <h1>Clue 1</h1>
+            <h1 id= "artefact_text">Artefact </h1><h1 id="art_num"></h1>
             <p>Can you find this artifact at Tarxien Temples?</p>
         </div>
         <div id="big-center-header">
-            <h1>These carvings represent strength.</h1>
+            <h1 id = "desc">These carvings represent strength.</h1>
             <div class="circle active"></div>
             <div class="circle"></div>
             <div class="circle"></div>
         </div>
-        <div class="wrapper">
-            <div class="wrapper">
-                <h1 class="found">Found It!</h1>
-            </div>
+		<div id="big-center-hints">
+            <!--div class="hintbox">
+				<span class="hidden_hint">Hint</span>
+				<span class="hint"></span>
+			</div-->
         </div>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/jquery.js"></script>
-        <script type="text/javascript" src="js/scripts.js"></script>
-</snap-content>   
+		
+        <div id="multi" class="wrapper">
+                
+				<p class="mult_title mult_options">Multiple choice!</p>
+				<h1 class="found">Found It!</h1>
+        </div>
+	</div>
+		<div id = "ans_screen" >
+			<div id = "message_top" style="height:70%;">
+				<div id = "ans_text" class = "message_text_desc"> </div>
+				<div id = "ans_text2" class = "message_text_desc"> </div>
+				<div id = "ans_text3" class = "message_text_desc"> </div>
+			</div>
+			<div id = "message_bottom">
+				<span id = "next_level" class = "message_button" >Next Level!</span>
+				<span id = "" class = "message_button" onclick="$('#ans_screen').hide();onBackKeyDown();">Quit Game</span>
+			</div>
+		</div>
+</snap-content>
+<script>
+var points = 100;
+var total_points=0;			
+var game_level = 1;
+var correct_guesses = 0;
+//ingame text
+//langNo 0 - eng, 1 - malt 2 ital
+var objects = [{desc:"This object was used when fires were lit inside the Temples.",ans:"Hearth in Central Temple",option2:"option2",option3:"option3",hint:["You can see patches of red on the object where the stone was burnt","This object is made of stone and lies on the floor"]},
+			   {desc:"This carving on stone shows a female animal.",ans:"The sow with piglets carving",option2:"option2",option3:"option3",hint:["We know it is female because it is the only animal shown with its young","On the same stone above the female animal, you can see the carving of a large bull"]},
+			   {desc:"The biggest statue to be found in all of the Temples in Malta and Gozo.",ans:"The over-sized human figure",option2:"option2",option3:"option3",hint:["It is wearing a knee-length skirt","It is close to the main doorway"]},
+			   {desc:"A door which leads to nowhere",ans:"Left hand apse of Central Temple",option2:"option2",option3:"option3",hint:["This is found in the last temple built on this site","It lies close to a large bowl made out of stone"]},
+			   {desc:"The smallest doorway at Tarxien",ans:"Passageway between South and Central Temple",option2:"option2",option3:"option3",hint:["This doorway leads to a very small room and it has holes","This doorway lies in the centre of the temple building"]}
+				];
+var objects_en = [{desc:"This object was used when fires were lit inside the Temples.",ans:"Hearth in Central Temple",option2:"option2",option3:"option3",hint:["You can see patches of red on the object where the stone was burnt","This object is made of stone and lies on the floor"]},
+			   {desc:"This carving on stone shows a female animal.",ans:"The sow with piglets carving",option2:"option2",option3:"option3",hint:["We know it is female because it is the only animal shown with its young","On the same stone above the female animal, you can see the carving of a large bull"]},
+			   {desc:"The biggest statue to be found in all of the Temples in Malta and Gozo.",ans:"The over-sized human figure",option2:"option2",option3:"option3",hint:["It is wearing a knee-length skirt","It is close to the main doorway"]},
+			   {desc:"A door which leads to nowhere",ans:"Left hand apse of Central Temple",option2:"option2",option3:"option3",hint:["This is found in the last temple built on this site","It lies close to a large bowl made out of stone"]},
+			   {desc:"The smallest doorway at Tarxien",ans:"Passageway between South and Central Temple",option2:"option2",option3:"option3",hint:["This doorway leads to a very small room and it has holes","This doorway lies in the centre of the temple building"]}
+				];
+var objects_mt = [{desc:"MTThis object was used when fires were lit inside the Temples.",ans:"Hearth in Central Temple",option2:"option2",option3:"option3",hint:["You can see patches of red on the object where the stone was burnt","This object is made of stone and lies on the floor"]},
+			   {desc:"MtThis carving on stone shows a female animal.",ans:"The sow with piglets carving",option2:"option2",option3:"option3",hint:["We know it is female because it is the only animal shown with its young","On the same stone above the female animal, you can see the carving of a large bull"]},
+			   {desc:"MTThe biggest statue to be found in all of the Temples in Malta and Gozo.",ans:"The over-sized human figure",option2:"option2",option3:"option3",hint:["It is wearing a knee-length skirt","It is close to the main doorway"]},
+			   {desc:"MTA door which leads to nowhere",ans:"Left hand apse of Central Temple",option2:"option2",option3:"option3",hint:["This is found in the last temple built on this site","It lies close to a large bowl made out of stone"]},
+			   {desc:"MTThe smallest doorway at Tarxien",ans:"Passageway between South and Central Temple",option2:"option2",option3:"option3",hint:["This doorway leads to a very small room and it has holes","This doorway lies in the centre of the temple building"]}
+				];
+var objects_it = [{desc:"ITThis object was used when fires were lit inside the Temples.",ans:"Hearth in Central Temple",option2:"option2",option3:"option3",hint:["You can see patches of red on the object where the stone was burnt","This object is made of stone and lies on the floor"]},
+			   {desc:"ITThis carving on stone shows a female animal.",ans:"The sow with piglets carving",option2:"option2",option3:"option3",hint:["We know it is female because it is the only animal shown with its young","On the same stone above the female animal, you can see the carving of a large bull"]},
+			   {desc:"ITThe biggest statue to be found in all of the Temples in Malta and Gozo.",ans:"The over-sized human figure",option2:"option2",option3:"option3",hint:["It is wearing a knee-length skirt","It is close to the main doorway"]},
+			   {desc:"ITA door which leads to nowhere",ans:"Left hand apse of Central Temple",option2:"option2",option3:"option3",hint:["This is found in the last temple built on this site","It lies close to a large bowl made out of stone"]},
+			   {desc:"ITThe smallest doorway at Tarxien",ans:"Passageway between South and Central Temple",option2:"option2",option3:"option3",hint:["This doorway leads to a very small room and it has holes","This doorway lies in the centre of the temple building"]}
+				];
+var objects_fr = [{desc:"FRThis object was used when fires were lit inside the Temples.",ans:"Hearth in Central Temple",option2:"option2",option3:"option3",hint:["You can see patches of red on the object where the stone was burnt","This object is made of stone and lies on the floor"]},
+			   {desc:"FRThis carving on stone shows a female animal.",ans:"The sow with piglets carving",option2:"option2",option3:"option3",hint:["We know it is female because it is the only animal shown with its young","On the same stone above the female animal, you can see the carving of a large bull"]},
+			   {desc:"FRThe biggest statue to be found in all of the Temples in Malta and Gozo.",ans:"The over-sized human figure",option2:"option2",option3:"option3",hint:["It is wearing a knee-length skirt","It is close to the main doorway"]},
+			   {desc:"FRA door which leads to nowhere",ans:"Left hand apse of Central Temple",option2:"option2",option3:"option3",hint:["This is found in the last temple built on this site","It lies close to a large bowl made out of stone"]},
+			   {desc:"FRThe smallest doorway at Tarxien",ans:"Passageway between South and Central Temple",option2:"option2",option3:"option3",hint:["This doorway leads to a very small room and it has holes","This doorway lies in the centre of the temple building"]}
+				];	
+//finish game text
+var well_done = ["Well Done!","Prosit!","ITWell Done!","FRWell Done!"];
+var try_again = ["Try Again!","Erga Prova!","ITTry Again!","FRTry Again!"];
+var guesses = [" Artefacts were correctly answered."," MTArtefacts were correctly answered."," IT Artefacts were correctly answered."," FR Artefacts were correctly answered."];
+var wrong_answer = ["Wrong Answer!","Risposta Hazina!","ITWrong Answer!","FRWrong Answer!"];
+var points_from_level = ["Points collected from this level: ","MTPoints collected from this level: ","ITPoints collected from this level: ","FRPoints collected from this level: "];
+var total_points_text = 	["Total Points till now: ","MTTotal Points till now: ","ITTotal Points till now: ","FRTotal Points till now: "];
+var correct_ans = ["Correct Answer!","Risposta Tajba!","ITCorrect Answer!","FRCorrect Answer!"];	
+var points_text = ["points","punti","punti","FRpoints"];
+var artefact_text = ["Artefact","MTArtefact","ITArtefact","FRArtefact"];
+//run only one on entry
+switch(lang_index) {
+case 0:
+	objects = objects_en;
+	break;
+case 1:
+	objects = objects_mt;
+	break;
+case 2:
+	objects = objects_it;  
+	break;
+default:
+	break;
+}
+$(".points").append(points_text[lang_index]);
+$("#artefact_text").html(artefact_text[lang_index]);
+	
+function start_game()
+{
+	console.log("LANGUAGE " + lang_index);
+	//edit description and artefact number
+	$("#desc").html(objects[game_level-1].desc);
+	$("#art_num").html(game_level);
+	//recreate points
+	points = 100;
+	$("#pts").html(points);
+	//edit hints and options
+	create_hints();
+	create_options();
+}
+function next_level()
+{
+	game_level++;
+	if(game_level == objects.length+1)
+	{
+		finish_game();
+	}
+	start_game();
+	$('#ans_screen').fadeOut();
+}
+function finish_game()
+{
+	if(correct_guesses > 2)
+		$("#ans_text").html(well_done[lang_index]);
+	else
+		$("#ans_text").html(try_again[lang_index]);
+	$("#ans_text2").html(correct_guesses + "/" + objects.length + guesses);
+	$("#ans_text3").html("");
+	$("#next_level").hide();
+}
+function create_hints()
+{
+	var hints = objects[game_level-1].hint;
+	$(".hintbox").remove();
+	for(var i = 0 ; i < hints.length;i++)
+	{
+		$("#big-center-hints").append("<div class=\"hintbox\"><span class=\"hidden_hint\" onclick=\"hint_click(this)\">Hint</span><span class=\"hint\">"+hints[i]+"</span></div>");		
+	}
+}
+function create_options()
+{
+	$( ".mult_options" ).remove();
+	var ans = objects[game_level-1].ans;
+	var op2 = objects[game_level-1].option2;
+	var op3 = objects[game_level-1].option3;
+	var rand = Math.random();
+	//randomise to change position of correct answer
+	if(rand < 0.33)
+		$("#multi").append("<p id=\"ans\" class=\"mult_options\" onclick=\"ans_click()\">"+ans+"</p>");
+	$("#multi").append("<p id=\"not_ans\" class=\"mult_options\" onclick=\"not_ans_click()\">"+op2+"</p>");
+	if(rand >= 0.33 && rand < 0.66)
+		$("#multi").append("<p id=\"ans\" class=\"mult_options\" onclick=\"ans_click()\">"+ans+"</p>");
+	$("#multi").append("<p id=\"not_ans\" class=\"mult_options\" onclick=\"not_ans_click()\">"+op3+"</p>");
+	if(rand >= 0.66)
+		$("#multi").append("<p id=\"ans\" class=\"mult_options\" onclick=\"ans_click()\">"+ans+"</p>");
+}
+start_game();
+
+function hint_click(el)
+{
+	$(el).hide();
+	$(el).next().show();
+	points = points - 20;
+	$("#pts").html(points);
+}
+function not_ans_click()
+{
+	total_points = total_points+0;
+	$("#ans_text").html(wrong_answer[lang_index]);
+	$("#ans_text2").html(points_from_level[lang_index] + " 0");
+	$("#ans_text3").html(total_points_text[lang_index] + total_points);
+	$("#next_level").show();
+	$("#ans_screen").fadeIn();
+	$( ".game" ).addClass( "untargetable" );
+} 
+
+function ans_click()
+{
+	total_points = total_points + points;
+	correct_guesses++;
+	$("#ans_text").html(correct_ans[lang_index]);
+	$("#ans_text2").html(points_from_level[lang_index] + points);
+	$("#ans_text3").html(total_points_text[lang_index] + total_points);
+	$("#next_level").show();
+	$("#ans_screen").fadeIn();	
+	$( ".game" ).addClass( "untargetable" );
+} 
+$("#next_level").click(function(){
+	next_level();
+	$( ".game" ).removeClass("untargetable");
+});
+
+
+</script>   
+<style>
+#big-center-hints{
+    text-align: center;
+    margin: 6em 0;
+}
+#big-center-hints {
+    font-weight: bold;
+    font-size: 2.0em;
+}
+.hintbox
+{	
+	padding-bottom:10px;
+}
+.hint
+{
+	display:none;
+}
+.mult_options{
+    text-align: center;
+    border-bottom: 1px solid #b2b2b2;
+    color: #000;
+    font-size: 2.5em;
+    padding-bottom: 0.3em;
+    font-weight: normal;
+}
+.mult_title
+{
+	font-weight: bold;
+}
+.found
+{
+	display:none;
+}
+#big-center-hints{
+        margin: 1.0em 0;
+    }
+#ans_screen{
+	height:90%;
+	width:70%;
+	background-color:#ae1215;
+	color:white;
+	font-size: 200%;
+	padding : 2%;
+	position:fixed ;
+	top:10%;
+	margin-left:15%;
+	display:none;
+	z-index:80;
+ }
+ #ans_text
+ {
+	text-align: center;
+    border-bottom: 1px solid #b2b2b2;
+	padding-bottom: 0.3em;
+    font-size: 2.5em;
+ }
+ .untargetable
+ {
+	pointer-events: none;
+ }
+  .message_button{
+	margin-left:10%;
+ }
+</style>
