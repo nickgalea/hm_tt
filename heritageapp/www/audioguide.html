@@ -1,0 +1,363 @@
+<div id="time-bar"></div>
+<div id="action-bar">
+	<div id="close_button" class="cross" onclick="location.href=stack.pop();"></div>
+	<!--div id="audio_button" class="audio_red" onclick="click_audiobutton()"></div-->
+</div>
+<div id="panel-description" style="height:none;">
+
+	<div id="profile-title">
+		<h1 id ="panel_name"><span class="title_pipe"> </span>Audio Guides</h1>
+	</div>
+
+	<div id="par_text1">
+		<div id = "loading">
+			<img src="img/icons/loader.gif"></img>
+		</div>
+		<!--div class="question_time">
+            <div class = "intro_question">
+                <h2>Who were the Temple Builders? </h2>
+				<div id="audio_button" class="audio_red row_audio"></div>
+                <p id="expander" class="expander_class" style="">+</p>
+				<div class=" children ">
+					<p class=" sound_tour child_audio">Test</p>
+					<div id="audio_button" class="audio_red row_audio" onclick=""></div>
+					<p class=" sound_tour child_audio">Test</p>
+					<div id="audio_button" class="audio_red row_audio" onclick=""></div>
+					<p class=" sound_tour child_audio">Test</p>
+					<div id="audio_button" class="audio_red row_audio" onclick=""></div>
+				</div>
+            </div>
+        </div-->
+	</div>
+</div>
+<script>
+var tour_id_list = [];
+var current_tour_point ;
+//var tourDict = [{}];
+/*function get_all_audio()
+{
+	if(tour_list == null)
+	{
+		var client = new WindowsAzure.MobileServiceClient(
+		"https://heritagemalta.azure-mobile.net/",
+		"aoCAcmyiogRmCISDWtfEDYzuHsQjGx40"
+		);
+		
+		var tourTable = client.getTable('tour_points');
+		var query = tourTable.orderBy("panel_numb").where({
+			panel_type:"parent"
+		}).read().done(function (results) {
+			tour_list = results;
+			for(var i = 0; i < tour_list.length;i++)
+			{
+				tour_id_list.push(tour_list[i].id);
+				$("#par_text").append("<p id = \"panel_binfo\" class=\"content sound_tour\">"+(i+1) + " "+ tour_list[i].title +"</p>");
+			}
+			console.log("GOT RESOURCES TOUR POINTS");
+			handler();
+		}, function (err) {
+			alert("Error: Check your internet connection.");
+		}); 
+	}
+}*/
+getTourList1();
+//get list of tour and set in dictionary
+function getTourList1()
+{
+	console.log("IN GET LIST");
+	if(tour_list == null)
+	{
+		var client = new WindowsAzure.MobileServiceClient(
+		"https://heritagemalta.azure-mobile.net/",
+		"aoCAcmyiogRmCISDWtfEDYzuHsQjGx40"
+		);
+		
+		var artefactTable = client.getTable('tour_points');
+		var query = artefactTable.where({
+		language:lang_index
+		}).read().done(function (results) {
+			tour_list = results;
+			var panel_array;
+			console.log("IN GET LIST2");
+			for(var i = 0 ; i < tour_list.length;i++)
+			{
+				//console.log(tour_list[i].title+tour_list[i].panel_type+tour_list[i].lat+tour_list[i].lon+tour_list[i].panel_numb+tour_list[i].quest_type);
+				panel_array = tourDict[tour_list[i].panel_numb];
+				if(panel_array == null )
+				{
+					var arr = [];
+					arr.push(tour_list[i]);
+					tourDict[tour_list[i].panel_numb] = arr;
+				}
+				else
+				{
+					if(tour_list[i].panel_type === "parent")
+						tourDict[tour_list[i].panel_numb].unshift(tour_list[i]);
+					else if(tour_list[i].panel_type === "list")
+					{
+						var first_el = tourDict[tour_list[i].panel_numb][0];
+						if(first_el.panel_type === "parent")
+						{
+							if(tourDict[tour_list[i].panel_numb][1] == null)
+							{
+								tourDict[tour_list[i].panel_numb].push(tour_list[i]);
+							}
+							else
+							{
+								var temp = tourDict[tour_list[i].panel_numb][1];
+								tourDict[tour_list[i].panel_numb][1] = tour_list[i];
+								tourDict[tour_list[i].panel_numb].push(temp);
+							}
+						}
+						else
+						{
+							tourDict[tour_list[i].panel_numb].unshift(tour_list[i]);
+						}
+					}
+					else
+						tourDict[tour_list[i].panel_numb].push(tour_list[i]);
+				}
+			}
+			get_all_audio();
+			console.log("REQUEST MADE ");
+		}, function (err) {
+			alert("Error: Check your internet connection.");
+		}); 
+	}
+	else
+	{
+		console.log("REQUEST NOT MADE ");
+		get_all_audio();
+	}		
+}
+//display titles and audios on screen
+function get_all_audio()
+{	
+	console.log("Tour Dict len " + tourDict.length);
+	var children = false;
+	for(var i = 1; i < tourDict.length;i++)
+	{
+		console.log("ii " +tourDict[i][0]);
+		console.log("ii " +tourDict[i][1]);
+		console.log("ii " +tourDict[i].length);
+
+		var top_parent_div = $("<div class=\"question_time\"></div>");
+		var parent_div = $("<div class = \"intro_question\"></div>");
+		$(top_parent_div).append(parent_div);
+		$(parent_div).append("<h2 id = \"\" class=\"sound_tour\">"+(i) + " "+ tourDict[i][0].title +"</h2>");
+		$(parent_div).append("<div id=\"audio_button\" class=\"audio_red row_audio\" onclick=\"\"></div>");
+		/*if(tourDict[i].length > 1)
+		{
+			$(parent_div).append("<p id=\"expander2\" class=\"expander_class\"> + </p>");
+		}*/
+		//$(parent_div).append("<p id=\"expander\" class=\"expander_class\"> + </p>");
+		$("#par_text1").append(top_parent_div);
+		var child_div = $("<div class=\" children \"></div>");
+		$(top_parent_div).append(child_div);
+		
+		for(var j = 1; j < tourDict[i].length;j++)
+		{
+			if(tourDict[i][j].panel_type == "child" && tourDict[i][j].quest_type == "info")
+			{
+				children = true;
+				$(child_div).append("<p class=\" sound_tour child_audio\">"+  tourDict[i][j].title +"</p>");
+				$(child_div).append("<div id=\"audio_button\" class=\"audio_red row_audio\" style=\"margin-top:20px;\" onclick=\"\"></div>");
+			}
+		}
+		if(children == true)
+		{
+			$(parent_div).append("<p id=\"expander\" class=\"expander_class\" style=\"\">+</p>");
+		}
+		
+		children = false;
+	}
+	$("#loading").remove();
+	handler();
+	getAudio();
+}
+//get audio files from table
+function getAudio()
+{
+	var client = new WindowsAzure.MobileServiceClient(
+		"https://heritagemalta.azure-mobile.net/",
+		"aoCAcmyiogRmCISDWtfEDYzuHsQjGx40"
+		);
+		//console.log("ID " + tour_point.id);
+	var resTable = client.getTable('resources');
+	//get all audios
+	var query = resTable.where({
+			resource_type:"audio"
+		}).read().done(function (results) {
+			console.log("GOT AUDIO res length " + results.length);
+			if(results.length != 0)
+			{
+				addAudioDict(results);
+			}
+	}, function (err) {
+		alert("Error: " + err);
+	}); 
+	
+}
+//add sound url to object
+function addAudioDict(results)
+{
+	console.log("IN ADDAUDIO DICT");
+	//loop dict
+	for(var i = 1; i < tourDict.length;i++)
+	{
+		
+		for(var k = 0; k < results.length; k++)
+		{
+			if(tourDict[i][0].id == results[k].tour_id)
+			{
+				//add sound url to object
+				console.log("ADDED SOUND FILE");
+				tourDict[i][0].sound = results[k].url;
+				console.log("TOUR SOUND " + tourDict[i][0].sound);
+			}
+		}
+		
+	}
+}
+
+function setTourAudio(audio_link)
+{
+	if(audio_link!= null)
+	{
+		changeAudio(audio_link);
+	}
+	
+}
+//get_all_audio();
+
+function handler()
+{
+$(".sound_tour").on("click",function(){
+ var txt = $(this).html();
+ var num = txt.substring(0, 1);
+ setTourAudio(tourDict[num][0].sound);
+});
+$(".expander_class").click(function() {
+				$(this).parent().next().toggle();
+				
+				var expander = $(this).html();
+				if(expander == "—")
+				{
+					$(this).html("+");
+				}
+				else
+				{
+					$(this).html("—");
+				}
+			});
+			
+$(".audio_red").click(function(){
+	//set new audio
+	var txt = $(this).prev().html();
+	console.log(txt);
+	var num = txt.substring(0, 1);
+	setTourAudio(tourDict[num][0].sound);
+	
+	
+	$("#audio").bind('ended', function(){
+		// done playing
+		$( this ).css( "background", "url(img/icons/audio_red.png) no-repeat");
+		$( this ).css( "backgroundSize", "25px");
+	});
+	
+	$(".audio_red").css( "background", "url(img/icons/audio_red.png) no-repeat");
+	$(".audio_red").css( "backgroundSize", "30px");
+	var audioplayer = document.getElementsByTagName("audio")[0];
+
+	if(audioplayer.paused)
+		{
+			audioplayer.play();
+			$( this ).css( "background", "url(img/icons/pause_red.png) no-repeat");
+			$( this ).css( "backgroundSize", "25px");
+		}
+	else
+		{
+			$( this ).css( "background", "url(img/icons/play_red.png) no-repeat");
+			$( this ).css( "backgroundSize", "25px");
+			audioplayer.pause();
+		}
+});
+
+$("#close_button").click(function(){
+	var audioplayer = document.getElementsByTagName("audio")[0];
+	console.log("Audio PLaying");
+	if(!audioplayer.paused)
+	{
+		audioplayer.pause();
+	}
+});
+}
+document.addEventListener("backbutton", stopAudio, false);
+function stopAudio()
+{
+	console.log("IN STOP AUDIO");
+	var audioplayer = document.getElementsByTagName("audio")[0];
+	if(!audioplayer.paused)
+	{
+		audioplayer.pause();
+	}
+}
+
+
+
+</script>
+<style>
+
+.intro_question
+{
+	padding-bottom:3em;
+}
+.intro_question h2
+{
+	color: #ae1215; 
+	font-weight:700;
+	width:60%;
+}
+
+.child_audio
+{
+	margin-left:10%;
+	float:left;
+	display:inline-block;
+}
+.sound_tour{
+	width:50%;
+	top:0;
+}
+.children
+{
+	display:none;
+	overflow:hidden;
+	width:100%;
+	top:0;
+	font-size:0.85em;#
+}
+.row_audio
+{
+	float:left;
+	width:20%;	
+}
+.question_time
+{
+}
+#expander
+{
+	margin:0px;
+	line-height: 1.25em;
+}
+#loading
+{
+	width:10%;
+	height:10%;	
+	margin-left:45%;
+}
+#loading img
+{
+	width:100%;
+}
+</style>

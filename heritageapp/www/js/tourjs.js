@@ -7,6 +7,7 @@ var startTime = 0;
 
 function getTourList()
 {
+	console.log("TOUR LIST IS " + tour_list);
 	if(tour_list == null)
 	{
 		var client = new WindowsAzure.MobileServiceClient(
@@ -56,7 +57,6 @@ function getTourList()
 					}
 					else
 						tourDict[tour_list[i].panel_numb].push(tour_list[i]);
-						
 				}
 			}
 			//console.log("DICTIONARY " + tourDict["1"][1].panel_type);
@@ -77,8 +77,9 @@ function fillData_Child()
 {	
 	var object = tourDict[current_tour_point][current_child_num];
 	$("#panel_name").html(object.title);
+	
 	getImages_Tour_Child(object);
-	//$("#panel_binfo").html(object.text_eng);
+	//$("#panel_binfo").html(object.info);
 	//getImages_Tour();
 }
 function fillData_Tour()
@@ -97,14 +98,14 @@ function getImages_Tour(object)
 		);
 		
 	var resTable = client.getTable('resources');
-	//console.log("TOUR ID "  + tourDict[current_tour_point][0].id);
+	console.log("TOUR ID "  + tourDict[current_tour_point][0].id);
 	var query = resTable.where({
 		tour_id:tourDict[current_tour_point][0].id
 	}).read().done(function (results) {
 		image_list = results;
 		console.log(image_list.length);
 		replace_imagetags();
-		$("#panel_binfo").html(object.text_eng);
+		$("#panel_binfo").html(object.info);
 		//setTourVid(image_list);
 		setTourAudio(image_list);
 	}, function (err) {
@@ -123,9 +124,9 @@ function getImages_Tour_Child(object)
 		tour_id:tourDict[current_tour_point][current_child_num].id
 	}).read().done(function (results) {
 		image_list = results;
-		console.log("!!!!!!!!!!!!!!!!" + image_list.length);
+		//console.log("!!!!!!!!!!!!!!!!" + image_list.length);
 		replace_imagetags_child();
-		$("#panel_binfo").html(object.text_eng);
+		$("#panel_binfo").html(object.info);
 
 	}, function (err) {
 		alert("Error: " + err);
@@ -179,7 +180,7 @@ function fill_list_data()
 		}
 	}
 	$("#tour_title").text(current_tour[point_list].title);
-	$("#tour_addpaneldes").text(current_tour[point_list].text_eng);
+	$("#tour_addpaneldes").text(current_tour[point_list].info);
 	for(var i = 0 ; i < child_titles.length;i++)
 	{
 		if(current_tour[i+2].quest_type === "artefact")
@@ -227,7 +228,7 @@ function getIndicesOf(searchStr, str) {
 function replace_imagetags()
 {
 	var obj = tourDict[current_tour_point][0];
-	var description = obj.text_eng;
+	var description = obj.info;
 	//console.log(description);
 	var total_images = getIndicesOf("<<", description);
 	for(var i = 0; i<total_images; i++)
@@ -253,14 +254,12 @@ function replace_imagetags()
 		}
 		console.log(key);
 	}
-
-	obj.text_eng = description;
+	obj.info = description;
 }
 function replace_imagetags_child()
 {
-	console.log("hello");
 	var obj = tourDict[current_tour_point][current_child_num];
-	var description = obj.text_eng;
+	var description = obj.info;
 	//console.log(description);
 	var total_images = getIndicesOf("<<", description);
 	console.log(total_images);
@@ -289,7 +288,7 @@ function replace_imagetags_child()
 		console.log(key);
 	}
 
-	obj.text_eng = description;
+	obj.info = description;
 }
 function set_artefactPos(current_child_num)
 {

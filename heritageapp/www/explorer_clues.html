@@ -132,7 +132,7 @@ function finish_game()
 		$("#ans_text").html(well_done[lang_index]);
 	else
 		$("#ans_text").html(try_again[lang_index]);
-	$("#ans_text2").html(correct_guesses + "/" + objects.length + guesses);
+	$("#ans_text2").html(correct_guesses + "/" + objects.length + guesses[lang_index]);
 	$("#ans_text3").html("");
 	$("#next_level").hide();
 }

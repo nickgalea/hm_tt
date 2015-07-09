@@ -178,6 +178,9 @@ app.config(function($routeProvider){
 			  .when('/explorer_clues', {
                 templateUrl: 'explorer_clues.html'
           })
+			  .when('/audio_guide', {
+                templateUrl: 'audioguide.html'
+          })
 		  ;
 
 
