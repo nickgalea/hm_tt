@@ -188,7 +188,7 @@ function getAudio()
 	var query = resTable.where({
 			resource_type:"audio"
 		}).read().done(function (results) {
-			console.log("GOT AUDIO res length " + results.length);
+			//console.log("GOT AUDIO res length " + results.length);
 			if(results.length != 0)
 			{
 				addAudioDict(results);
@@ -201,7 +201,7 @@ function getAudio()
 //add sound url to object
 function addAudioDict(results)
 {
-	console.log("IN ADDAUDIO DICT");
+	//console.log("IN ADDAUDIO DICT");
 	//loop dict
 	for(var i = 1; i < tourDict.length;i++)
 	{
@@ -211,9 +211,8 @@ function addAudioDict(results)
 			if(tourDict[i][0].id == results[k].tour_id)
 			{
 				//add sound url to object
-				console.log("ADDED SOUND FILE");
 				tourDict[i][0].sound = results[k].url;
-				console.log("TOUR SOUND " + tourDict[i][0].sound);
+				//console.log("TOUR SOUND " + tourDict[i][0].sound);
 			}
 		}
 		
@@ -224,6 +223,7 @@ function setTourAudio(audio_link)
 {
 	if(audio_link!= null)
 	{
+		console.log("Assigning Audio to Tag!!");
 		changeAudio(audio_link);
 	}
 	
@@ -235,6 +235,7 @@ function handler()
 $(".sound_tour").on("click",function(){
  var txt = $(this).html();
  var num = txt.substring(0, 1);
+
  setTourAudio(tourDict[num][0].sound);
 });
 $(".expander_class").click(function() {
@@ -255,6 +256,7 @@ $(".audio_red").click(function(){
 	//set new audio
 	var txt = $(this).prev().html();
 	console.log(txt);
+	console.log("IN HANDLER");
 	var num = txt.substring(0, 1);
 	setTourAudio(tourDict[num][0].sound);
 	

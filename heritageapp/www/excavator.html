@@ -1,6 +1,15 @@
 <snap-content>	
 	<script>
+	var mq = window.matchMedia( "(min-width: 961px)" );
+	if (mq.matches) {
+		// tablet
 		screen.lockOrientation('landscape');
+	}
+	else {
+		// window width is less than 500px
+		screen.lockOrientation('portrait');
+	}
+		
 	</script>
 		<div id = "game_page">
 		<!--div class="cross" onclick="location.href=stack.pop();"></div-->
@@ -14,59 +23,63 @@
 				</div>
 			</div>
 			<div id = "right">
-				<div id="tools">
-					<div id = "ps" class="tool selected" >
-						<img src="img/exc/pick_and_shovel.png"></img>
-						<span id="tool1">pick and shovel</span>
-					</div>
-					<div id = "tb" class="tool">
-						<img src="img/exc/brush_and_trowel.png"></img>
-						<span id="tool2">brush and trowel</span>
-					</div>
-				</div>
 				<div class="message">
-					<p id = "text">Choose the right tool to excavate this are and discover the artefact!</p>
+					<p id = "text">Choose the right tool to excavate the area and discover the artefact!</p>
 				</div>
+				<div id="tools">
+					<div id = "tb" class="tool selected" style="margin-left:1em;">
+						<img src="img/exc/brush_and_trowel.png"></img>
+					</div>
+					<div id = "ps" class="tool" style="margin-left:1.5em;">
+						<img src="img/exc/pick_and_shovel.png"></img>
+					</div>
+				</div>
+				
 			</div>
+			
 		</div>
-		<div id = "message_screen" class="full-container">
-			<div class="close_btn" onclick="$('#message_screen').hide();">X</div>
-			<div id = "message_top" style="height:70%;">
-				<img src="img/exc/documentation.png" style="width:30%;float:left;"></img>
-				<div id = "message_text" class = "message_text_desc">You Have Discovered the Artefact</div>
-				<div id = "message_text2" class = "message_text_desc">Would you like to Document it?</div>
-			</div>
-			<div id = "message_bottom">
-				<span id = "message_yes" class = "message_button" onclick="documentArtefact(0);">Yes</span>
-				<span id = "message_no" class = "message_button" onclick="documentArtefact(1);">No</span>
-				<span id = "message_continue" class = "message_button" onclick="$('#message_screen').hide();">Continue Excavation</span>
-				<span id = "message_home" class = "message_button" onclick="$('#message_screen').hide();">Go Home</span>
-				<span id = "message_restart" class = "message_button" onclick="restart_level();">Restart level</span>
-				<span id = "message_quit" class = "message_button" onclick="onBackKeyDown();">Quit Game</span>
-			</div>
-		</div>
-		<div id = "level_screen" class="full-container">
-			<div class="close_btn" onclick="$('#level_screen').hide();">X</div>
-			<div id = "message_top" style="height:70%;">
-				<div id = "level_text" class = "message_text_desc">Level Completed!</div>
-				<div id = "level_text2" class = "message_text_desc">Excavate another site?</div>
-			</div>
-			<div id = "message_bottom">
-				<span id = "level_yes" class = "message_button" onclick="$('#level_screen').hide();">Yes</span>
-				<span id = "level_no" class = "message_button" onclick="onBackKeyDown();">No</span>
-				<span id = "level_quit" class = "message_button" onclick="onBackKeyDown();">Quit</span>
-			</div>
-		</div>
-		<div id = "tool_screen" class="full-container">
-			<div id = "message_top" style="height:70%;">
-				<div id = "tool_text" class = "message_text_desc">Wrong tool was used to discover layer</div>
-				<div id = "tool_text2" class = "message_text_desc"></div>
-			</div>
-			<div id = "message_bottom">
-				<span id = "tool_restart" class = "message_button" onclick="restart_level();">Restart level</span>
-				<span id = "tool_quit" class = "message_button" onclick="onBackKeyDown();">Quit Game</span>
-			</div>
-		</div>
+		<div id="message_screen" class="full-container" style="display:none;">
+            <div class="full-content">
+                <div onclick="$('#message_screen').hide();" class="close"></div>
+                <img class="top-image" src="img/exc/documentation.png" alt="" width="175" />
+				<div id = "message_text" class = "message_text_desc"><p>You Have Discovered the [artefact name]</p></div>
+				<div id = "message_text2" class = "message_text_desc" style="font-weight:bold">Would you like to Document it?</div>
+                <div class="wrapper" id = "message_bottom">
+                    <p id = "message_yes" onclick="documentArtefact(0);" class="liners small">Yes</p>
+                    <p id = "message_no" onclick="documentArtefact(1);" class="liners small">No</p>
+                    <p id = "message_continue" onclick="$('#message_screen').hide();" class="liners small">Keep on Digging!</p>
+                    <p id = "message_home" onclick="$('#message_screen').hide();" class="liners small">Back to Home</p>
+                    <p id = "message_restart" onclick= "restart_level();" class="liners small">Restart Level</p>
+                    <p id = "message_quit" onclick= "onBackKeyDown();" class="liners small">Quit Game</p>
+                </div>
+            </div>            
+    </div>   
+
+    <div id="level_screen" class="full-container" style="display:none;">
+            <div class="full-content">
+                <div onclick="$('#level_screen').hide();" class="close"></div>
+                <img class="top-image" src="img/icons/tick2.png" alt="" width="175" />
+                <p id="level_text">Level Completed!</br><span style="font-weight:bold">Do you want to excavate another site?</span></p>
+                <div class="wrapper" id = "message_bottom">
+                    <p id = "level_yes" onclick="$('#level_screen').hide();" class="liners small">Yes</p>
+                    <p id = "level_no" onclick="onBackKeyDown();" class="liners small">No</p>
+                    <p id = "level_quit" onclick="onBackKeyDown();" class="liners small">Back to Home</p>
+                </div>
+            </div>            
+    </div>     
+	
+	<div id="tool_screen" class="full-container" style="display:none;">
+            <div class="full-content">
+                <!--div onclick="$('#tool_screen').hide();" class="close"></div-->
+                <img class="top-image" src="img/icons/cross_3.png" alt="" width="175" />
+                <p id = "tool_text">Wrong Tool</br><span style="font-weight:bold">You're too slow! You have run out of time and funds! </span></p>
+                <p id = "tool_text2" >Wrong Tool</br><span style="font-weight:bold">You have broken your finds! The authorities have stopped your excavation.</span></p>
+                <div class="wrapper" id = "message_bottom">
+                    <p id = "tool_restart" onclick="restart_level();" class="liners small">Try Again!</p>
+                    <p id = "tool_quit" onclick="onBackKeyDown();" class="liners small">Quit Game</p>
+                </div>
+            </div>            
+    </div>
 		
  <script>
 var game_level = 1;
@@ -77,7 +90,7 @@ var layer_artef = ["img/exc/Level3amulet.jpg","img/exc/Level4pot.jpg","img/exc/L
 var artefact_names = ["Amulet","Pot","Duck","Statuette"];
 var tools = ['ps','','tb','','tb'];
 var position = 0;
-var current_tool = "ps";
+var current_tool = "tb";
 var level_complete = false;
 var found_artefact = "";
 /*language translations 0 - eng,1-mlt, 2- ita, */
@@ -109,7 +122,6 @@ var level_completed2 = ["Excavate another site?","MTExcavate another site?","ITE
 function createCanvas(back,fore)
 {
 	scratchPad = $('#canvas').wScratchPad({
-	  size        : 40,          // The size of the brush/scratch.
 	  bg          : back,  // Background (image path or hex color).
 	  fg          : fore,  // Foreground (image path or hex color).
 	  realtime    : true,       // Calculates percentage in realitime.
@@ -117,6 +129,7 @@ function createCanvas(back,fore)
 	  scratchUp   : null,       // Set scratchUp callback.
 	  scratchMove : function (e, percent) {
 				if (percent > 20) {
+					console.log("Current Tool " + current_tool + " tools[position] " +tools[position]);
 					if(current_tool !== tools[position])
 					{
 						if(tools[position] == 'ps')
@@ -132,7 +145,7 @@ function createCanvas(back,fore)
 				}
 				if(position < 5)
 				{
-					if (percent > 90) {
+					if (percent > 95) {
 						
 						if(position == 2 || position == 4)
 						{
@@ -166,12 +179,21 @@ function createCanvas(back,fore)
 			},       // Set scratcMove callback.
 	  cursor      : 'crosshair' // Set cursor.
 	});
+	
+	if (mq.matches) 
+	{
+		// tablet
+		scratchPad.wScratchPad('size', 30);
+	}
+	else {
+		//mobile
+		scratchPad.wScratchPad('size', 20);
+	}
 }
 function createCanvas1(back,fore)
 {
 	//$('#canvas').hide();
 	scratchPad1 = $('#canvas1').wScratchPad({
-	  size        : 40,          // The size of the brush/scratch.
 	  bg          : back,  // Background (image path or hex color).
 	  fg          : fore,  // Foreground (image path or hex color).
 	  realtime    : true,       // Calculates percentage in realitime.
@@ -195,7 +217,7 @@ function createCanvas1(back,fore)
 				}
 				if(position < 5)
 				{
-					if (percent > 90) {
+					if (percent > 95) {
 						
 						if(position == 2 || position == 4)
 						{
@@ -227,7 +249,15 @@ function createCanvas1(back,fore)
 			},       // Set scratcMove callback.
 	  cursor      : 'crosshair' // Set cursor.
 	});
-	
+	if (mq.matches) 
+	{
+		// tablet
+		scratchPad.wScratchPad('size', 30);
+	}
+	else {
+		//mobile
+		scratchPad.wScratchPad('size', 20);
+	}
 	$('#canvas1').hide();
 }
 
@@ -256,8 +286,17 @@ function reassignBackgrounds(sp)//scratchpad
 $(".tool").click(function(){
 	if($(this).attr("id") === "ps")
 	{
-		//document.getElementById("message_screen").style.display="block"; 
-		scratchPad.wScratchPad('size', 40);
+		if (mq.matches) {
+			// tablet
+			scratchPad.wScratchPad('size', 40);
+			scratchPad1.wScratchPad('size', 40);
+		}
+		else {
+			//mobile
+			scratchPad.wScratchPad('size', 30);
+			scratchPad1.wScratchPad('size', 30);
+		}
+		
 		current_tool = "ps";
 		$(this).addClass( "selected" );
 		$( this ).siblings().removeClass( "selected" );
@@ -265,7 +304,16 @@ $(".tool").click(function(){
 	}
 	else if($(this).attr("id") === "tb")
 	{
-		scratchPad.wScratchPad('size', 30);
+		if (mq.matches) {
+			// tablet
+			scratchPad.wScratchPad('size', 30);
+			scratchPad1.wScratchPad('size', 30);
+		}
+		else {
+			//mobile
+			scratchPad.wScratchPad('size', 20);
+			scratchPad1.wScratchPad('size', 20);
+		}
 		current_tool = "tb";
 		$(this).addClass( "selected" );
 		$( this ).siblings().removeClass( "selected" );
@@ -283,7 +331,7 @@ function displayArtefactMessage(text)
 	else if(position == 4) value =1;
 	found_artefact = artefact_names[(game_level*2)-value];
 	$('#message_text').html(discover_art[lang_index] + found_artefact + " " +discover_art2[lang_index] );
-	$('#message_text2').html(document_art[lang_index]);
+	$('#message_text2').html(document_art[lang_index] + "<br>");
 	$('#message_yes').show();
 	$('#message_no').show();
 	$('#message_continue').hide();
@@ -297,7 +345,7 @@ function documentArtefact(num)
 	if(num == 0)//yes
 	{
 		$('#message_text').html(congrats[lang_index] );
-		$('#message_text2').html("<b>"+ found_artefact+"</b>");
+		$('#message_text2').html("<b>"+ found_artefact+"</b><br>");
 		$('#message_yes').hide();
 		$('#message_no').hide();
 		$('#message_continue').show();
@@ -330,7 +378,7 @@ function displayToolMessage()
 function levelCompleted()
 {
 	game_level++;
-	if(game_level == 4)
+	if(game_level == 3)
 	{
 		$('#level_text').html(game_completed[lang_index]);
 		$('#level_text2').html(game_completed2[lang_index]);	
@@ -398,37 +446,27 @@ function set_translations()
 	$("#tool2").html(tools_brush[lang_index]);
 	
 }
-/*$(window).on("orientationchange",function(){
-  scratchPad.wScratchPad('reset');
-  //scratchPad1.wScratchPad('reset');
-  //reassignBackgrounds(scratchPad);
-  $('#canvas').hide().fadeIn('slow');
-});*/
- </script>
- <style>
- #game_page
+</script>
+<style>
+#game_page
  {
 	background-color:#ae1215;
 	color:white;
 	height:100%;
 	width:100%;
-	
  }
- /*for mobile
- #parent{
-	height:50%;
-	width:80%;
-	float:left;
-	margin: 9%;
- }*/
-/*tablet*/
- #parent{
-	height:80%;
-	width:50%;
-	float:left;
-	margin: 5%;
+#canvas
+ {
+	height:100%;
+	width:100%;
+	border-radius: 25px;
+	border-style: solid;
+    border-width: 2px;
+	border-color:white;
+	overflow:hidden;
  }
- #canvas
+
+#canvas1
  {
 	height:100%;
 	width:100%;
@@ -439,80 +477,74 @@ function set_translations()
 	overflow:hidden;
  }
 #canvas img
- {
-	/*height:500px;
-	width:500px;
-	height:100%;
-	width:100%;*/
- }
- #canvas1
- {
-	height:100%;
-	width:100%;
-	border-radius: 25px;
-	border-style: solid;
-    border-width: 2px;
-	border-color:white;
-	overflow:hidden;
- }
+{
+ border-radius: 25px;
+ -webkit-border-radius: 25px;
+ -o-border-radius:25px;
+} 
 #canvas1 img
- {
-	/*height:500px;
-	width:500px;
-	height:100%;
-	width:100%;*/
+{
+ border-radius: 25px;
+ -webkit-border-radius: 25px;
+ -o-border-radius:25px;
+} 
+
+ #tool_screen{
+	position:fixed;
+	top:0;
+	z-index:80;
+ }
+ #level_screen{
+	position:fixed;
+	top:0;
+	z-index:80;
+ }
+ #message_screen{
+	position:fixed;
+	top:0;
+	z-index:99;
+ }
+  
+@media (max-width:961px) {
+ #parent{
+	height:45%;
+	width:89%;
+	float:left;
+	margin-right: 5%;
+	margin-left: 5%;
+	margin-top: 80px;
  }
  #right
  {
-	/*background-color:blue;*/
 	height:100%;
-	float:left;
-	width:40%;
+	width:100%;
  }
  #tools
  {
-	height:60%;
-	/*background-color:green;*/
+	height:40%;
  }
  .tool{
  width:40%;
  font-size:200%;
  float:left;
- /*background-color:red;*/
- margin-top:15%;
+ margin-top:10%;
  margin-left:5%;
  text-align: center;
  }
+
  .tool img{
  width:80%;
 
  }
  .message{
- font-size: 200%;
+	font-size: 1.5em;
+	display: block;
+	position:fixed;
+	bottom:0;
+	padding:1em;
  }
 
- .selected{
- text-decoration: underline;
- }
- .selected img{
- width:100%;
- }
- #message_screen{
-	z-index:99;
-	height:70%;
-	width:70%;
-	background-color:white;
-	color:black;
-	font-size: 150%;
-	padding : 2%;
-	position:fixed;
-	top:0;
-	display:none;
- }
- .message_button{
-	font-size: 150%;
-	margin-left:10%;
- }
+ 
  #message_continue{display:none;}
  #message_home{display:none;}
  #message_restart{display:none;}
@@ -522,33 +554,66 @@ function set_translations()
  .message_text_desc
  {
 	font-size:150%;
-	/*width:50%;*/
 	float:left; 
 	margin-left:5%;
  }
- #level_screen{
-	height:70%;
-	width:70%;
-	background-color:white;
-	color:black;
-	font-size: 200%;
-	padding : 2%;
-	position:fixed;
-	top:0;
-	display:none;
-	z-index:80;
+ .selected{
+ text-decoration: underline;
  }
-  #tool_screen{
-	height:70%;
-	width:70%;
-	background-color:white;
-	color:black;
-	font-size: 200%;
-	padding : 2%;
-	position:fixed;
-	top:0;
-	display:none;
-	z-index:80;
+ .selected img{
+ width:110%;
  }
+
+}
+
+@media (min-width:961px) {
+
+ #parent{
+	height:80%;
+	width:50%;
+	float:left;
+	margin: 5%;
+ }
+
+ #right
+ {
+	height:100%;
+	float:left;
+	width:40%;
+ }
+ #tools
+ {
+	height:60%;
+ }
+ .tool{
+ width:40%;
+ font-size:200%;
+ float:left;
+ margin-top:15%;
+ margin-left:5%;
+ text-align: center;
+ }
+ .tool img{
+ width:80%;
+ }
+ .message{
+ font-size: 200%;
+ margin-top:10%;
+ }
+ 
+ #message_continue{display:none;}
+ #message_home{display:none;}
+ #message_restart{display:none;}
+ #message_quit{display:none;}
+ #message_text2{color:#ae1215;}
+ #level_quit{display:none;}
+ .selected{
+ text-decoration: underline;
+ }
+ .selected img{
+ width:110%;
+ }
+}
+
  </style>
 </snap-content>

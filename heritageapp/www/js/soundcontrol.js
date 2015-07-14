@@ -88,7 +88,6 @@ function changeAudio(audio_url)
 	var ind_length = indices.length;
 	var file_name = current_audio.substring(indices[ind_length-1], n);
 	var file_name2 = audio_url.substring(indices[ind_length-1], n);
-	
 	if(file_name === file_name2)
 	{
 	}

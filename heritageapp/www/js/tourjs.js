@@ -17,6 +17,7 @@ function getTourList()
 		
 		var artefactTable = client.getTable('tour_points');
 		var query = artefactTable.where({
+		language:lang_index
 		}).read().done(function (results) {
 			tour_list = results;
 			var panel_array;
@@ -434,6 +435,7 @@ function setTourAudio(image_list)
 {
 	for(var i = 0 ; i < image_list.length;i++)
 	{
+		console.log("Resource type " + image_list[i].resource_type);
 		if(image_list[i].resource_type === "audio")
 		{
 			changeAudio(image_list[i].url);

@@ -1,16 +1,16 @@
 <snap-content>
 	<div class="game">
         <div id="action-bar">
-            <div class="cross" onclick="location.href='index.html'"></div>
+            <div class="cross" onclick="onBackKeyDown();"></div>
             <div class="points"><span id="pts">100</span> </div>
         </div>
         <div id="profile-title">
-            <h1 id= "artefact_text">Artefact </h1><h1 id="art_num"></h1>
-            <p>Can you find this artifact at Tarxien Temples?</p>
+            <h1 id= "artefact_text">Artefact <span id="art_num"></span></h1>
+            <p>Can you find this artifact at</br>Tarxien Temples?</p>
         </div>
         <div id="big-center-header">
             <h1 id = "desc">These carvings represent strength.</h1>
-            <div class="circle active"></div>
+            <div class="circle"></div>
             <div class="circle"></div>
             <div class="circle"></div>
         </div>
@@ -21,23 +21,39 @@
 			</div-->
         </div>
 		
+		<div id="opp">
+            <h1>Scroll up to choose the</br>correct answer!</h1>
+        </div>
+
         <div id="multi" class="wrapper">
                 
 				<p class="mult_title mult_options">Multiple choice!</p>
 				<h1 class="found">Found It!</h1>
         </div>
 	</div>
-		<div id = "ans_screen" >
-			<div id = "message_top" style="height:70%;">
-				<div id = "ans_text" class = "message_text_desc"> </div>
-				<div id = "ans_text2" class = "message_text_desc"> </div>
-				<div id = "ans_text3" class = "message_text_desc"> </div>
-			</div>
-			<div id = "message_bottom">
-				<span id = "next_level" class = "message_button" >Next Level!</span>
-				<span id = "" class = "message_button" onclick="$('#ans_screen').hide();onBackKeyDown();">Quit Game</span>
-			</div>
-		</div>
+	<div id="ans_screen" class="full-container">
+            <div class="full-content" style="background-color:#9b0c0f;">
+                <img class="top-image" src="img/icons/tick.png" width="175" />
+                <p id = "ans_text" style="font-weight:bold; color: #fff; font-size:2em;">That is correct!</p>
+                <div class="wrapper" style="background-color:#9b0c0f; color: #fff">
+                	<!--p class="liners small" style="margin-top:0;">Learn More</p-->
+                    <p id = "quit_game" class="liners small" onclick="$('#ans_screen').hide();onBackKeyDown();">Quit Game</p>
+                    <p id = "next_level" class="liners small" style="font-size:2em; margin-top:0;" onclick="nextLevelHandler();">Next Level</p>
+                </div>
+            </div>            
+    </div> 
+
+	<div id="final_screen" class="full-container">
+            <div class="full-content" style="background-color:#9b0c0f;">
+                <div class="numberCircle top-image"><span id = "total_points" style="font-size:4em;">500</span></div>
+                <p id = "well_done_text" style="font-weight:bold; color: #fff; font-size:2em;">Well Done!</p>
+                <div class="wrapper" style="background-color:#9b0c0f; color: #fff">
+                	<p id = "correct_guesses_text" onclick="" class="liners small" style="margin-top:0;">You answered 4/5<br>questions correct!</p>
+                    <p id = "replay"  onclick="resartGame();" class="liners small">Replay</p>
+                    <p id = "quit_game" onclick="$('#final_screen').hide();onBackKeyDown();" class="liners small" style="font-size:2em; margin-top:0;">Quit Game</p>
+                </div>
+            </div>            
+    </div> 
 </snap-content>
 <script>
 var points = 100;
@@ -52,11 +68,11 @@ var objects = [{desc:"This object was used when fires were lit inside the Temple
 			   {desc:"A door which leads to nowhere",ans:"Left hand apse of Central Temple",option2:"option2",option3:"option3",hint:["This is found in the last temple built on this site","It lies close to a large bowl made out of stone"]},
 			   {desc:"The smallest doorway at Tarxien",ans:"Passageway between South and Central Temple",option2:"option2",option3:"option3",hint:["This doorway leads to a very small room and it has holes","This doorway lies in the centre of the temple building"]}
 				];
-var objects_en = [{desc:"This object was used when fires were lit inside the Temples.",ans:"Hearth in Central Temple",option2:"option2",option3:"option3",hint:["You can see patches of red on the object where the stone was burnt","This object is made of stone and lies on the floor"]},
-			   {desc:"This carving on stone shows a female animal.",ans:"The sow with piglets carving",option2:"option2",option3:"option3",hint:["We know it is female because it is the only animal shown with its young","On the same stone above the female animal, you can see the carving of a large bull"]},
-			   {desc:"The biggest statue to be found in all of the Temples in Malta and Gozo.",ans:"The over-sized human figure",option2:"option2",option3:"option3",hint:["It is wearing a knee-length skirt","It is close to the main doorway"]},
-			   {desc:"A door which leads to nowhere",ans:"Left hand apse of Central Temple",option2:"option2",option3:"option3",hint:["This is found in the last temple built on this site","It lies close to a large bowl made out of stone"]},
-			   {desc:"The smallest doorway at Tarxien",ans:"Passageway between South and Central Temple",option2:"option2",option3:"option3",hint:["This doorway leads to a very small room and it has holes","This doorway lies in the centre of the temple building"]}
+var objects_en = [{desc:"This object was used when fires were lit inside the Temples.",ans:"Hearth in Central Temple",option2:"Dry wood",option3:"Stones",hint:["You can see patches of red on the object where the stone was burnt","This object is made of stone and lies on the floor"]},
+			   {desc:"This carving on stone shows a female animal.",ans:"The sow with piglets carving",option2:"Cow with calfs",option3:"Sheep",hint:["We know it is female because it is the only animal shown with its young","On the same stone above the female animal, you can see the carving of a large bull"]},
+			   {desc:"The biggest statue to be found in all of the Temples in Malta and Gozo.",ans:"The over-sized human figure",option2:"Statue of their god",option3:"Statue of their prehistoric queen",hint:["It is wearing a knee-length skirt","It is close to the main doorway"]},
+			   {desc:"A door which leads to nowhere",ans:"Left hand apse of Central Temple",option2:"Right apse of North Temple",option3:"Main Doorway",hint:["This is found in the last temple built on this site","It lies close to a large bowl made out of stone"]},
+			   {desc:"The smallest doorway at Tarxien",ans:"Passageway between South and Central Temple",option2:"Passageway between Central and North Temple",option3:"Passageway between North and East Temple",hint:["This doorway leads to a very small room and it has holes","This doorway lies in the centre of the temple building"]}
 				];
 var objects_mt = [{desc:"MTThis object was used when fires were lit inside the Temples.",ans:"Hearth in Central Temple",option2:"option2",option3:"option3",hint:["You can see patches of red on the object where the stone was burnt","This object is made of stone and lies on the floor"]},
 			   {desc:"MtThis carving on stone shows a female animal.",ans:"The sow with piglets carving",option2:"option2",option3:"option3",hint:["We know it is female because it is the only animal shown with its young","On the same stone above the female animal, you can see the carving of a large bull"]},
@@ -86,6 +102,8 @@ var total_points_text = 	["Total Points till now: ","MTTotal Points till now: ",
 var correct_ans = ["Correct Answer!","Risposta Tajba!","ITCorrect Answer!","FRCorrect Answer!"];	
 var points_text = ["points","punti","punti","FRpoints"];
 var artefact_text = ["Artefact","MTArtefact","ITArtefact","FRArtefact"];
+var next_level = ["Next Level","MTNext Level","ITNext Level","FRNext Level"];
+var quit_game = ["Quit Game","MTQuit Game","ITQuit Game","FRQuit Game"];
 //run only one on entry
 switch(lang_index) {
 case 0:
@@ -102,11 +120,14 @@ default:
 }
 $(".points").append(points_text[lang_index]);
 $("#artefact_text").html(artefact_text[lang_index]);
+$("#quit_game").html(quit_game[lang_index]);
+$("#next_level").html(next_level[lang_index]);
 	
 function start_game()
 {
 	console.log("LANGUAGE " + lang_index);
 	//edit description and artefact number
+	console.log("GAME LEVEL " + game_level);
 	$("#desc").html(objects[game_level-1].desc);
 	$("#art_num").html(game_level);
 	//recreate points
@@ -116,25 +137,33 @@ function start_game()
 	create_hints();
 	create_options();
 }
-function next_level()
+function NextLevel()
 {
 	game_level++;
 	if(game_level == objects.length+1)
 	{
+		
 		finish_game();
 	}
-	start_game();
-	$('#ans_screen').fadeOut();
+	else
+	{
+		start_game();
+		$('#ans_screen').fadeOut();
+	}
 }
 function finish_game()
 {
+	$('#ans_screen').fadeOut();
 	if(correct_guesses > 2)
-		$("#ans_text").html(well_done[lang_index]);
+		$("#well_done_text").html(well_done[lang_index]);
 	else
-		$("#ans_text").html(try_again[lang_index]);
-	$("#ans_text2").html(correct_guesses + "/" + objects.length + guesses[lang_index]);
+		$("#well_done_text").html(try_again[lang_index]);
+	$("#total_points").html(total_points);
+	$("#correct_guesses_text").html(correct_guesses + "/" + objects.length + guesses[lang_index]);
 	$("#ans_text3").html("");
 	$("#next_level").hide();
+	console.log("Finish GAME");
+	$("#final_screen").show();
 }
 function create_hints()
 {
@@ -142,7 +171,7 @@ function create_hints()
 	$(".hintbox").remove();
 	for(var i = 0 ; i < hints.length;i++)
 	{
-		$("#big-center-hints").append("<div class=\"hintbox\"><span class=\"hidden_hint\" onclick=\"hint_click(this)\">Hint</span><span class=\"hint\">"+hints[i]+"</span></div>");		
+		$("#big-center-hints").append("<div class=\"hintbox\"><span class=\"hidden_hint\" onclick=\"hint_click(this)\">Unlock a Hint (-20)</span><span class=\"hint\">"+hints[i]+"</span></div>");		
 	}
 }
 function create_options()
@@ -187,31 +216,40 @@ function ans_click()
 	total_points = total_points + points;
 	correct_guesses++;
 	$("#ans_text").html(correct_ans[lang_index]);
-	$("#ans_text2").html(points_from_level[lang_index] + points);
-	$("#ans_text3").html(total_points_text[lang_index] + total_points);
+	//$("#ans_text2").html(points_from_level[lang_index] + points);
+	//$("#ans_text3").html(total_points_text[lang_index] + total_points);
 	$("#next_level").show();
 	$("#ans_screen").fadeIn();	
 	$( ".game" ).addClass( "untargetable" );
 } 
-$("#next_level").click(function(){
-	next_level();
+function nextLevelHandler()
+{
 	$( ".game" ).removeClass("untargetable");
-});
+	NextLevel();
+}
+
+function resartGame()
+{
+	points = 100;
+	total_points=0;			
+	game_level = 1;
+	correct_guesses = 0;
+	$("#final_screen").hide();
+	start_game();
+}
 
 
 </script>   
 <style>
 #big-center-hints{
     text-align: center;
-    margin: 6em 0;
+    font-weight: 300;
+    font-size: 1.5em;
 }
-#big-center-hints {
-    font-weight: bold;
-    font-size: 2.0em;
-}
+
 .hintbox
 {	
-	padding-bottom:10px;
+	padding:10px 2em;
 }
 .hint
 {
@@ -233,34 +271,54 @@ $("#next_level").click(function(){
 {
 	display:none;
 }
-#big-center-hints{
-        margin: 1.0em 0;
-    }
-#ans_screen{
-	height:90%;
-	width:70%;
-	background-color:#ae1215;
-	color:white;
-	font-size: 200%;
-	padding : 2%;
-	position:fixed ;
-	top:10%;
-	margin-left:15%;
-	display:none;
-	z-index:80;
- }
- #ans_text
- {
-	text-align: center;
-    border-bottom: 1px solid #b2b2b2;
-	padding-bottom: 0.3em;
-    font-size: 2.5em;
- }
+
  .untargetable
  {
 	pointer-events: none;
  }
   .message_button{
 	margin-left:10%;
+ }
+
+#opp h1{
+	color: #ae1215;
+	font-weight: bold;
+	text-align: center;
+	margin-top: 1.5em;
+	font-size: 1.5em;
+}
+
+.numberCircle {
+    border-radius: 50%;
+    width: 10em;
+    height: 10em;
+    padding: 1em;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 3em;
+
+    background: #fff;
+    border: 2px solid #fff;
+    color: #ae1215;
+    text-align: center;
+
+    font: sans-serif;
+    font-weight: bold;
+    line-height: 10em;
+    text-align: center;
+}
+#ans_screen{
+	position:fixed !important;
+	top:1%;
+	right:5%;
+	display:none;
+	z-index:80;
+ }
+#final_screen{
+	position:fixed ;
+	top:1%;
+	right:5%;
+	display:none;
+	z-index:80;
  }
 </style>

@@ -1,62 +1,139 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="msapplication-tap-highlight" content="no" />
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/main.css" />
-        <title>Timeline</title>
-    </head>
-    <body>
-        <div id="sidebar">
-            <div class="filler">
-                <div class="logo"></div>
-                <div class="title">Heritage Malta</div>
-                <div class="main-header">
-                    <span onclick="location.href='index.html'">Tarxien Temples</span>
-                </div>
-                <ul>
-                    <li onclick="location.href='events.html'"><span class="events">Events and News</span></li>
-                    <li onclick="location.href='booking.html'"><span class="tickets">Book and Buy Tickets</span></li>
-                    <li><span class="itinerary">Itinerary</span></li>
-                    <li><span class="contact">Contact Us</span></li>
-                </ul>
-                <div class="bottom-link">Language &ndash; English</div>
-            </div>
-        </div>
-        <div id="red" style="height:100%">
-            <div id="temples-background" class="wrapper">
-                <a id="nav-toggle" href="#"><span></span></a>
-                <div id="profile-options" class="timeline">
-                    <div class="tile active">
-                        <div class="photos"><span>Photos</span></div>
-                    </div>
-                    <div class="tile secondary-tile">
-                        <div class="threeD"><span>3D</span></div>
-                    </div>
-                </div>
-            </div>
-            <div id="timeline" class="main-timeline">
-                <ul class="intervals-header">
-                    <li></li>
-                    <li></li>
-                    <li><div class="arrow"></div></li>
-                    <li></li>
-                </ul>
-                <ul class="intervals">
-                    <li>5555 BC</li>
-                    <li>2800 BC</li>
-                    <li>2300 BC</li>
-                    <li>1800 BC</li>
-                </ul>
-            </div>
-        </div>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/jquery.js"></script>
-        <script type="text/javascript" src="js/scripts.js"></script>
-        <script>
-            
-        </script>
-    </body>
-</html>
+<snap-content>	
+	<script>
+	var mq = window.matchMedia( "(min-width: 961px)" );
+	if (mq.matches) {
+		// tablet
+		screen.lockOrientation('landscape');
+	}
+	else {
+		// window width is less than 500px
+		screen.lockOrientation('portrait');
+	}
+		
+	</script>
+		<img id="menutoggle" snap-toggle="" src="img/icons/back.png" onclick="onBackKeyDown();"></img>
+		
+		<div id = "game_page">
+			
+			<!--div class = "timeline_column">
+				<div class = "tarxien"> </div>
+				<div class = "malta"> </div>
+				<div class = "international"> </div>
+			</div>
+			<div class = "timeline_column">
+				<div class = "tarxien"> </div>
+				<div class = "malta"> </div>
+				<div class = "international"> </div>
+			</div>
+			<div class = "timeline_column">
+				<div class = "tarxien"> </div>
+				<div class = "malta"> </div>
+				<div class = "international"> </div>
+			</div>
+			<div class = "timeline_column">
+				<div class = "tarxien"> </div>
+				<div class = "malta"> </div>
+				<div class = "international"> </div>
+			</div-->
+			<div class = "tarxien_row">
+				<div class = "age"> </div>
+				<div class = "age"> </div>
+				<div class = "age"> </div>
+				<div class = "age"> </div>
+				<div class = "age"> </div>
+			</div>
+			<div class = "malta_row">
+				<div class = "age"> </div>
+				<div class = "age"> </div>
+				<div class = "age"> </div>
+				<div class = "age"> </div>
+				<div class = "age"> </div>
+			</div>
+			<div class = "international_row">
+				<div class = "age"> </div>
+				<div class = "age"> </div>
+				<div class = "age"> </div>
+			</div>
+			
+		</div>
+	
+		
+ <script>
+
+</script>
+<style>
+
+#game_page
+{
+	background-color:#ae1215;
+	color:white;
+	height:100%;
+    white-space: nowrap;
+}
+.timeline_column
+{
+	display: inline-block;
+	width:400px;
+	height:99%;
+	background-color:yellow;
+}
+.tarxien
+{
+	width:100%;
+	height:33%;
+	border-left: 1px solid white;
+	border-bottom: 1px solid white;
+	background-color:blue;
+}
+.malta
+{
+	border-left: 1px solid white;
+	border-bottom: 1px solid white;
+	width:100%;
+	height:33%;
+	/*float:left;*/
+	background-color:red;
+}
+.international
+{
+	border-left: 1px solid white;
+	border-bottom: 1px solid white;
+	width:100%;
+	height:33%;
+	/*float:left;*/
+	background-color:green;
+}
+
+
+
+/*new*/
+.tarxien_row
+{
+	height:33%;
+	background-color:yellow;
+	border-bottom: 1px solid white;
+}
+.malta_row
+{
+	height:33%;
+	background-color:yellow;
+	border-bottom: 1px solid white;
+}
+.international_row
+{
+	height:33%;
+	background-color:yellow;
+}
+.age
+{
+	border-style:dotted;
+	border-left: 1px  white;
+	width:400px;
+	height:100%;
+	background-color:red;
+	display: inline-block;	
+}
+
+
+ </style>
+</snap-content>

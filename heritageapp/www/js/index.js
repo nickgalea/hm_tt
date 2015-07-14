@@ -181,6 +181,9 @@ app.config(function($routeProvider){
 			  .when('/audio_guide', {
                 templateUrl: 'audioguide.html'
           })
+			  .when('/timeline', {
+                templateUrl: 'timeline.html'
+          })
 		  ;
 
 
