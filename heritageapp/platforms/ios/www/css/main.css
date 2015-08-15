@@ -34,12 +34,56 @@ h1{
     margin: 0px;
     overflow: visible;
     padding: 0px;
+
+}
+
+.greyout{
+    background-color: #222222;
+    filter:alpha(opacity=50); 
+    opacity: 0.65; 
+    -moz-opacity:0.50;
+    z-index: 20;
+}
+
+#content_home{
+    width:100%;
+    height: 100%;
+    background: url(../img/homeb.png) no-repeat center top;
+    background-size: cover;
+    position:absolute;
+}
+
+#loading
+{
+	width:10%;
+	height:10%;	
+	margin-left:45%;
+}
+#loading img
+{
+	width:100%;
+}
+
+/*gallery css*/
+.content_gals{
+    width:100%;
+    height: 100%;
+    background: url(../img/galleryb.jpg) no-repeat center top;
+    background-size: cover;
+    position:absolute;
+    text-align: center;
+}
+
+#media{
+    border:1px solid #222222;
+    width:5em;
+    background: red;
+    height: auto;
 }
 
 #top{
-    background: url(../img/home.png) no-repeat center top;
     background-size: cover;
-    height: 35em;
+    height: 62%;
     position: relative;
 }
 
@@ -50,28 +94,29 @@ h1{
     padding-left: 0.4em;
     position: absolute;
     left: 0;
-    bottom: 0.5em;
+    bottom: 0em;
     vertical-align: bottom;
     font-size: 3.8em;
 }
 
 #menu-slider{
     margin: 1.5em;
+    margin-right: 0em;
+    margin-left: 0em;
     overflow-x: auto;
     overflow-y: auto;
     white-space: nowrap;
-    background: white;
     z-index: 3;
 }
 
 .box{
-    margin-right: 2em;
-    /*margin-bottom: 1em;
-    */color: #fff;
+    margin-right: 1em;
+    color: #fff;
     display: inline-block;
     width: 14em;
     height: 14em;
     background-repeat: no-repeat;
+    position: relative;
 }
 
 .box .black-transparency{
@@ -79,7 +124,8 @@ h1{
     height: 100%;
     /*background: rgba(0,0,0,0.3);*/
     position: relative;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.65098) 0%, rgba(0, 0, 0, 0) 100%);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.68) 0%, rgba(0, 0, 0, 0) 100%);
+    border-radius: 8px;
 }
 
 .box .text{
@@ -89,7 +135,8 @@ h1{
 }
 
 .box .text h1{
-    font-size: 1.2em;
+    color: #fff;
+    font-size: 1.4em;
     margin-bottom: 0.2em;
     text-transform: uppercase;
 }
@@ -105,23 +152,58 @@ h1{
 }
 
 #menu-slider .box.history{
-    background: url(../img/history_artifacts.png) no-repeat;
+    background: url(../img/history_artifacts.jpg) no-repeat;
     background-size: cover;
+    border-radius: 8px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: rgb(255, 255, 255);
+    margin-left: 1.5em;
 }
 
 #menu-slider .box.timeline{
-    background: url(../img/timeline.png) no-repeat;
+    background: url(../img/timeline.jpg) no-repeat;
     background-size: cover;
+    border-radius: 8px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: rgb(255, 255, 255);
 }
 
 #menu-slider .box.games{
-    background: url(../img/games.png) no-repeat;
+    background: url(../img/games.jpg) no-repeat;
     background-size: cover;
+    border-radius: 8px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: rgb(255, 255, 255);
 }
 
 #menu-slider .box.tour{
-    background: url(../img/history_temples.png) no-repeat;
+    background: url(../img/history_temples.jpg) no-repeat;
     background-size: cover;
+    border-radius: 8px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: rgb(255, 255, 255);
+}
+#menu-slider .box.gallery{
+    background: url(../img/galleryicon.jpg) no-repeat;
+    background-size: cover;
+    border-radius: 8px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: rgb(255, 255, 255);
+}
+
+#past-event-list-tiles .box{
+    width: 100%;
+    display: block;
+}
+
+#upcoming-event-list-tiles .box{
+    width: 100%;
+    display: block;
 }
 
 #list-tiles .box{
@@ -134,15 +216,34 @@ h1{
     position: absolute;
     top: 2em;
     left: 1.5em;
-    height: 2em;
-    width: 2.5em;
+    height: 4%;
+    width: 6%;
+}
+
+.audio_white{
+    background: url(../img/icons/audio.png) no-repeat;
+    background-size: 25px;
+    width: 25px;
+    height: 25px;
+    margin-top: 2em;
+    margin-right: 0.2em;
+    float: right;
+}
+.audio_red{
+    background: url(../img/icons/audio_red.png) no-repeat;
+    background-size: 30px;
+    width: 30px;
+    height: 30px;
+    margin-top: 1em;
+    margin-right: 1em;
+    float: right;
 }
 
 #sidebar{
     background: #222;
     height:100%;
     /*margin-left: -250px;*/
-    overflow-y: auto;
+    overflow-y: hidden;
     position: relative;
 }
 
@@ -232,11 +333,19 @@ h1{
 
 
 /* PROFILE */
+#time-bar{
+    background-color: #ae1215;
+    height: 23px;
+    width:100%;
+}
+
 #action-bar{
     width: 100%;
     height: 4em;
+    padding-top:.5em;
     border-bottom: 1px solid #EEE;
 }
+
 
 #action-bar .cross{
     background: url(../img/icons/cross_2.png) no-repeat;
@@ -270,12 +379,23 @@ h1{
 
 #profile-title{
     margin: 1em;
+    margin-bottom: 0.2em;
     text-align: center;
 }
 
 #profile-title h1{
     font-weight: bold;
     font-size: 2.2em;
+	line-height: 1.2em;
+}
+#profile-title h4{
+    font-weight: 400;
+    font-size: 1em;
+    color: #727272;
+    margin-top: 0em;
+}
+#par_text{
+    font-size: 1em;
 }
 
 #profile-title p{
@@ -301,7 +421,8 @@ h1{
 
 #profile-options .tile{
     background-color: #ae1215;
-    border: 1px solid #ea6461;
+    border-top: 2px solid #ae1215;
+    margin-right: 2px;
     height: 45px;
     font-size: 1.2em;
     display: inline-block;
@@ -318,6 +439,14 @@ h1{
 
 #profile-options .tile.active{
     background-color: #fff;
+    border: 1px solid #ae1215;
+    margin-right: 0px;
+}
+
+#profile-options .gray{
+    background-color: #c7c7c7;
+    border: 1px solid #ae1215;
+    margin-right: 0px;
 }
 
 #profile-options .tile.secondary-tile{
@@ -346,6 +475,12 @@ h1{
 
 #profile-options .tile .map{
     background: url(../img/icons/map.png) no-repeat;
+    background-size: 35px;
+    background-position: 50%;
+}
+
+#profile-options .tile .video{
+    background: url(../img/icons/video.png) no-repeat;
     background-size: 35px;
     background-position: 50%;
 }
@@ -391,6 +526,13 @@ h1{
     line-height: 1.8;
     margin-top: 1.4em;
 }
+
+#profile-description p.caption{
+    font-size: .05em;
+    line-height: 1.8;
+    margin-top: 1.4em;
+}
+
 
 #timeline{
     margin: 1em 0 2em;
@@ -471,8 +613,24 @@ h1{
     font-weight: bold;
     font-size: 1.3em;
     background: url(../img/icons/share.png) no-repeat;
-    background-size: 22px;
-    padding-left: 30px;
+    background-size: 21px;
+    padding-left: 35px;
+}
+
+#top-red-message{
+    background-color: #ae1215;
+    color: #fff;
+    font-size: 1.3em;
+    text-align: center;
+    padding: 0.8em 0;
+}
+
+#top-red-message h1{
+    font-weight: bold;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #fff;
 }
 
 #bottom-red-message{
@@ -489,6 +647,7 @@ h1{
     font-size: 1.5em;
     text-transform: uppercase;
     letter-spacing: 1px;
+    color: #fff;
 }
 
 #bottom-red-message h2{
@@ -536,6 +695,11 @@ h1{
     margin-top: 2.4em;
 }
 
+.red-wrapper h2.top-spacer{
+    margin-top: 3.6em;
+	margin-bottom: -0.1em;
+}
+
 .red-wrapper .spacer{
     margin-top: 3em;
     color: #fff;
@@ -556,10 +720,15 @@ h1{
 }
 
 .wrapper h1.top-spacer{
-    margin-top: 2.4em;
+    margin-top: 3.4em;
+    color: #fff;
 }
 
 .wrapper .spacer{
+    margin-top: 4em;
+    color: #fff;
+}
+.spacer{
     margin-top: 6em;
     color: #fff;
 }
@@ -588,7 +757,7 @@ hr.white{
 }
 
 #today-events-list ul li{
-    border-bottom: 1px solid #ea6461;
+    border-bottom: 1px solid #fff;
     padding: 0.8em 0;
 }
 
@@ -622,6 +791,30 @@ hr.white{
 
 #today-events-list ul li p.dates{
     font-style: italic;
+}
+
+#past-event-list-tiles{
+    margin-top: 1em;
+}
+
+#past-event-list-tiles .box{
+    margin-bottom: 1em;
+}
+
+#past-event-list-tiles .box:last-child{
+    margin-bottom: 0;
+}
+
+#upcoming-event-list-tiles{
+    margin-top: 1em;
+}
+
+#upcoming-event-list-tiles .box{
+    margin-bottom: 1em;
+}
+
+#upcoming-event-list-tiles .box:last-child{
+    margin-bottom: 0;
 }
 
 #list-tiles{
@@ -707,6 +900,22 @@ ul#tickets-main-options .chosen-option-calendar{
     text-align: center;
 }
 
+.white-container2{
+    /*margin-top: 2em;*/
+    background: white;
+}
+
+.white-container2 h1{
+    color: #000;
+    font-size: 1.8em;
+}
+
+.white-container2 p{
+    margin: 0;
+    margin-top: 0.5em;
+    font-size: 1.1em;
+}
+
 .white-container{
     padding-top: 1em;
     /*margin-top: 2em;*/
@@ -751,14 +960,13 @@ ul#tickets-main-options .chosen-option-calendar{
     font-size: 1.4em;
 }
 
-.tour-header .character{
-    position: absolute;
-    bottom: -16px;
-    right: 0;
-    margin-left: 2em;
+.character{
+    position: relative;
+    margin-top: 1.5em;
+    margin-left: 14em;
 }
 
-.tour-header .character img{
+.character img{
     height: 152px;
 }
 
@@ -771,7 +979,7 @@ ul#tickets-main-options .chosen-option-calendar{
     font-size: 1em;
 }
 
-.tour-header .bottom-question .artifact-link{
+.tour-header .bottom-question .artifact-lk{
     font-size: 1.4em;
     color: #000;
     padding: 5px 10px;
@@ -845,7 +1053,7 @@ h1.found{
     -webkit-box-shadow: 1px 2px 6px #888;
     -moz-box-shadow: 1px 2px 6px #888;
     box-shadow: 1px 2px 6px #888;
-    position: relative;
+    position: absolute;
 }
 
 .full-container .close{
@@ -954,6 +1162,171 @@ h1.found{
     margin: 0 1em;
 }
 
+#tour_addpaneldes{
+    width: 75%;
+}
+
+#panel-description{
+    padding:1.5em;
+    font-size: 1.2em;
+    line-height: 1.8;
+    margin-top: 0;
+    text-align: left;
+    overflow-y:scroll;
+    
+}
+@media (max-width:700px) 
+{
+	#panel-description
+	{
+		height:75%;
+	}
+}
+@media (min-width:700px) 
+{
+	#panel-description
+	{
+		height:85%;
+	}
+}
+
+#panel-description-premium{
+    padding:1.5em;
+    font-size: 1.2em;
+    line-height: 1.8;
+    margin-top: 0;
+    text-align: justify;
+    overflow:scroll;
+    height:32em;
+}
+
+#panel_name{
+    margin-top: -25px;
+}
+
+#tour-navigation{
+    width: 100%;
+    height: 8%;
+    /*background-color: #ae1215;*/
+    position: fixed;
+    border-top: .1em solid #EEE;
+    bottom: 0;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media (max-width:700px) 
+{
+	#tour-navigation
+	{
+		height: 8%;
+	}
+}
+@media (min-width:700px) 
+{
+	#tour-navigation
+	{
+		height: 5%;
+	}
+}
+
+#tour-navigation.back{
+   
+}
+
+#tour-navigation.next{
+   
+}
+
+#tour-points{
+    height:2.5em;
+    margin:1em;
+    text-align: center;
+}
+
+.line{
+    height: 0.5em;
+    width: 16%;
+    display:inline-block;
+    border-top:1px solid #222222;
+    margin:0px;
+    margin-top: 0.5em;
+}
+
+.bocca{
+    width:25px;
+    height: 24px;
+    display: inline-block;
+    border-radius: 50%;
+    margin:0px;
+    background-color: #ae1215;
+}
+
+.bocca p{
+    text-align: center;
+    color: white;
+    line-height: 0.15;
+}
+
+.add{
+    color:#fff;
+    text-align: center;
+    padding:1em;
+    display: inline-block;
+}
+
+.content_ts{
+    width:100%;
+    height: 100%;
+    background: url(../img/tour.png) no-repeat center top;
+    background-size: cover;
+    position:absolute;
+}
+
+
+
+/*Carousel slider for artefact_db*/
+.swipe {
+  overflow: hidden;
+  visibility: hidden;
+  position: relative;
+}
+.swipe-wrap {
+  overflow: hidden;
+  position: relative;
+}
+.swipe-wrap > div {
+  float:left;
+  width:100%;
+  position: relative;
+}
+.swipe-wrap img{
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/*added for history home*/
+#red h3{
+    color: #fff;
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+#red p{
+    color: #fff;
+    font-size: 1.5em;
+}
+
+.black-transparency-2{
+    width: 100%;
+    height: 100%;
+    /*background: rgba(0,0,0,0.3);*/
+    position: relative;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.68) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+
 /* Landscape layout (with min-width) */
 @media screen and (min-aspect-ratio: 1/1) and (min-width:300px){
     #top{
@@ -1025,14 +1398,7 @@ h1.found{
         font-size: 1.6em;
     }
     
-    .tour-header .character{
-        margin-left: 4em;
-    }
-
-    .tour-header .character img{
-        height: 250px;
-    }
-    
+ 
     #profile-options .tile.secondary-tile {
         margin-left: -5px;
     }
@@ -1042,8 +1408,9 @@ h1.found{
         height: 10px;
     }
     
-    ul#tour-questions li{
+    #tour-questions{
         font-size: 1.5em;
+        margin-top: 8em;
     }
     
     #profile-title h1{
@@ -1051,7 +1418,7 @@ h1.found{
     }
     
     #big-center-header{
-        margin: 8.5em 0;
+        margin: 8.0em 0;
     }
     
     #big-center-header h1{
@@ -1063,3 +1430,97 @@ h1.found{
     }
 }
 
+/*
+TOUR
+*/
+.tour-media img{
+    width:100%;
+    border: 1px solid #727272;
+    padding: 1px;
+    margin-bottom: 0em;
+    margin-top: 0.5em;
+}
+.tour-media video{
+    width:100%;
+    border: 1px solid #727272;
+    padding: 1px;
+    margin-bottom: 0em;
+    margin-top: 0.5em;
+}
+.caption p{
+    color: #727272;
+    font-style: italic;
+    margin-top: 0em;
+    font-size: 0.9em;
+}
+.back_t{
+   width:17%;
+   height: 100%;
+   display: inline-block;
+   float: left;
+   border-right: 2px solid #EEE;
+}
+.img-container{
+    width:65%;
+    height: 65%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 1em;
+}
+.back_t img{
+    height: 85%;
+}
+.next_t{
+   width:17%;
+   height: 100%;
+   display: inline-block;
+   float: right;
+   border-left: 2px solid #EEE;
+}
+
+.next_t img{
+    height: 85%;
+}
+#t_learn{
+    text-align: center;
+    color: white;
+    font-size: 22px;
+    width:50%;
+    font-weight: 400;
+    height: 100%;
+    display: inline-block;
+    margin: 0;
+    padding-top:0.6em;
+}
+.title_pipe
+{
+	color:#ae1215; 
+	font-weight:400;
+}
+/*
+.question_time{
+    background-color: #efefef;
+    padding:0.5em;
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+.question_time h2{
+    color: #ae1215;
+    font-size: 1.2em;
+}
+
+.question_time h1{
+    color: #222;
+    font-size: 1.5em;
+    font-weight: 500;
+    line-height: 1em;
+}
+
+.question_time p{
+    color: #ae1215;
+    font-size: 1.5em;
+    font-weight: 500;
+    margin-top: 1em;
+}
+*/

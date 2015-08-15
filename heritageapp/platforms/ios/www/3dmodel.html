@@ -1,18 +1,67 @@
-<canvas id="cv" width="" height=""></canvas>
+<style>
+
+#container {
+  position: relative;
+  width: 100%;
+  height:100%;
+}
+
+#cv,
+#model_loading {
+  position: absolute;
+  margin: 0 auto;
+}
+#model_loading {
+  z-index: 10;
+  margin: 0 auto;
+  margin-top: 150px;
+  text-align: center;
+  font-size: 20px;
+}
+
+</style>
+
+<div id="container">
+    <canvas id="cv" width="" height=""></canvas>
+    <div id = "model_loading" >
+        <img width="20%" src="img/icons/loader.gif"></img>
+        <br>Loading Model...
+    </div>
+  <div id="menutoggle" onclick="onBackKeyDown();">
+      <img  width="30" height="30" src="img/icons/back_dark.png">
+  </div>
+</div>
+
 <script> 
 {
-    $('#cv').attr("width", screen.width);
-    $('#cv').attr("height", screen.height);
+    $('#cv').attr("width", window.innerWidth);
+    $('#cv').attr("height", window.innerHeight);
+	console.log("FROM MODEL FILE " + modelUrl);
+  console.log(window.innerWidth);
+  console.log(window.innerHeight);
 }
+
 </script>
 <script type="text/javascript">
             var viewer = new JSC3D.Viewer(document.getElementById('cv'));
-            viewer.setParameter('SceneUrl', 'testresize.obj');
-            viewer.setParameter('BackgroundColor1', '#FFFFFF');
+            viewer.setParameter('SceneUrl', modelUrl);
+			      viewer.setParameter('BackgroundColor1', '#FFFFFF');
             viewer.setParameter('BackgroundColor2', '#FFFFFF');
             viewer.setParameter('RenderMode',       'texture');
-            viewer.setParameter('ProgressBar', 'on');
+            viewer.setParameter('ProgressBar', 'off');
             viewer.setParameter('Renderer', 'webgl');
+
+            viewer.onloadingcomplete = function() {
+                // this assumes your scene contains only a single mesh
+                console.log("loaded");
+                $("#model_loading").remove();
+            };
+
             viewer.init();
             viewer.update();
+            
+
+
+            
+
 </script>

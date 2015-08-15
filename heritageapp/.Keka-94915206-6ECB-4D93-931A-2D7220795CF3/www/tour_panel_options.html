@@ -1,0 +1,43 @@
+<snap-content>
+
+    <div id="main_content" style="position:absolute;background:white;height:100%;width:100%;z-index:5000">
+        <div id="red">
+            <div class="red-wrapper" style="">
+                <img id="menutoggle" src="img/icons/back.png" onclick="onBackKeyDown();"></img>
+                <div id="audio_button" class="audio_white" onclick="click_audiobutton_options()"></div>
+                <h2 id="tour_title" class="top-spacer">1. Panel Title</h2>
+                <hr class="white" />
+                <div id = "quest_container">
+                <div class="spacer"></div>
+                <div class="character">
+                        <img align= "right" src="img/character.png"/>
+                </div>
+                <h1 style="font-weight:normal; width:100%" id="tour_addpaneldes">Lorem ipsum dolor sit amet, consec adipis elit. Phasel at placer urna. Quisque sceleriq fermenm nulla. </h1>
+                
+                <div style="clear: both"></div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="wrapper">
+            <ul id="tour-questions">
+          
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        checkplayer_options();
+		fill_list_data();
+
+        /*code to dynamically edit the height of the spacer
+        var img_height = $(".character").height();
+        var red_height = $("#quest_container").height();
+        console.log("red h " + red_height + " img height " + img_height);
+        var spacer_height= red_height - img_height;
+        console.log("spacer h " + spacer_height + " img height " + img_height);
+        $(".spacer").css("height", spacer_height);
+        /*finish code */
+
+    </script>
+</snap-content>

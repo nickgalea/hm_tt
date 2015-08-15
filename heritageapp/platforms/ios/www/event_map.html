@@ -1,0 +1,46 @@
+<div id="map-canvas" style="width:300px; height:300px;"></div>
+
+<script> 
+{
+    $('#map-canvas').css("width", $(window).width());
+    $('#map-canvas').css("height", $(window).height());
+}
+
+function resize()
+{
+	$('#map-canvas').css("width", $(window).width());
+    $('#map-canvas').css("height", $(window).height());
+
+    google.maps.event.trigger(map, "resize");
+}
+
+
+</script>
+
+<script type="text/javascript">
+
+        function initialize() {
+          // console.log(selected_events_index);
+
+          // console.log(events_list[selected_event_index].title);
+          // console.log(events_list[selected_event_index].lat + " , " + events_list[selected_event_index].lon);
+
+            var mapOptions = {
+                center: new google.maps.LatLng(events_list[selected_events_index].lat, events_list[selected_events_index].lon),
+                zoom: 17,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            var map = new google.maps.Map(document.getElementById("map-canvas"),mapOptions);
+            
+            var marker = new google.maps.Marker({
+      			position: new google.maps.LatLng(events_list[selected_events_index].lat, events_list[selected_events_index].lon),
+      			map: map,
+      			title: events_list[selected_events_index].location
+  			});
+        }
+
+        window.addEventListener('orientationchange', resize);
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=initialize"></script>

@@ -1,0 +1,94 @@
+<script type="text/javascript">
+console.log("prem prod arte" + prem_product);
+</script>
+
+  <div id="main_content" style="position:absolute;background:white;height:100%;width:100%;z-index:5000">
+        <div id="red">
+            <div class="red-wrapper">
+                <img id="menutoggle" src="img/icons/back.png" onclick="onBackKeyDown();"></img>
+                <h1 class="top-spacer"><br>Learn About Tarxien Temples</h1>
+                <h2>History, Excavation and Artifacts</h2>
+                <hr class="white" />
+                
+                <h3>Did you know?</h3>
+                <p>Tarxien Temples are certainly the most beautifully decorated and the largest temples in the Maltese Islands</p>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div id="list-tiles" style="background:white;">
+                <div class="box" style="background: url(img/history_temples.png) no-repeat;background-size:cover;" onclick="stack.push('#/history_home');location.href='#/history_intro';">
+                    <div class="black-transparency-2">
+                        <div class="text">
+                            <h1>Introduction to Tarxien Temples</h1>
+                            <p>Discover when and how the temples were built</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="box" style="background: url(img/excavation_temples.png) no-repeat;background-size:cover;">
+                    <div class="black-transparency-2">
+                        <div class="text">
+                            <h1>Excavation of Tarxien Temples</h1>
+                            <p>Learn about the excavation of the Temples</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="white-container" style="z-index:50000; background:white; position:relative;">
+                <h1>Artifacts</h1>
+                <p>Objects that were discovered at <b>Tarxien Temples</b></p>
+				<div id = "loading">
+					<img src="img/icons/loader.gif"></img>
+				</div>
+                <!--div class="gallery">
+                    <img id = "1" class ="gallery_item xxx" src="img/artifact_1.png" width="150" onclick="location.href='#/profile'" />
+                    <img id = "1" class ="gallery_item xxx" src="img/artifact_2.png" width="118" style="margin-left: 3px" />
+                    <img id = "1" class ="gallery_item" src="img/artifact_3.png" width="126" />
+                    <img id = "1" class ="gallery_item" src="img/artifact_4.png" width="140" style="margin-left: 5px" />
+                </div-->
+				<!--div class="artifact_dg">
+					<div class="artimg"><img src="img/artifact_1.png"> </div>
+					<div class="artinfo"><h1>Artifact Title</h1>
+					<p><i>Stone Age</i></p></div>
+				</div>
+				<div class="artifact_lg">
+					<div class="artimg"><img src="img/artifact_1.png"> </div>
+					<div class="artinfo"><h1>Artifact Title</h1>
+					<p><i>Stone Age</i></p></div>
+				</div-->
+			</div>
+			
+        </div>
+        <script>
+		//createArtList();
+		getDataAndFillGallery();
+		//handler for first time
+		$( ".white-container" ).delegate( ".artifact_lg", "touchstart", function() {
+			//get id
+			var id = $(this).attr("id");
+			editArtefactPost(id);
+		});
+		$( ".white-container" ).delegate( ".artifact_dg", "touchstart", function() {
+			var id = $(this).attr("id");
+			editArtefactPost(id);
+		});
+		//handler for other times except first
+		$(".artifact_lg, .artifact_dg").on("touchstart", function() {
+			var id = $(this).attr("id");
+			editArtefactPost(id);
+		});
+		</script>
+
+    </div>
+
+<style>
+#loading
+{
+    width:10%;
+    height:10%; 
+    margin-left:45%;
+}
+#loading img
+{
+    width:100%;
+}
+</style>

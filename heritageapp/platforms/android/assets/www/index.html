@@ -5,11 +5,15 @@
         <meta name="format-detection" content="telephone=no" />
         <meta name="msapplication-tap-highlight" content="no" />
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=mdpi" />
         <link rel="stylesheet" type="text/css" href="css/main.css" />
+		<link rel="stylesheet" type="text/css" href="css/tour.css" />
         <link rel="stylesheet" href="css/angular-snap.css" type="text/css" />
+		<link rel="stylesheet" href="css/artefact.css" type="text/css" />
         <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" type="text/css" />
-
+		<link rel="stylesheet" href="css/history_int.css" type="text/css" />
+		<link rel="stylesheet" href="css/swiper.min.css">
+		
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="jquery.mobile-1.4.5.js"></script>
         <script type="text/javascript" src="js/angular.min.js"></script>
@@ -25,21 +29,32 @@
 		<script type="text/javascript" src="js/artefactdb/artefactMain.js"></script>
 		<script type="text/javascript" src="js/artefactdb/grunt.js"></script>
 		<script type="text/javascript" src="js/artefactdb/swipe.js"></script>
-		<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDjl2-Yo0n08vvlNniuRvRZI-7LArD_YCU&sensor=false"> </script> 
+        <script type="text/javascript" src="js/soundcontrol.js"></script>
+        <script type="text/javascript" src="js/tourjs.js"></script>
+		<script type="text/javascript" src="js/scratch/wScratchPad.js"></script>
+		<script src="js/three.js"></script>
+        <script src="js/CSS3DRenderer.js"></script>
+        <script src="js/RequestAnimationFrame.js"></script>
+        <script src="js/events.js"></script>
+
+		<script src="js/sphere.js"></script>
+        <script src="js/aerial.js"></script>
+        <script src="js/swiper.min.js"></script>
+		<script type="text/javascript" src="js/audiojs.js"></script>
 		
         <title>Heritage Malta</title>
     </head>
     <body  ng-app="single-page-app">
+        <audio id="audio" src="https://hmresources.blob.core.windows.net/thumb/sample_berlin.mp3" preload="auto"></audio>
         <div ng-controller="cfgController">
         <div ng-view></div>
 
-
-        
         <script>
-        
+        //screen.lockOrientation('portrait');
         document.addEventListener("deviceready", onDeviceReady, false);
         function onDeviceReady() {
-            checkLanguage();
+            screen.lockOrientation('portrait');
+            checkLanguage();  
         }
         </script>
         

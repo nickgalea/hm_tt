@@ -1,2 +1,2 @@
-C:\Users\Jurgen\heritageapp\hmtt\heritageapp\platforms\android\ant-build\AndroidManifest.xml : \
-C:\Users\Jurgen\heritageapp\hmtt\heritageapp\platforms\android\AndroidManifest.xml \
+/Users/nicholasgalea/heritageapp/platforms/android/ant-build/AndroidManifest.xml : \
+/Users/nicholasgalea/heritageapp/platforms/android/AndroidManifest.xml \

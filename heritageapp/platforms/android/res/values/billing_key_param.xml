@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="billing_key_param">$BILLING_KEY</string>
+    <string name="billing_key_param">MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAox6/IMjn3zgL1G3XjUCVsgkt+/T029TWA0bpuLCI57uHnIeflmpy+zMig9LppFBbdpAPLEC0SVXdAG8Hc1J3OlTK61A4epKLtxxuqaUDBop/mBspFEfay8LBP1STIFQhhZIUEGRz/g5tHcyhFDzyzbM0Ein33YGazlUkWlaAaNdHlJfqbutjg7EiOvtvk9sxzvf/wOOFFbGF/B6lwECC7MQeUashCYv0mjxWlSk2JK39k6vC5lebk5dle6WJ0d3JfZULCMfShGeZKGd6EKaIsRAXo1hLa8v7jqapnRqLQHDAjCtTspxx8gRriSUjTKVT3vCefhdrOok9E0UW6gr/VQIDAQAB</string>
+</resources>

@@ -1,0 +1,25 @@
+<script>
+	screen.lockOrientation('landscape');
+</script>
+
+<style>
+    #sphere_back
+    {
+        position: absolute;
+        z-index: 5;
+        padding: 10px 35px 16px 0px;
+        position: absolute;
+        height: 5.3em;
+        width: 5em;
+    }
+</style>
+<img id="sphere_back" src="img/icons/back_shadow.png" onclick="onBackKeyDown();"></img>
+<video id="video" width="100%" controls autoplay poster="img/heritage_logo.png" src="" type="video/mp4">
+</video>
+
+<script type="text/javascript">
+console.log("video url: " + artefact_list[artefact_position].video);
+var vid = document.getElementById('video');
+vid.setAttribute("src", artefact_list[artefact_position].video);
+vid.load();
+</script>

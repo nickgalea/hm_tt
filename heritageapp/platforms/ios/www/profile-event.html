@@ -1,52 +1,105 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="msapplication-tap-highlight" content="no" />
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/main.css" />
-        <title>The Roman Inquisition in Malta</title>
-    </head>
-    <body>
+<script type="text/javascript">
+    console.log("events_index " + selected_events_index);
+
+    var fbLoginSuccess = function (userData) {
+    logged_in = true;
+    facebookConnectPlugin.showDialog( 
+    {
+        method: "feed",
+        picture: events_list[selected_events_index].image1,
+        name: events_list[selected_events_index].title,  
+        caption: 'Heritage Malta Event',
+        description: events_list[selected_events_index].info,
+        link: "www.heritagemalta.org"
+    }, 
+    function (response) { },
+    function (response) { });
+}
+
+function shareViaFB()
+{
+
+    facebookConnectPlugin.getLoginStatus(
+        function (status) {
+            //alert("current status: " + status.status);
+
+            if(status.status == 'connected')
+            {
+                facebookConnectPlugin.showDialog( 
+                {
+                    method: "feed",
+                    picture: events_list[selected_events_index].image1,
+                    name: events_list[selected_events_index].title,  
+                    caption: 'Heritage Malta Event',
+                    description: events_list[selected_events_index].info,
+                    link: "www.heritagemalta.org"
+                    //redirect_uri: "www.google.com"
+                },
+                function (response) { },
+                function (response) { });
+            }
+            else
+            {
+                facebookConnectPlugin.login(["public_profile"],
+                fbLoginSuccess,
+                function (error) { }  
+                );
+            }   
+        }
+    );
+}
+</script>
+
+    <div id="main_content" style="position:absolute;background:white;height:100%;width:100%;z-index:5000">
         <div id="action-bar">
-            <div class="cross" onclick="location.href='events.html'"></div>
+            <div class="cross" onclick="onBackKeyDown();"></div>
         </div>
         <div id="profile-title">
-            <h1>The Roman Inqusition in Malta</h1>
+            
         </div>
-        <div id="profile-image-landscape" style="background-image: url('img/inquisitors_palace.png')"></div>
+       <div id="profile-image-landscape">
+            <div id='slider' class='swipe'>
+              <div id="event_slider"class='swipe-wrap'>
+               
+              </div>
+            </div>
+        </div>
         <div id="profile-options">
             <div class="tile active">
                 <div class="photos"><span>Photos</span></div>
             </div>
-            <div class="tile secondary-tile">
+            <div class="tile secondary-tile" onclick="stack.push('#/profile-event'); location.href='#/event_map'">
                 <div class="map"><span>View on map</span></div>
             </div>
         </div>
         <div id="profile-description">
             <hr />
-            <h2>Location</h2>
-            <p class="focus">Inquisitor's Palace, Birgu</p>
-            <h2>Time Period</h2>
-            <p class="focus">18 September &mdash; 1 May</p>
+            <h2 id="event_location">Location</h2>
+            <h2 id="event_time">Time Period</h2>
             <div class="two-col">
                 <div class="col">
-                    <h2>Price</h2>
-                    <p class="focus small">Regular admission ticket to the Inquisitor's Palace</p>
+                    <h2 id="event_price">Price</h2>
                 </div>
                 <div class="col">
-                    <h2>Opening Hours</h2>
-                    <p class="focus small">Between 09.00 and 12.00hrs <small>(last admission at 16.30hrs)</small></p>
+                    <h2 id="event_hours">Opening Hours</h2>
                 </div>
             </div>
-            <p class="content">Witchcraft, magical spells, theft and profanation of the sacred and a myriad of other curious episodes from the past are some of the themes of this fascinating exhibition.</p>
-            <p class="content">The exhibition explores the role of the Inquisitor as supreme judge of the Holy Inquisition and an Apostolic Delegate representative of the Papacy. Exhibits include authentic proceedings and magical sheets from the Cathedral Archives, Palace plans from the Vatican Archives, and a number of books originally belonging to the Inquisitor's own personal library.</p>
         </div>
-        <div id="share-button"><span>Share</span></div>
-        <div id="bottom-red-message">Save to Calendar</div>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/jquery.js"></script>
-        <script type="text/javascript" src="js/scripts.js"></script>
-    </body>
-</html>
+        <div id="share-button" onclick="shareViaFB();"><span>Share</span></div>
+        <div id="bottom-red-message" onclick="addtocalendar();">Save to Calendar</div>
+    </div>
+
+
+    <script type="text/javascript">
+        populate_event_profile(selected_events_index);
+            window.mySwipe = Swipe(document.getElementById('slider'), {
+              startSlide: 0,
+              speed: 800,
+              auto: 3000,
+              continuous: true,
+              disableScroll: false,
+              stopPropagation: false,
+              callback: function(index, elem) {},
+              transitionEnd: function(index, elem) {}
+            });
+    </script>

@@ -1,0 +1,204 @@
+<div id="time-bar"></div>
+<div id="action-bar">
+	<div id="close_button" class="cross" onclick=""></div>
+</div>
+<div id="panel-description" style="height:none;">
+
+	<div id="profile-title">
+		<h1 id ="panel_name"><span class="title_pipe"> </span>Audio Guides</h1>
+	</div>
+
+	<div id="par_text1">
+		<div id = "loading">
+			<img src="img/icons/loader.gif"></img>
+		</div>
+		<!--div class="question_time">
+            <div class = "intro_question">
+                <div id="audio_button" class="audio_red row_audio" style="margin-right:0; margin-left:0;"></div>
+                <h2>Who were the Temple Builders?</h2>
+                <p id="expander" class="expander_class" style="font-size:2em; font-weight:300;">+</p>
+				
+            </div>
+			<div class=" children ">
+					<div id="audio_button" class="audio_red row_audio" onclick=""></div>
+					<p class=" sound_tour child_audio">Test</p>
+					<div id="audio_button" class="audio_red row_audio" onclick=""></div>
+					<p class=" sound_tour child_audio">Test</p>
+					<div id="audio_button" class="audio_red row_audio" onclick=""></div>
+					<p class=" sound_tour child_audio">Test</p>
+					
+			</div>
+        </div>
+		<!--div class="question_time">
+            <div class = "intro_question">
+                <div id="audio_button" class="audio_red row_audio" style="margin-right:0; margin-left:0;"></div>
+                <h2>Who were the Temple Builders?</h2>
+                <p id="expander" class="expander_class" style="font-size:2em; font-weight:300;">+</p>
+            </div>
+			<div class=" children ">
+					<div id="audio_button" class="audio_red row_audio" onclick=""></div>
+					<p class=" sound_tour child_audio">Test</p>
+					<div id="audio_button" class="audio_red row_audio" onclick=""></div>
+					<p class=" sound_tour child_audio">Test</p>
+				</div>
+        </div>
+		<div class="question_time">
+            <div class = "intro_question">
+                <div id="audio_button" class="audio_red row_audio" style="margin-right:0; margin-left:0;"></div>
+                <h2>Who were the Temple Builders?</h2>
+                <p id="expander" class="expander_class" style="font-size:2em; font-weight:300;">+</p>
+            </div>
+			<div class=" children ">
+					<div id="audio_button" class="audio_red row_audio" onclick=""></div>
+					<p class=" sound_tour child_audio">Test</p>
+			</div>
+        </div>
+		<div class="question_time">
+            <div class = "intro_question">
+               <div id="audio_button" class="audio_red row_audio" style="margin-right:0; margin-left:0;"></div>
+                <h2>Who were the Temple Builders?</h2>
+            </div>
+        </div-->
+	</div>
+</div>
+<script>
+var tour_id_list = [];
+var current_tour_point ;
+
+getTourList1();
+function handler(){
+$(".expander_class").click(function() {
+				$(this).parent().next().toggle();
+				
+				var expander = $(this).html();
+				if(expander == "—")
+				{
+					$(this).html("+");
+				}
+				else
+				{
+					$(this).html("—");
+				}
+			});
+			
+$(".audio_red").click(function(){
+	//set new audio
+	
+	var class_1 = $(this).attr('class');
+	var child = $(this).next().attr('id');
+	var position = $(this).parent().parent().attr('id');
+	var txt = $(this).prev().html();
+	//setTourAudio(tourDict[num][0].sound);
+	console.log("POSITION " + position + " CHILD " + child);
+	console.log(tourDict[parseInt(position)][parseInt(child)]);
+	console.log(tourDict[parseInt(position)][parseInt(child)].sound);
+	setTourAudio(tourDict[parseInt(position)][parseInt(child)].sound);
+	
+	
+	$("#audio").bind('ended', function(){
+		// done playing
+		$( this ).css( "background", "url(img/icons/audio_red.png) no-repeat");
+		$( this ).css( "backgroundSize", "25px");
+	});
+	
+	$(".audio_red").css( "background", "url(img/icons/audio_red.png) no-repeat");
+	$(".audio_red").css( "backgroundSize", "30px");
+	var audioplayer = document.getElementsByTagName("audio")[0];
+
+	if(audioplayer.paused)
+		{
+			audioplayer.play();
+			$( this ).css( "background", "url(img/icons/pause_red.png) no-repeat");
+			$( this ).css( "backgroundSize", "25px");
+		}
+	else
+		{
+			$( this ).css( "background", "url(img/icons/play_red.png) no-repeat");
+			$( this ).css( "backgroundSize", "25px");
+			audioplayer.pause();
+		}
+});
+
+}
+
+$("#close_button").click(function(){
+	var audioplayer = document.getElementsByTagName("audio")[0];
+	console.log("Audio PLaying");
+	if(!audioplayer.paused)
+	{
+		audioplayer.pause();
+	}
+	onBackKeyDown();
+});
+
+document.addEventListener("backbutton", stopAudio, false);
+/*function handler()
+{
+	$(".sound_tour").on("click",function(){
+	 var txt = $(this).html();
+	 var num = txt.substring(0, 1);
+
+	 setTourAudio(tourDict[num][0].sound);
+	});
+}*/
+
+
+</script>
+<style>
+
+.intro_question
+{
+	padding-bottom:3em;
+}
+.intro_question h2
+{
+	color: #222; 
+	font-weight:500;
+	width:70%;
+	font-size: 1em;
+	line-height:1.25em;
+
+}
+
+.child_audio
+{
+	margin-left:10%;
+	float:left;
+	display:inline-block;
+}
+.sound_tour{
+	width:50%;
+	top:0;
+}
+.children
+{
+	display:none;
+	overflow:hidden;
+	width:100%;
+	top:0;
+	font-size:0.75em;
+}
+.row_audio
+{
+	float:left;
+	width:20%;	
+}
+.question_time
+{
+}
+#expander
+{
+	margin:0px;
+	line-height: 1.25em;
+}
+#loading
+{
+	width:10%;
+	height:10%;	
+	margin-left:45%;
+}
+#loading img
+{
+	width:100%;
+}
+</style>

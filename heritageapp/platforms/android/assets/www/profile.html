@@ -1,18 +1,59 @@
-<!--<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="msapplication-tap-highlight" content="no" />
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/main.css" />
-        <title>Half Statue</title>
+<script>
 
-    </head>-->
+var fbLoginSuccess = function (userData) {
+    logged_in = true;
+    facebookConnectPlugin.showDialog( 
+    {
+        method: "feed",
+        picture: artefact_list[artefact_position].thumbnail,
+        name: artefact_list[artefact_position].name,  
+        caption: 'Artefact found in Tarxien Temples',
+        description: artefact_list[artefact_position].info,
+    }, 
+    function (response) { },
+    function (response) { });
+}
+
+function shareViaFB()
+{
+
+    facebookConnectPlugin.getLoginStatus(
+        function (status) {
+            //alert("current status: " + status.status);
+
+            if(status.status == 'connected')
+            {
+                facebookConnectPlugin.showDialog( 
+                {
+                    method: "feed",
+                    picture: artefact_list[artefact_position].thumbnail,
+                    name: artefact_list[artefact_position].name,  
+                    caption: 'Artefact found in Tarxien Temples',
+                    description: artefact_list[artefact_position].info,
+                    link: "www.heritagemalta.org"
+                    //redirect_uri: "www.google.com"
+                },
+                function (response) { },
+                function (response) { });
+            }
+            else
+            {
+                facebookConnectPlugin.login(["public_profile"],
+                fbLoginSuccess,
+                function (error) { }  
+                );
+            }   
+        }
+    );
+}
+
+
+
+</script>
+
 <snap-content>	
         <div id="action-bar">
-            <div class="cross" onclick="location.href='#/history_home'"></div>
-            <div class="audio"></div>
+            <div class="cross" onclick="onBackKeyDown();"></div>
         </div>
         <div id="profile-title">
             <h1 id = "artefact_name" ></h1>
@@ -27,20 +68,19 @@
 			  </div>
 			</div>
         </div>
-		<div id="geolocation"  style="visibility:hidden;">
-        	
-        </div>
-		<canvas id="cv" width="" height="" style="visibility:hidden;"></canvas>
 		
         <div id="profile-options">
             <div class="tile active">
                 <div class="photos"><span>Photos</span></div>
             </div>
-             <div id = "view_map" class="tile secondary-tile" onclick="location.href='#/3dmodel'">
+             <div id = "view_3d" class="tile secondary-tile" onclick="stack.push('#/profile'); location.href='#/3dmodel';">
                 <div class="threeD"><span>3D</span></div>
             </div>
-            <div id = "view_map" class="tile secondary-tile" onclick="location.href='#/map'">
+            <div id = "view_map" class="tile secondary-tile" onclick="stack.push('#/profile'); location.href='#/map'">
                 <div class="map"><span>View on map</span></div>
+            </div>
+            <div id = "view_video" class="tile secondary-tile" onclick="stack.push('#/profile'); location.href='#/artvid'">
+                <div class="video"><span>Video</span></div>
             </div>
         </div>
         <div id="profile-description">
@@ -48,16 +88,16 @@
             <h2 vistxt_era>Period</h2>
             <div id="timeline">
                 <ul class="intervals-header">
-                    <li id = "period-3300"></li>
-                    <li id = "period-2800"></li>
-                    <li id = "period-2300"></li>
-                    <li id = "period-1800"></li>
+                    <li id = "Ggantija"></li>
+                    <li id = "Saflieni"></li>
+                    <li id = "Tarxien"></li>
+                    <li id = "Cemetry"></li>
                 </ul>
                 <ul class="intervals">
-                    <li>3300 BC - 2800 BC</li>
-                    <li>2800 BC - 2300 BC</li>
-                    <li>2300 BC - 1800 BC</li>
-                    <li>1800 BC - 1000 BC</li>
+                    <li>Ggantija 3600 - 3200 BC</li>
+                    <li>Saflieni 3300 - 3000 BC</li>
+                    <li>Tarxien 3150 - 2500 BC</li>
+                    <li>Tarxien Cemetry 2400 - 1500 BC</li>
                 </ul>
             </div>
             <div class="two-col">
@@ -76,16 +116,13 @@
             </div>
             <p id = "artefact_info" class="content"></p>
         </div>
-        <div id="share-button"><span>Share</span></div>
-        <div id="bottom-red-message">View Replica in Giftstore</div>
-        <!--<script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/jquery.js"></script>
-        <script type="text/javascript" src="js/scripts.js"></script>
-        <script type="text/javascript" src="js/artefactdb/artefactMain.js"></script>-->
+        <div id="share-button" 
+        onclick="shareViaFB();">
+        <span>Share</span></div>
         <script>
         	//createArtList();
 			populatePage();
-			getImages();
+			//getImages();
 			setImageSize();	
 			$(window).on("orientationchange",function(){
 				var window_height = $(window).height();

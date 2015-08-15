@@ -1,0 +1,36 @@
+<style>
+    #sphere_back
+    {
+        position: absolute;
+        z-index: 5;
+        padding: 10px 35px 16px 0px;
+        position: absolute;
+        height: 5.3em;
+        width: 5em;
+    }
+</style>
+
+<script>
+    screen.lockOrientation('landscape');
+</script>
+
+    
+
+<!-- Slider main container -->
+<div class="swiper-container">
+    <img id="sphere_back" src="img/icons/back_shadow.png" onclick="onBackKeyDown();"></img>
+    <!-- Additional required wrapper -->
+    <div id="swiper_images" class="swiper-wrapper">
+    </div>
+    <!-- If we need pagination -->
+    <div class="swiper-pagination"></div>
+    
+    <!-- If we need scrollbar -->
+    <div class="swiper-scrollbar"></div>
+</div>
+
+<script>        
+
+    init_aerial_gal();
+    
+  </script>

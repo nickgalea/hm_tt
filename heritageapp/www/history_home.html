@@ -1,56 +1,11 @@
-<snap-drawer>
-        <div id="sidebar">
-            <div class="filler">
-                <div class="logo"></div>
-                <div class="title">Heritage Malta</div>
-                <div class="main-header">
-                    <span id="vistxt_menutitle" onclick="stack.pop();">Tarxien Temples</span>
-                </div>
-                <ul>
-                    <li onclick="location.href='events.html'"><span id="vistxt_events" class="events">Events and News</span></li>
-                    <li onclick="location.href='booking.html'"><span id="vistxt_tickets" class="tickets">Book and Buy Tickets</span></li>
-                    <li><span id="vistxt_itinerary" class="itinerary">Itinerary</span></li>
-                    <li id="contact-opt" rel="contact-us"><span id="vistxt_contact" class="contact">Contact Us</span></li>
-                </ul>
-                <div id="language-opt" snap-toggle="" onclick="showlangmenu();" rel="language" class="bottom-link">Language &ndash; English</div>
-            </div>
-        </div>
-    </snap-drawer>
+<script type="text/javascript">
+console.log("prem prod arte" + prem_product);
+</script>
 
-<snap-content>
-
-    <div id="language" class="full-container" style="display:none;">
-            <div class="full-content">
-                <div onclick="closefullcontainer()" class="close"></div>
-                <img class="top-image" src="img/icons/world.png" alt="" width="175" />
-                <p>Which language do you prefer?</p>
-                <div class="wrapper">
-                    <p onclick="setLanguage(0)" class="liners small">English</p>
-                    <p onclick="setLanguage(1)" class="liners small">Malti</p>
-                    <p onclick="setLanguage(2)" class="liners small">Italiano</p>
-                    <p onclick="setLanguage(3)" class="liners small">French</p>
-                    <p onclick="setLanguage(4)" class="liners small">German</p>
-                </div>
-            </div>            
-    </div>
-
-    <!-- <div id="contact-us" class="full-container">
-            <div class="full-content">
-                <div class="close"></div>
-                <img class="top-image" src="img/heritage_logo.png" alt="" width="175" />
-                <div class="wrapper">
-                    <p class="liners">(+356) 22954000<br />(+356) 21222900</p>
-                    <p class="liners small">Head Office<br />Ex Royal Naval Hospital<br />Triq Marina<br />Kalkara KKR1524<br />Malta</p>
-                    <p class="liners small">info@heritagemalta.com</p>
-                </div>
-            </div>            
-        </div>
-     -->    
-
-    <div id="main_content" style="position:absolute;background:white;height:100%;width:100%;z-index:5000">
+  <div id="main_content" style="position:absolute;background:white;height:100%;width:100%;z-index:5000">
         <div id="red">
             <div class="red-wrapper">
-                <img id="menutoggle" src="img/icons/back.png" onclick="location.href=stack.pop()"></img>
+                <img id="menutoggle" src="img/icons/back.png" onclick="onBackKeyDown();"></img>
                 <h1 class="top-spacer"><br>Learn About Tarxien Temples</h1>
                 <h2>History, Excavation and Artifacts</h2>
                 <hr class="white" />
@@ -69,7 +24,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="box" style="background: url(img/excavation_temples.png) no-repeat;background-size:cover;">
+                <div class="box" style="background: url(img/excavation_temples.png) no-repeat;background-size:cover;" onclick="stack.push('#/history_home');location.href='#/history_excavation';">
                     <div class="black-transparency-2">
                         <div class="text">
                             <h1>Excavation of Tarxien Temples</h1>
@@ -104,7 +59,8 @@
 			
         </div>
         <script>
-		createArtList();
+		//createArtList();
+		getDataAndFillGallery();
 		//handler for first time
 		$( ".white-container" ).delegate( ".artifact_lg", "touchstart", function() {
 			//get id
@@ -121,17 +77,18 @@
 			editArtefactPost(id);
 		});
 		</script>
+
+    </div>
+
 <style>
 #loading
 {
-	width:10%;
-	height:10%;	
-	margin-left:45%;
+    width:10%;
+    height:10%; 
+    margin-left:45%;
 }
 #loading img
 {
-	width:100%;
+    width:100%;
 }
 </style>
-    </div>
-</snap-content>

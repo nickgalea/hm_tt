@@ -1,0 +1,99 @@
+#histintro{
+    margin: 1em;
+    margin-bottom: 0.2em;
+    text-align: center;
+}
+
+#histintro h1{
+    font-weight: bold;
+    font-size: 2.2em;
+    line-height: 1.2em;
+}
+
+#histintro p{
+    margin: 0;
+    margin-top: 0em;
+    color: #b9b9b9;
+    font-size: 2em;
+}
+
+.question_time{
+    background-color: #efefef;
+    padding:0.5em;
+    padding-bottom: 1.5em;
+    padding-left: 2em;
+	padding-right: 2em;
+    margin-bottom:2em;
+}
+
+.question_time h2{
+    color: #ae1215;
+    font-size: 1.2em;
+    float:left;
+    display:inline-block;
+}
+
+.question_time h1{
+    color: #ae1215;
+    font-size: 1.5em;
+    font-weight: 700;
+    line-height: 1em;
+}
+
+.question_time p{
+    color: #222;
+    font-size: 1.5em;
+    font-weight: 500;
+    margin-top: 1em;
+}
+
+#expander{
+    float: right;
+    margin-right: 0em;
+    margin-top: -0.05em;
+    font-size: 3em;
+}
+
+.tour{
+    text-align: center;
+}
+
+.question_tour{
+    background-color: none;
+    padding:0.5em;
+    padding-bottom: 1.5em;
+    margin-bottom:2em;
+    text-align: center;
+}
+
+.question_tour h2{
+    color: #ae1215;
+    font-size: 1.2em;
+    float:left;
+    display:inline-block;
+}
+
+.question_tour h1{
+    color: #ae1215;
+    font-size: 1.5em;
+    font-weight: 700;
+    line-height: 1em;
+}
+
+.question_tour p{
+    color: #222;
+    font-size: 1.5em;
+    font-weight: 500;
+    margin-top: 1em;
+}
+
+#intro_text{
+margin-right:0.4em;
+margin-left:0.4em;
+text-align: justify;
+}
+
+.artefact_info
+{
+	display:none;
+}

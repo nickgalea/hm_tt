@@ -1,0 +1,60 @@
+<snap-content>	
+        <div id="action-bar">
+            <div class="cross" onclick="onBackKeyDown();"></div>
+        </div>
+        <div id="histintro">
+            <h1>Excavation</h1>
+            <p style="font-size: 1.5em;">of Tarxien Temples</p>
+        </div>
+        
+        <div id="profile-description">   
+            <p class="content" id="intro_text">In 1913, Lorenzo Despott, a farmer from the Tal-Borġ area in Tarxien, reluctantly reported some unusual discoveries in his field to the Health Department.  His report reached <b>Sir Themistocles (Temi) Zammit</b>, then Director of the Museum, who dug a trench the following year to check it out. What he unearthed convinced him to launch a full-scale excavation which started on the <b>20th July 1915</b> and lasted for five years. </p>
+
+            <br>
+
+            <p class="content" id="intro_text">Unlike today's excavations, carried out under strict supervision by qualified archaeologists, Temi Zammit hired farmers from the district to do all of the hard labour, including Lorenzo Despott, the original tenant. Since the excavation was carried out in the warmer months, roughly between May and September, this was gruelling work and photos from that period shows them wearing large round straw hats in an effort to shade their faces from the hot sun.Most of the farmers were paid one shilling sixpence a day, and a little less for the pottery boy who was probably one of the farmers' sons.</p>
+
+            <br>
+
+            <p class="content" id="intro_text">Most days, Zammit had up to 14 men working in different areas of the site. The farmers had to shovel the accumulated soil of centuries as well as move massive blocks of stone, which were probably originally part of the structure but had fallen over at some point. The more interesting pottery uncovered was carefully collected in wooden boxes and stored until these could eventually make their way to the Museum. The others were mostly re-buried in pits on site. One such deposit was re-discovered in 2011 during the works for the construction of the walkway. </p>
+
+            <br>
+
+            <p class="content" id="intro_text">Throughout, Zammit walked around the site, always elegantly dressed in light coloured suits and hats, directing the farmers and writing down his observations on small notebooks. Possibly due to his medical training, Zammit carefully illustrated his notes with sketches of pottery and other finds as well as plans of the architecture being revealed, leaving behind a treasure trove of information on Maltese prehistory which influences our understanding of this period to this day. </p>
+
+            <br>
+
+            <p class="content" id="intro_text">Several smaller campaigns carried out since have confirmed that, not surprisingly, a lot of archaeological material is still buried in areas adjacent to the site, not least of which were the excavations carried out in preparation for the building of the walkway and the protective shelter which shields the Temples from the harmful effects of the elements.  In fact, there were several occasions where the foundations of the shelter were shifted from their original location because of the discovery of important archaeological material. <b><i>Who knows what the Tarxien Temples may yet tell us about this fascinating period of the island's history?</i></b> </p>
+            
+            
+            
+        </div>
+        
+        <script>
+        	//createArtList();
+			/*populatePage();
+			getImages();
+			setImageSize();	
+			$(window).on("orientationchange",function(){
+				var window_height = $(window).height();
+				var window_width = $(window).width();
+				var max_height = window_height*0.75;
+				var min_height = window_height*0.5;
+				$(".swipe-wrap").css({"max-height": max_height});
+			});*/
+			$('.intro_question').click(function() {
+				$(this).next().next().toggle();
+				var expander = $(this).find( "#expander" ).html();
+				if(expander == "—")
+				{
+					$(this).find( "#expander" ).html("+");
+				}
+				else
+				{
+					$(this).find( "#expander" ).html("—");
+				}
+			});
+
+        </script>
+</snap-content>
+<!--</html>-->

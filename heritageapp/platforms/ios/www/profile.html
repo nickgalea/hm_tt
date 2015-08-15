@@ -1,128 +1,137 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="msapplication-tap-highlight" content="no" />
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/main.css" />
-        <title>Half Statue</title>
-        
-        
-    </head>
-    <body>
+<script>
+
+var fbLoginSuccess = function (userData) {
+    logged_in = true;
+    facebookConnectPlugin.showDialog( 
+    {
+        method: "feed",
+        picture: artefact_list[artefact_position].thumbnail,
+        name: artefact_list[artefact_position].name,  
+        caption: 'Artefact found in Tarxien Temples',
+        description: artefact_list[artefact_position].info,
+    }, 
+    function (response) { },
+    function (response) { });
+}
+
+function shareViaFB()
+{
+
+    facebookConnectPlugin.getLoginStatus(
+        function (status) {
+            //alert("current status: " + status.status);
+
+            if(status.status == 'connected')
+            {
+                facebookConnectPlugin.showDialog( 
+                {
+                    method: "feed",
+                    picture: artefact_list[artefact_position].thumbnail,
+                    name: artefact_list[artefact_position].name,  
+                    caption: 'Artefact found in Tarxien Temples',
+                    description: artefact_list[artefact_position].info,
+                    link: "www.heritagemalta.org"
+                    //redirect_uri: "www.google.com"
+                },
+                function (response) { },
+                function (response) { });
+            }
+            else
+            {
+                facebookConnectPlugin.login(["public_profile"],
+                fbLoginSuccess,
+                function (error) { }  
+                );
+            }   
+        }
+    );
+}
+
+
+
+</script>
+
+<snap-content>	
         <div id="action-bar">
-            <div class="cross" onclick="location.href='history.html'"></div>
-            <div class="audio"></div>
+            <div class="cross" onclick="onBackKeyDown();"></div>
         </div>
         <div id="profile-title">
-            <h1 id = "artefact_name" >Half Statue</h1>
+            <h1 id = "artefact_name" ></h1>
             <p>Tarxien Temples</p>
         </div>
-        <!--<div class="banner" style="background-color:red; overflow: auto !important">
-		    <ul>
-		        <li>This is a slide.</li>
-		        <li>This is another slide.</li>
-		        <li>This is a final slide.</li>
-		    </ul>
-		</div>-->
-        <div id="profile-image-landscape">
-        	<img src="img/artifact_4.png" alt="img">
+
+
+		<div id="profile-image-landscape">
+        	<div id='slider' class='swipe'>
+			  <div class='swipe-wrap'>
+				<!--div><img src="img/artifact_4.png" alt="img"></div-->
+			  </div>
+			</div>
         </div>
+		
         <div id="profile-options">
             <div class="tile active">
                 <div class="photos"><span>Photos</span></div>
             </div>
-            <div class="tile secondary-tile">
+             <div id = "view_3d" class="tile secondary-tile" onclick="stack.push('#/profile'); location.href='#/3dmodel';">
                 <div class="threeD"><span>3D</span></div>
             </div>
-            <div class="tile secondary-tile">
+            <div id = "view_map" class="tile secondary-tile" onclick="stack.push('#/profile'); location.href='#/map'">
                 <div class="map"><span>View on map</span></div>
+            </div>
+            <div id = "view_video" class="tile secondary-tile" onclick="stack.push('#/profile'); location.href='#/artvid'">
+                <div class="video"><span>Video</span></div>
             </div>
         </div>
         <div id="profile-description">
             <hr />
-            <h2 vistxt_era>Era</h2>
+            <h2 vistxt_era>Period</h2>
             <div id="timeline">
                 <ul class="intervals-header">
-                    <li id = "era-3300"></li>
-                    <li id = "era-2800"></li>
-                    <li id = "era-2300"></li>
-                    <li id = "era-1800"></li>
+                    <li id = "Ggantija"></li>
+                    <li id = "Saflieni"></li>
+                    <li id = "Tarxien"></li>
+                    <li id = "Cemetry"></li>
                 </ul>
                 <ul class="intervals">
-                    <li>3300 BC</li>
-                    <li>2800 BC</li>
-                    <li>2300 BC</li>
-                    <li>1800 BC</li>
+                    <li>Ggantija 3600 - 3200 BC</li>
+                    <li>Saflieni 3300 - 3000 BC</li>
+                    <li>Tarxien 3150 - 2500 BC</li>
+                    <li>Tarxien Cemetry 2400 - 1500 BC</li>
                 </ul>
             </div>
             <div class="two-col">
                 <div id = "type_col" class="col">
                     <h2 id = "vistxt_type_col">Type</h2>
-                    <p id = "artefact_type"  class="focus">Statue</p>
+                    <p id = "artefact_type"  class="focus"></p>
                 </div>
                 <div id = "material_col" class="col">
                     <h2 id = "vistxt_material_col">Material</h2>
-                    <p id = "artefact_material" class="focus">Stone</p>
+                    <p id = "artefact_material" class="focus"></p>
                 </div>
                 <div id = "use_col" class="col">
                     <h2 id = "vistxt_use_col">Use</h2>
-                    <p id = "artefact_use" class="focus">Use</p>
+                    <p id = "artefact_use" class="focus"></p>
                 </div>
             </div>
-            <p id = "artefact_info" class="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras laoreet fermentum augue, nec fermentum lacus. Morbi risus ex, mollis a lorem a, pellentesque imperdiet lorem. Proin gravida massa at nisl egestas, pulvinar iaculis neque ultrices. Etiam vel neque ut tortor accumsan pulvinar.</p>
+            <p id = "artefact_info" class="content"></p>
         </div>
-        <div id="share-button"><span>Share</span></div>
-        <div id="bottom-red-message">View Replica in Giftstore</div>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/jquery.js"></script>
-        <script type="text/javascript" src="js/scripts.js"></script>
-        <script type="text/javascript" src="js/artefactdb/artefactMain.js"></script>
-        <script type="text/javascript" src="js/artefactdb/unslider.min.js"></script>
+        <div id="share-button" 
+        onclick="shareViaFB();">
+        <span>Share</span></div>
         <script>
-        window.onload = function()
-        {
-        	var artefact_position = 0;
-        	var eras = ["3300","2800","2300","1800"];
-        	var artefact_list = createArtList();
-        	console.log("ok");
-        	
-        	$("#artefact_name").text(artefact_list[artefact_position].name);
-        	$("<div class='arrow'></div>").appendTo("#era-" + artefact_list[artefact_position].era);
-        	if(artefact_list[artefact_position].type == "")
-        	{
-        		$("#type_col").hide();
-        	}
-        	if(artefact_list[artefact_position].material == "")
-        	{
-        		$("#material_col").hide();
-        	}
-        	if(artefact_list[artefact_position].use == "")
-        	{
-        		$("#use_col").hide();
-        	}
-        	
-        	$("#artefact_type").text(artefact_list[artefact_position].type);
-        	$("#artefact_material").text(artefact_list[artefact_position].material);
-        	$("#artefact_use").text(artefact_list[artefact_position].use);
-        	
-        	$("#artefact_info").text(artefact_list[artefact_position].info);
-        	
-        }
-        
-        $(document).ready (function(){
-        	/*$(".banner").unslider({
-			speed: 500,               //  The speed to animate each slide (in milliseconds)
-			delay: 3000,              //  The delay between slide animations (in milliseconds)
-			complete: function() {},  //  A function that gets called after every slide animation
-			keys: true,               //  Enable keyboard (left, right) arrow shortcuts
-			dots: true,               //  Display dot navigation
-			fluid: false              //  Support responsive design. May break non-responsive designs
-		});*/
-		
-        });
-        
+        	//createArtList();
+			populatePage();
+			//getImages();
+			setImageSize();	
+			$(window).on("orientationchange",function(){
+				var window_height = $(window).height();
+				var window_width = $(window).width();
+				var max_height = window_height*0.75;
+				var min_height = window_height*0.5;
+				$(".swipe-wrap").css({"max-height": max_height});
+			});
+
         </script>
-    </body>
-</html>
+</snap-content>
+<!--</html>-->

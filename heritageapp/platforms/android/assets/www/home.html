@@ -1,30 +1,33 @@
+<script>
+</script>
 <snap-drawer>
         <div id="sidebar">
             <div class="filler">
                 <div class="logo"></div>
                 <div class="title">Heritage Malta</div>
                 <div class="main-header">
-                    <span id="vistxt_menutitle" onclick="location.href='index.html'">Tarxien Temples</span>
+                    <span id="vistxt_menutitle">Tarxien Temples</span>
                 </div>
                 <ul>
-                    <li onclick="location.href='events.html'"><span id="vistxt_events" class="events">Events and News</span></li>
-                    <li onclick="location.href='booking.html'"><span id="vistxt_tickets" class="tickets">Book and Buy Tickets</span></li>
-                    <li><span id="vistxt_itinerary" class="itinerary">Itinerary</span></li>
-                    <li id="contact-opt" rel="contact-us"><span id="vistxt_contact" class="contact">Contact Us</span></li>
+                    <li onclick="stack.push('#/'); location.href='#/events'"><span id="vistxt_events" class="events">Events and News</span></li>
+                    <!-- <li onclick=""><span id="vistxt_tickets" class="tickets">Book and Buy Tickets</span></li>
+                    <li><span id="vistxt_itinerary" class="itinerary">Itinerary</span></li> -->
+                    <li id="contact-opt" snap-toggle="left" rel="contact-us"><span id="vistxt_contact" onclick="showcontactmenu();" class="contact">Contact Us</span></li>
                 </ul>
-                <div id="language-opt" snap-toggle="" onclick="showlangmenu();" rel="language" class="bottom-link">Language &ndash; English</div>
+                <div id="vistxt_langchoice" snap-toggle="left" onclick="showlangmenu();" rel="language" class="bottom-link">Language &ndash; English</div>
             </div>
         </div>
     </snap-drawer>
 
 <snap-content>
 
-    <div id="language" class="full-container" style="display:none;">
+<div id="language" class="full-container" style="display:none;">
             <div class="full-content">
                 <div onclick="closefullcontainer()" class="close"></div>
                 <img class="top-image" src="img/icons/world.png" alt="" width="175" />
-                <p>Which language do you prefer?</p>
-                <div class="wrapper">
+                <p style="font-weight:bold">Which language do you prefer?</p>
+                <p style="margin-top:0px; font-size:1em; margin-bottom:0px;"><i>Scroll up for more languages.</i></p>
+                <div class="wrapper" style="height: 14em; overflow:auto; margin-top:0px;">
                     <p onclick="setLanguage(0)" class="liners small">English</p>
                     <p onclick="setLanguage(1)" class="liners small">Malti</p>
                     <p onclick="setLanguage(2)" class="liners small">Italiano</p>
@@ -34,54 +37,69 @@
             </div>            
     </div>
 
-    <!-- <div id="contact-us" class="full-container">
-            <div class="full-content">
-                <div class="close"></div>
-                <img class="top-image" src="img/heritage_logo.png" alt="" width="175" />
-                <div class="wrapper">
-                    <p class="liners">(+356) 22954000<br />(+356) 21222900</p>
-                    <p class="liners small">Head Office<br />Ex Royal Naval Hospital<br />Triq Marina<br />Kalkara KKR1524<br />Malta</p>
-                    <p class="liners small">info@heritagemalta.com</p>
+    <div id="contact-us" class="full-container" style="display:none;">
+        <div class="full-content">
+                <div onclick="closefullcontainer()" class="close"></div>
+                <img class="top-image" style="margin-bottom:0;" src="img/heritage_logo.png" alt="" width="175" />
+                <div class="wrapper" style="margin-top:0;">
+                    <p class="liners small" style="color:#222222; text-decoration:none;"><a href="tel:35622954000" style="color:#222222; text-decoration:none;">(+356) 22954000</a></br><br><a href="tel:35621222900" style="color:#222222; text-decoration:none;">(+356) 21222900</a></p>
+                    <p class="liners small">Head Office</br>Ex Royal Naval Hospital</br>Triq Marina</br>Kalkara KKR1524</br>Malta</p>
+                    <p><a href="mailto:info@heritagemalta.org" style="color:#222222; text-decoration:none;">info@heritagemalta.org</a></p>
                 </div>
-            </div>            
-        </div>
-     -->    
+            </div>                        
+    </div>
 
-    <div id="main_content" style="background:white;height:100%;width:100%;z-index:5000;">
+    <div id="content_home">
         <div id="top">
-            <h1>Tarxien <br>Temples</h1>
-            <img id="menutoggle" snap-toggle="" src="img/icons/hamburger.png"></img>
+            <h1 id="vistxt_maintitle">Tarxien Temples</h1>
+            <div id="menutoggle" snap-toggle="left"> <img src="img/icons/hamburger.png"></img></div>
         </div>
         <div id="menu-slider" style="z-index:4;">
-            <div class="box history" onclick="location.href='#/history_home'">
+            <div class="box history" onclick="stack.push('#/'); location.href='#/history_home'">
                 <div class="black-transparency">
                     <div class="text">
-                        <h1><b>History</b><br />and <b>Artifacts</b></h1>
-                        <p>Discover the history of the Temples</p>
+                        <h1 id="vistxt_artifacts">History <br> and Artifacts</h1>
+                        <p>Discover the history of</br>the Temples</p>
                     </div>
                 </div>
             </div>
-            <div class="box timeline" onclick="location.href='#/3dmodel'">
+            <div id="box_premium_comment" class="box timeline greyout" onclick="checkLocked('#/','#/timeline');">
                 <div class="black-transparency">
                     <div class="text">
-                        <h1><b>Timeline</b></h1>
-                        <p>See when the temples were built</p>
+                        <h1>Timeline <img class="locked_padlock" src="img/icons/padlock_white.png" width="40" height="40"/></h1>
+                        <p>Learn how Tarxien Temples changed over time</p>
                     </div>
                 </div>
             </div>
-            <div class="box games" onclick="location.href='game.html'">
+            <div class="box games" onclick="stack.push('#/'); location.href='#/game_start'">
                 <div class="black-transparency">
                     <div class="text">
-                        <h1><b>Games</b></h1>
+                        <h1>Games</h1>
                         <p>Excavate and explore Tarxien Temples</p>
                     </div>
                 </div>
             </div>
-            <div class="box tour" onclick="location.href='tour.html'">
+            <div class="box tour" onclick="stack.push('#/'); location.href='#/tour'">
                 <div class="black-transparency">
                     <div class="text">
-                        <h1><b>Tour</b></h1>
-                        <p>Enjoy a guided tour of the Temples</p>
+                        <h1>Tour</h1>
+                        <p>Enjoy a guided tour of</br>the Temples</p>
+                    </div>
+                </div>
+            </div>
+			<div id="premium_gallery" class="box gallery greyout" onclick="checkLocked('#/','#/gallery_start');">
+                <div class="black-transparency" style="">
+                    <div class="text">
+                        <h1>Gallery <img class="locked_padlock" src="img/icons/padlock_white.png" width="40" height="40"/></h1>
+                        <p>Enjoy spherical and aerial photographs of the Temples</p>
+                    </div>
+                </div>
+            </div>
+            <div id="premium_audioguide" class="box timeline greyout" onclick="checkLocked('#/','#/audioguide');">
+                <div class="black-transparency">
+                    <div class="text">
+                        <h1>Audio Guide <img class="locked_padlock" src="img/icons/padlock_white.png" width="40" height="40"/></h1>
+                        <p>Audio Guide to Temples of Tarxien</p>
                     </div>
                 </div>
             </div>

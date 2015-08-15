@@ -34,6 +34,44 @@ h1{
     margin: 0px;
     overflow: visible;
     padding: 0px;
+
+}
+
+.greyout{
+    background-color: #222222;
+    filter:alpha(opacity=50); 
+    opacity: 0.65; 
+    -moz-opacity:0.50;
+    z-index: 20;
+}
+
+#content_home{
+    width:100%;
+    height: 100%;
+    background: url(../img/homeb.png) no-repeat center top;
+    background-size: cover;
+    position:absolute;
+}
+
+#loading
+{
+	width:10%;
+	height:10%;	
+	margin-left:45%;
+}
+#loading img
+{
+	width:100%;
+}
+
+/*gallery css*/
+.content_gals{
+    width:100%;
+    height: 100%;
+    background: url(../img/galleryb.jpg) no-repeat center top;
+    background-size: cover;
+    position:absolute;
+    text-align: center;
 }
 
 #media{
@@ -45,7 +83,7 @@ h1{
 
 #top{
     background-size: cover;
-    height: 30em;
+    height: 62%;
     position: relative;
 }
 
@@ -78,6 +116,7 @@ h1{
     width: 14em;
     height: 14em;
     background-repeat: no-repeat;
+    position: relative;
 }
 
 .box .black-transparency{
@@ -96,7 +135,8 @@ h1{
 }
 
 .box .text h1{
-    font-size: 1.2em;
+    color: #fff;
+    font-size: 1.4em;
     margin-bottom: 0.2em;
     text-transform: uppercase;
 }
@@ -156,6 +196,16 @@ h1{
     border-color: rgb(255, 255, 255);
 }
 
+#past-event-list-tiles .box{
+    width: 100%;
+    display: block;
+}
+
+#upcoming-event-list-tiles .box{
+    width: 100%;
+    display: block;
+}
+
 #list-tiles .box{
     width: 100%;
     display: block;
@@ -166,8 +216,8 @@ h1{
     position: absolute;
     top: 2em;
     left: 1.5em;
-    height: 2em;
-    width: 2.5em;
+    height: 4%;
+    width: 6%;
 }
 
 .audio_white{
@@ -193,7 +243,7 @@ h1{
     background: #222;
     height:100%;
     /*margin-left: -250px;*/
-    overflow-y: auto;
+    overflow-y: hidden;
     position: relative;
 }
 
@@ -296,6 +346,7 @@ h1{
     border-bottom: 1px solid #EEE;
 }
 
+
 #action-bar .cross{
     background: url(../img/icons/cross_2.png) no-repeat;
     background-size: 25px;
@@ -392,6 +443,12 @@ h1{
     margin-right: 0px;
 }
 
+#profile-options .gray{
+    background-color: #c7c7c7;
+    border: 1px solid #ae1215;
+    margin-right: 0px;
+}
+
 #profile-options .tile.secondary-tile{
     margin-left: -4px;
 }
@@ -418,6 +475,12 @@ h1{
 
 #profile-options .tile .map{
     background: url(../img/icons/map.png) no-repeat;
+    background-size: 35px;
+    background-position: 50%;
+}
+
+#profile-options .tile .video{
+    background: url(../img/icons/video.png) no-repeat;
     background-size: 35px;
     background-position: 50%;
 }
@@ -554,6 +617,22 @@ h1{
     padding-left: 35px;
 }
 
+#top-red-message{
+    background-color: #ae1215;
+    color: #fff;
+    font-size: 1.3em;
+    text-align: center;
+    padding: 0.8em 0;
+}
+
+#top-red-message h1{
+    font-weight: bold;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #fff;
+}
+
 #bottom-red-message{
     margin-top: 1em;
     background-color: #ae1215;
@@ -568,6 +647,7 @@ h1{
     font-size: 1.5em;
     text-transform: uppercase;
     letter-spacing: 1px;
+    color: #fff;
 }
 
 #bottom-red-message h2{
@@ -640,11 +720,12 @@ h1{
 }
 
 .wrapper h1.top-spacer{
-    margin-top: 2.4em;
+    margin-top: 3.4em;
+    color: #fff;
 }
 
 .wrapper .spacer{
-    margin-top: 6em;
+    margin-top: 4em;
     color: #fff;
 }
 .spacer{
@@ -676,7 +757,7 @@ hr.white{
 }
 
 #today-events-list ul li{
-    border-bottom: 1px solid #ea6461;
+    border-bottom: 1px solid #fff;
     padding: 0.8em 0;
 }
 
@@ -710,6 +791,30 @@ hr.white{
 
 #today-events-list ul li p.dates{
     font-style: italic;
+}
+
+#past-event-list-tiles{
+    margin-top: 1em;
+}
+
+#past-event-list-tiles .box{
+    margin-bottom: 1em;
+}
+
+#past-event-list-tiles .box:last-child{
+    margin-bottom: 0;
+}
+
+#upcoming-event-list-tiles{
+    margin-top: 1em;
+}
+
+#upcoming-event-list-tiles .box{
+    margin-bottom: 1em;
+}
+
+#upcoming-event-list-tiles .box:last-child{
+    margin-bottom: 0;
 }
 
 #list-tiles{
@@ -793,6 +898,22 @@ ul#tickets-main-options .detailed-option ul li{
 ul#tickets-main-options .chosen-option-calendar{
     display: none;
     text-align: center;
+}
+
+.white-container2{
+    /*margin-top: 2em;*/
+    background: white;
+}
+
+.white-container2 h1{
+    color: #000;
+    font-size: 1.8em;
+}
+
+.white-container2 p{
+    margin: 0;
+    margin-top: 0.5em;
+    font-size: 1.1em;
 }
 
 .white-container{
@@ -932,7 +1053,7 @@ h1.found{
     -webkit-box-shadow: 1px 2px 6px #888;
     -moz-box-shadow: 1px 2px 6px #888;
     box-shadow: 1px 2px 6px #888;
-    position: relative;
+    position: absolute;
 }
 
 .full-container .close{
@@ -1051,8 +1172,22 @@ h1.found{
     line-height: 1.8;
     margin-top: 0;
     text-align: left;
-    height:33em;
     overflow-y:scroll;
+    
+}
+@media (max-width:700px) 
+{
+	#panel-description
+	{
+		height:75%;
+	}
+}
+@media (min-width:700px) 
+{
+	#panel-description
+	{
+		height:85%;
+	}
 }
 
 #panel-description-premium{
@@ -1071,7 +1206,7 @@ h1.found{
 
 #tour-navigation{
     width: 100%;
-    height: 4.5em;
+    height: 8%;
     /*background-color: #ae1215;*/
     position: fixed;
     border-top: .1em solid #EEE;
@@ -1079,6 +1214,21 @@ h1.found{
     text-align: center;
     margin-right: auto;
     margin-left: auto;
+}
+
+@media (max-width:700px) 
+{
+	#tour-navigation
+	{
+		height: 8%;
+	}
+}
+@media (min-width:700px) 
+{
+	#tour-navigation
+	{
+		height: 5%;
+	}
 }
 
 #tour-navigation.back{
@@ -1304,7 +1454,7 @@ TOUR
     font-size: 0.9em;
 }
 .back_t{
-   width:4.5em;
+   width:17%;
    height: 100%;
    display: inline-block;
    float: left;
@@ -1321,7 +1471,7 @@ TOUR
     height: 85%;
 }
 .next_t{
-   width:4.5em;
+   width:17%;
    height: 100%;
    display: inline-block;
    float: right;
@@ -1334,8 +1484,8 @@ TOUR
 #t_learn{
     text-align: center;
     color: white;
-    font-size: 1.8em;
-    width:65%;
+    font-size: 22px;
+    width:50%;
     font-weight: 400;
     height: 100%;
     display: inline-block;

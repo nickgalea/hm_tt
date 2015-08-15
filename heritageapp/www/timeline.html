@@ -1,137 +1,486 @@
 <snap-content>	
-	<script>
-	var mq = window.matchMedia( "(min-width: 961px)" );
-	if (mq.matches) {
-		// tablet
-		screen.lockOrientation('landscape');
-	}
-	else {
-		// window width is less than 500px
-		screen.lockOrientation('portrait');
-	}
-		
-	</script>
-		<img id="menutoggle" snap-toggle="" src="img/icons/back.png" onclick="onBackKeyDown();"></img>
-		
-		<div id = "game_page">
-			
-			<!--div class = "timeline_column">
-				<div class = "tarxien"> </div>
-				<div class = "malta"> </div>
-				<div class = "international"> </div>
+<script>
+var mq = window.matchMedia( "(min-width: 961px)" );
+if (mq.matches) {
+	// tablet
+	screen.lockOrientation('landscape');
+}
+else {
+	// window width is less than 500px
+	screen.lockOrientation('portrait');
+}
+	
+</script>
+
+<div id = "game_page">
+<div style="height:3%;margin-bottom:1%;"> </div>
+<img class = "backImage" style="" id="menutoggle" snap-toggle="" src="img/icons/back.png" onclick="onBackKeyDown();"></img>
+	<div class = "timeline_column">
+		<div class = "period">5000BC</div>
+		<div class = "international"></div>
+		<div class = "malta">
+				<div class = "malta_info" >
+				<img class="malta_image" src="img/timeline/dalam.png"/>
+				<div class="malta_text">Ghar Dalam</div>
 			</div>
-			<div class = "timeline_column">
-				<div class = "tarxien"> </div>
-				<div class = "malta"> </div>
-				<div class = "international"> </div>
+			<div class = "malta_margin" ></div>
+			<div class = "malta_info">
+				<img class="malta_image" src="img/timeline/skorba.png"/>
+				<span class="malta_text">Earliest Skorba Remains</span>
 			</div>
-			<div class = "timeline_column">
-				<div class = "tarxien"> </div>
-				<div class = "malta"> </div>
-				<div class = "international"> </div>
+		</div>
+		<div class = "tarxien"> </div>
+		<div class = "period">5000BC </div>
+	</div>
+	<div class = "timeline_column">
+		<div class = "period">4500BC</div>
+		<div class = "international"></div>
+		<div class = "malta"></div>
+		<div class = "tarxien">
+		</div>
+		<div class = "period">4500BC </div>
+	</div>
+	<div class = "timeline_column">
+		<div class = "period">4000BC </div>
+		<div class = "international">
+			<div class = "international_info" >
+				<img class="international_image"  src="img/timeline/farming.png"/>
+				<div class="international_text">Farming in Europe</div>
 			</div>
-			<div class = "timeline_column">
-				<div class = "tarxien"> </div>
-				<div class = "malta"> </div>
-				<div class = "international"> </div>
-			</div-->
-			<div class = "tarxien_row">
-				<div class = "age"> </div>
-				<div class = "age"> </div>
-				<div class = "age"> </div>
-				<div class = "age"> </div>
-				<div class = "age"> </div>
+		</div>
+		<div class = "malta">
+			<div class = "malta_info">
+				<img class="malta_image" src="img/timeline/hyp.png"/>
+				<div class="malta_text">Hypogeum</div>
 			</div>
-			<div class = "malta_row">
-				<div class = "age"> </div>
-				<div class = "age"> </div>
-				<div class = "age"> </div>
-				<div class = "age"> </div>
-				<div class = "age"> </div>
+		</div>
+		<div class = "tarxien"></div>
+		<div class = "period">4000BC </div>
+	</div>
+	<div class = "timeline_column">
+		<div class = "period">3500BC </div>
+		<div class = "international"></div>
+		<div class = "malta">
+			<div class = "malta_info" >
+				<img class="malta_image" src="img/timeline/mnajdra.png"/>
+				<div class="malta_text">Mnajda, Skorba</div>
 			</div>
-			<div class = "international_row">
-				<div class = "age"> </div>
-				<div class = "age"> </div>
-				<div class = "age"> </div>
+			<div class = "malta_margin" ></div>
+			<div class = "malta_info" >
+				<img class="malta_image" src="img/timeline/ggantijja.png"/>
+				<div class="malta_text">Hagar Qim, Ggantija</div>
+			</div>
+			<div class = "malta_margin" ></div>
+			<div class = "malta_info" >
+				<img class="malta_image" src="img/timeline/hagrat.png"/>
+				<div class="malta_text">Ta' Hagrat</div>
+			</div>
+		</div>
+		<div class = "tarxien">
+			<div class = "tarxien_margin" ></div>
+			<div class = "tarxien_info_small" style="margin-left:1%;">
+				<img class="tarxien_image" src="img/timeline/fareast.png"/>
+				<div class="tarxien_text_small">Far East Temples</div>
+			</div>
+		</div>
+		<div class = "period">3500BC </div>
+	</div>
+	<div class = "timeline_column">
+		<div class = "period">3000BC </div>
+		<div class = "international">
+			<div class = "international_info" >
+				<img class="international_image" src="img/timeline/mes.png"/>
+				<div class="international_text">Writing in Mesapotamia and Egypt</div>
 			</div>
 			
 		</div>
-	
-		
- <script>
+		<div class = "malta"> </div>
+		<div class = "tarxien">
+			<div class = "tarxien_margin" ></div>
+			<div class = "tarxien_info_small" style="margin-left:10%;">
+				<img class="tarxien_image"   src="img/timeline/southeast.png"/>
+				<div class="tarxien_text_small">South and East Temples</div>
+			</div>
+			<div class = "tarxien_margin" ></div>
+			<div class = "tarxien_info_small" style="margin-left:40%;">
+				<img class="tarxien_image"   src="img/timeline/central.png"/>
+				<div class="tarxien_text_small">Central Temple</div>
+			</div>
+		</div>
+		<div class = "period">3000BC </div>
+	</div>
+	<div class = "timeline_column">
+		<div class = "period">2500BC </div>
+		<div class = "international">
+			<div class = "international_info" >
+				<img class="international_image"  src="img/timeline/stone.png"/>
+				<div class="international_text">Stonehenge</div>
+			</div>
+			<div class = "international_info" >
+				<img class="international_image"  src="img/timeline/min.png"/>
+				<div class="international_text">Minoan Civilisation</div>
+			</div>
+			<div class = "international_info" >
+				<img class="international_image"  src="img/timeline/pyramids.png"/>
+				<div class="international_text">Egyptian Pyramids</div>
+			</div>
+			
+		</div>
+		<div class = "malta"> </div>
+		<div class = "tarxien">
+			<div class = "tarxien_margin" ></div>
+			<div class = "tarxien_info_small" style="margin-left:10%;">
+				<img class="tarxien_image"   src="img/timeline/pyr.jpg"/>
+				<div class="tarxien_text_big">Section of South and Central Temples being used as Cremation Cemetery</div>
+			</div>
+		</div>
+		<div class = "period">2500BC </div>
+	</div>
+	<div class = "timeline_column">
+		<div class = "period">2000BC </div>
+		<div class = "international"></div>
+		<div class = "malta"> </div>
+		<div class = "tarxien"> </div>
+		<div class = "period">2000BC </div>
+	</div>
+	<div class = "timeline_column">
+		<div class = "period">1500BC </div>
+		<div class = "international">
+			<div class = "international_info" >
+				<img class="international_image"  src="img/timeline/my.png"/>
+				<div class="international_text">Mycenean civiliation(1400BC)</div>
+			</div>
+			
+		</div>
+		<div class = "malta">
+			<div class = "malta_margin" ></div>
+			<div class = "malta_margin" ></div>
+			<div class = "malta_info" >
+				<img class="malta_image"   src="img/timeline/nadur.png"/>
+				<div class="malta_text">Borg in-Nadur</div>
+			</div>
+		</div>
+		<div class = "tarxien"> </div>
+		<div class = "period">1500BC </div>
+	</div>
+	<div class = "timeline_column">
+		<div class = "period">1000BC </div>
+		<div class = "international">
+			<div class = "international_info" >
+				<img class="international_image"  src="img/timeline/phen.png"/>
+				<div class="international_text">Myceneans, Phoenicians (1200 - 100 BC)</div>
+			</div>
+			<div class = "international_info" >
+				<img class="international_image"  src="img/timeline/dynasty.png"/>
+				<div class="international_text">Shang Dynasty China (1600 - 1000 BC)</div>
+			</div>
+		</div>
+		<div class = "malta">
+			<div class = "malta_margin" ></div>
+			<div class = "malta_margin" ></div>
+			<div class = "malta_info" >
+				<img class="malta_image"   src="img/timeline/bahrijja.png"/>
+				<div class="malta_text">Bahrija</div>
+			</div>
+		</div>
+		<div class = "tarxien"> </div>
+		<div class = "period">1000BC </div>
+	</div>
+	<div class = "timeline_column">
+		<div class = "period">500BC </div>
+		<div class = "international"></div>
+		<div class = "malta"> </div>
+		<div class = "tarxien"> </div>
+		<div class = "period">500BC </div>
+	</div>
+	<div class = "timeline_column">
+		<div class = "period">0 </div>
+		<div class = "international"></div>
+		<div class = "malta"> </div>
+		<div class = "tarxien">
+			<div class = "tarxien_margin"></div>
+			<div class = "tarxien_info_small" style="margin-left:10%;">
+				<img class="tarxien_image"   src="img/timeline/pyr.jpg"/>
+				<div class="tarxien_text_big">Tarxien as a field for agriculture</div>
+			</div>
+		</div>
+		<div class = "period">0 </div>
+	</div>
+	<div class = "timeline_column">
+		<div class = "period">500AD </div>
+		<div class = "international">
+			<div class = "international_info" >
+				<img class="international_image"  src="img/timeline/mayan.png"/>
+				<div class="international_text">Beginning of Mayan pyramids (200)</div>
+			</div>
+			
+		</div>
+		<div class = "malta"> </div>
+		<div class = "tarxien"> </div>
+		<div class = "period">500AD </div>
+	</div>
+</div>
 
+<script>
+var malta_skorba = ["Earliest Skorba Remains","L-ewwel fdalijiet fi Skorba","ITEarliest Skorba Remains"];
+var inter_farming = ["Farming in Europe","MTFarming in Europe","ITFarming in Europe"];
+var tarxien_east = ["South and East Temples","MTSouth and East Temples","ITSouth and East Temples"];
+var tarxien_central = ["Central Temple","MTCentral Temple","ITCentral Temple"];
+var tarxien_cemetry = ["Section of South and Central Temples being used as Cremation Cemetery","MTSection of South and Central Temples being used as Cremation Cemetery","ITSection of South and Central Temples being used as Cremation Cemetery"];
+var tarxien_field = ["Tarxien as a field for agriculture","MTTarxien as a field for agriculture","ITTarxien as a field for agriculture"];
+var inter_mayan =["Beginning of Mayan pyramids (200)","MTBeginning of Mayan pyramids (200)","ITBeginning of Mayan pyramids (200)"];
+var inter_egyptian = ["Egyptian Pyramids","MTEgyptian Pyramids","ITEgyptian Pyramids"];
+
+function set_translations()
+{
+	$("#malta_skorba").html(malta_skorba[lang_index]);
+	$("#inter_farming").html(inter_farming[lang_index]);
+	$("#tarxien_east").html(tarxien_east[lang_index]);
+	$("#tarxien_central").html(tarxien_central[lang_index]);
+	$("#tarxien_cemetry").html(tarxien_cemetry[lang_index]);
+	$("#tarxien_field").html(tarxien_field[lang_index]);
+	$("#inter_mayan").html(inter_mayan[lang_index]);
+	$("#inter_egyptian").html(inter_egyptian[lang_index]);
+}
+set_translations();
 </script>
 <style>
+/*for mobiles*/
+@media (max-width:700px) {
+	.backImage
+	{
+		margin-top:-28px;
+	}
+	.timeline_column
+	{
+		display: inline-block;
+		width:75%;
+		height:99%;
+	}
+	.malta_text
+	{
+		font-size:100%;
+	}
+	.international_info
+	{
+	  color:white;
+	  margin-bottom:2px;
+	}
+	.tarxien_text_big
+	{
+		font-size:100%;
+		margin-top:20%;
+	}
+	.tarxien_text_small
+	{
+		max-width:28%;
+		margin-top:10%;
+	}
+	.international_image
+	{
+	  border-width:30px;
+	  width: 40px;
+	  height: 40px; 
+	  -webkit-border-radius: 50%;
+	  -webkit-border-width:50px;
+	  -moz-border-radius: 50%;
+	  -moz-border-width:50px; 
+	  margin-top:3%;
+	  margin-left:-15px;
+	  display:inline-block;
+	}
+	.malta_text
+	{
+		margin-top:4%;
+	}
+}
+/*tablet*/
+@media (min-width:700px) {
+	.backImage
+	{
+		margin-top:-15px;
+	}
+	.timeline_column
+	{
+		display: inline-block;
+		width:400px;
+		height:99%;
+	}
+	.malta_text
+	{
+		font-size:150%;
+	}
+	.international_info
+	{
+	  color:white;
+	  margin-bottom:10px;
+	}
+	.tarxien_text_big
+	{
+		font-size:130%;
+		margin-top:50%;
+	}
+	.tarxien_text_small
+	{
+		max-width:38%;
+		margin-top:25%;
+	}
+	.international_image
+	{
+	  border-radius: 50%;
+	  border-width:50px;
+	  width: 40px;
+	  height: 40px; 
+	  -webkit-border-radius: 50%;
+	  -webkit-border-width:50px;
+	  -moz-border-radius: 50%;
+	  -moz-border-width:50px; 
+	  margin-top:3%;
+	  margin-left:-25px;
+	  display:inline;
+	}
+	.malta_text
+	{
+		margin-top:6%;
+	}
+
+}
+
 
 #game_page
 {
-	background-color:#ae1215;
+	/*background-color:#ae1215;*/
+	background-image: url(img/timeline/background.jpg);
+	background-position: center; 
 	color:white;
 	height:100%;
+	overflow-y:hidden;
     white-space: nowrap;
+	overflow-x:scroll;
 }
-.timeline_column
-{
-	display: inline-block;
-	width:400px;
-	height:99%;
-	background-color:yellow;
-}
-.tarxien
+
+
+.international
 {
 	width:100%;
-	height:33%;
-	border-left: 1px solid white;
-	border-bottom: 1px solid white;
-	background-color:blue;
+	height:15%;
+	border-right: 1px solid white;
+	
 }
 .malta
 {
-	border-left: 1px solid white;
-	border-bottom: 1px solid white;
+	border-right: 1px solid white;
 	width:100%;
-	height:33%;
-	/*float:left;*/
-	background-color:red;
+	height:25%;
+	
 }
-.international
+.tarxien
 {
-	border-left: 1px solid white;
-	border-bottom: 1px solid white;
+	border-right: 1px solid white;
 	width:100%;
-	height:33%;
-	/*float:left;*/
-	background-color:green;
+	height:40%;
+	
+}
+.period
+{
+	width:100%;
+	height:3%;
+	margin-top:5%;
+	margin-bottom:5%;
+	border-top:5px solid white;
+	border-right:2px solid white;
+	color:white;
+	font-size: 150%;
 }
 
 
 
-/*new*/
-.tarxien_row
+.international_text
 {
-	height:33%;
-	background-color:yellow;
-	border-bottom: 1px solid white;
+	margin-top:-27px;
+	margin-left:30px;
 }
-.malta_row
+.malta_margin
 {
-	height:33%;
-	background-color:yellow;
-	border-bottom: 1px solid white;
+	height:5%;
 }
-.international_row
+.malta_info
 {
-	height:33%;
-	background-color:yellow;
+	background-color:white;
+	height:30%;
+	max-width:90%;
+	//display: inline-block;
+	overflow:auto;
 }
-.age
+.malta_image
 {
-	border-style:dotted;
-	border-left: 1px  white;
-	width:400px;
+	margin-left:10px;
 	height:100%;
-	background-color:red;
-	display: inline-block;	
+	float:left;	
+}
+.malta_text
+{
+	margin-left:10px;
+	color:black;
+	font-weight: 500;
+	float:left;
+	display: inline-block;
+	margin-top: 12px;
+}
+
+.tarxien_margin
+{
+	height:7%;
+}
+.tarxien_info_big
+{
+	height:75%;
+	width:85%;
+	//margin-left:-25%;
+	float:left;
+	margin-right:28%;
+}
+.tarxien_image
+{
+	height:100%;
+	width:50%;
+	float:left;
+}
+.tarxien_info_small
+{
+	height:42.5%;
+	width:80%;
+	margin-left:-12.5%;
+	//overflow:hidden;
+	clear:both;
+}
+.tarxien_text_big
+{
+	font-weight:700;
+	color:black;
+	padding-left:5%;
+	padding-right:5%;
+	padding-top:2%;
+	padding-bottom:2%;
+	float:left;
+	background-color:white;
+	width:40%;
+	word-wrap: break-word;
+    white-space: normal;
+}
+.tarxien_text_small
+{
+	background-color:white;
+	font-weight:700;
+	color:black;
+	
+	padding-left:5%;
+	padding-right:5%;
+	padding-top:2%;
+	padding-bottom:2%;
+	float:left;
+	word-wrap: break-word;
+    white-space: normal;
 }
 
 
